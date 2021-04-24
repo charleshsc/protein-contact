@@ -1,4 +1,5 @@
 from operator import mod
+from utils import generate_hyper_params_str
 import torch
 import torch.nn as nn
 import torch.optim
@@ -10,6 +11,7 @@ from tqdm import tqdm
 import numpy as np
 import random
 import os
+import logging
 
 
 # Set CUDA Environment
@@ -26,6 +28,18 @@ hyper_params = {
     'epochs': 10,
     'validate_ratio': 0.1
 }
+info_str = generate_hyper_params_str(hyper_params)
+
+
+# Config logging module.
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.INFO)
+handler = logging.FileHandler("logs/" + info_str + ".log")
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter(
+    '%(asctime)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 # Manual Seed
@@ -63,6 +77,7 @@ def train():
     # Start Training
     print('Start training...')
 
+    logger.info('Start training...')
     for epoch in range(hyper_params['epochs']):
         with tqdm(train_loader) as t:
             for step, (feature, label, mask) in enumerate(t):
@@ -82,9 +97,11 @@ def train():
 
                 t.set_description(
                     f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+                logger.info(
+                    f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
 
         # Evaluate
-        evaluator.evaluate(model)
+        evaluator.evaluate(model, logger)
 
 
 if __name__ == '__main__':

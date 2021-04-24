@@ -1,6 +1,7 @@
 # coding:utf8
 import numpy as np
 from sklearn.metrics import precision_score
+import time
 
 
 def cal_acc(label, mask, large_20, pred):
@@ -79,3 +80,8 @@ def cal_top(label, mask, pred):
     mask = mask * trunc_mat_tmp
     acc[1, :] = cal_acc(label, mask, large_20, pred_final)
     return acc
+
+
+def generate_hyper_params_str(hyper_params):
+    time_str = time.strftime("%Y%m%d_%H%M%S")
+    return time_str

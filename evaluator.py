@@ -6,6 +6,7 @@ from dataset import Protein_data
 import numpy as np
 from tqdm import tqdm
 from utils import cal_top
+import logging
 
 
 class Evaluator:
@@ -23,7 +24,7 @@ class Evaluator:
     def init_history(self):
         self.result_history = []
 
-    def evaluate(self, net: nn.Module):
+    def evaluate(self, net: nn.Module, logger: logging.Logger = None):
         print('Evaluating...')
         net.eval()
 
@@ -52,6 +53,9 @@ class Evaluator:
         cur_result = cur_result[0] + 2 * cur_result[1]
 
         print(f'Evaluation Result: {cur_result}')
+        if logger is not None:
+            logger.info(f'Evaluation Result: {cur_result}')
+
         self.result_history.append(cur_result)
 
         net.train()
