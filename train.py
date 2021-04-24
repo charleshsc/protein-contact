@@ -67,7 +67,7 @@ def train():
         dataset=train_dataset,
         batch_size=hyper_params['batch_size'],
         shuffle=True,
-        num_workers=3
+        num_workers=4
     )
 
     # Define Evaluator
