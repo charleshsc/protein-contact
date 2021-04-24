@@ -18,7 +18,7 @@ os.environ['CUDA_VISIBLE_DEIVCES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
-    'device': 'cpu',
+    'device': 'cuda',
     'label_dir': '/home/dingyueprp/Data/label',
     'feature_dir': '/home/dingyueprp/Data/feature',
     'middle_layers': [5, 5, 5, 5, 5],
