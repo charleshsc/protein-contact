@@ -16,8 +16,7 @@ class Evaluator:
         self.valid_loader = Data.DataLoader(
             dataset=self.valid_dataset,
             batch_size=hyper_params['batch_size'],
-            num_workers=1,
-            prefetch_factor=2
+            num_workers=1
         )
         self.result_history = []
 
