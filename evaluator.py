@@ -54,7 +54,8 @@ class Evaluator:
 
         print(f'Evaluation Result: {cur_result}')
         if logger is not None:
-            logger.info(f'Evaluation Result: {cur_result}')
+            logger.info(
+                f'-----------------------EVAL---------------------\nEvaluation Result: {cur_result}\n')
 
         self.result_history.append(cur_result)
 
