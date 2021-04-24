@@ -7,6 +7,7 @@ from torch.utils.data import Dataset
 import random
 import tarfile
 import shutil
+from io import BytesIO
 
 
 class Protein_data(Dataset):
@@ -22,14 +23,21 @@ class Protein_data(Dataset):
         self.feature_dir = hyper_params['feature_dir']
         self.proteins = os.listdir(self.dist_dir)
         self.validate_ratio = hyper_params['validate_ratio']
-        self.train_cnt = int((1.0-self.validate_ratio) * len(self.proteins))
+        self.subset_ratio = hyper_params['subset_ratio']
+        self.train_cnt = int((1.0-self.validate_ratio) *
+                             len(self.proteins) * self.subset_ratio)
         self.is_train = train
         self.verbose = verbose
 
         if self.train_proteins is None:
+            if self.subset_ratio < 1.0:
+                all_proteins = np.random.choice(self.proteins, int(
+                    len(self.proteins) * self.subset_ratio), replace=False)
+            else:
+                all_proteins = self.proteins
             self.train_proteins = np.random.choice(
-                self.proteins, self.train_cnt)
-            self.valid_proteins = list(set(self.proteins) -
+                all_proteins, self.train_cnt, replace=False)
+            self.valid_proteins = list(set(all_proteins) -
                                        set(self.train_proteins))
 
         if train:
@@ -43,9 +51,9 @@ class Protein_data(Dataset):
         """
         if self.verbose > 0:
             if self.is_train:
-                print(f'Train Data: {index} fetched.')
+                print(f'Train Data: {index} fetching...')
             else:
-                print(f'Validate Data: {index} fetched.')
+                print(f'Validate Data: {index} fetching...')
 
         prot_name = self.proteins[index]
         prot_name = prot_name[:prot_name.find('.')]
@@ -71,6 +79,13 @@ class Protein_data(Dataset):
                           np.ones_like(label)*8, np.zeros_like(label))
         label += np.where((dist >= 20), np.ones_like(label)
                           * 9, np.zeros_like(label))
+
+        if self.verbose > 0:
+            if self.is_train:
+                print(f'Train Data: {index} fetched.')
+            else:
+                print(f'Validate Data: {index} fetched.')
+
         return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
 
     def __len__(self):
@@ -82,11 +97,18 @@ class Protein_data(Dataset):
 
     @staticmethod
     def get_feature(name):
-        f_name = name.replace(".npy.gz", "")
+        f_name = name.replace(".npy.gz", "").split('/')[-1]
         g_file = tarfile.open(name)
-        g_file.extractall(f_name)
-        dir_ = os.listdir(f_name)
-        tmp_feature = np.load(f_name+'/'+dir_[0])
+
+        arrayfile = BytesIO()
+
+        for file in g_file.getmembers():
+            arrayfile.write(g_file.extractfile(file).read())
+
+        arrayfile.seek(0)
+        # dir_ = os.listdir(f_name)
+        # tmp_feature = np.load(fdata)
+        tmp_feature = np.load(arrayfile)
+        arrayfile.close()
         tmp_feature = np.transpose(tmp_feature, (2, 0, 1))
-        shutil.rmtree(f_name)
         return tmp_feature
