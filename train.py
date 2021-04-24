@@ -30,7 +30,7 @@ hyper_params = {
     'batch_size': 1,
     'epochs': 10,
     'validate_ratio': 0.1,
-    'subset_ratio': 0.01
+    'subset_ratio': 1.0
 }
 info_str = generate_hyper_params_str(hyper_params)
 
