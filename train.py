@@ -13,7 +13,7 @@ import os
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEIVCES'] = '-1'
+os.environ['CUDA_VISIBLE_DEIVCES'] = '0'
 
 
 # Hyper Parameters
