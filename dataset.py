@@ -10,13 +10,30 @@ import shutil
 
 
 class Protein_data(Dataset):
-    def __init__(self, root, train=False):
+    # Set the train and validate data
+    train_proteins = None
+    valid_proteins = None
+
+    def __init__(self, hyper_params, train=True):
         """
         主要目标： 获取所有图片的地址
         """
-        self.dist_dir = 'your_label_dir'
-        self.feature_dir = 'your_feature_dir'
+        self.dist_dir = hyper_params['label_dir']
+        self.feature_dir = hyper_params['feature_dir']
         self.proteins = os.listdir(self.dist_dir)
+        self.validate_ratio = hyper_params['validate_ratio']
+        self.train_cnt = int(self.validate_ratio * len(self.proteins))
+
+        if self.train_proteins is None:
+            self.train_proteins = np.random.choice(
+                self.proteins, self.train_cnt)
+            self.valid_proteins = list(set(self.proteins) -
+                                       set(self.train_proteins))
+
+        if train:
+            self.proteins = self.train_proteins
+        else:
+            self.proteins = self.valid_proteins
 
     def __getitem__(self, index):
         """
@@ -46,7 +63,7 @@ class Protein_data(Dataset):
                           np.ones_like(label)*8, np.zeros_like(label))
         label += np.where((dist >= 20), np.ones_like(label)
                           * 9, np.zeros_like(label))
-        return feature, label, mask
+        return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
 
     def __len__(self):
         return len(self.proteins)
