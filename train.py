@@ -1,9 +1,12 @@
+from operator import mod
 import torch
 import torch.nn as nn
 import torch.optim
 from model import FCNModel
 import dataset
 import torch.utils.data as Data
+from evaluator import Evaluator
+from tqdm import tqdm
 import numpy as np
 import random
 import os
@@ -48,6 +51,9 @@ def train():
         num_workers=1
     )
 
+    # Define Evaluator
+    evaluator = Evaluator(hyper_params)
+
     # Define Model
     model = FCNModel(hyper_params=hyper_params)
     optimizer = torch.optim.AdamW(model.parameters())
@@ -58,24 +64,27 @@ def train():
     print('Start training...')
 
     for epoch in range(hyper_params['epochs']):
-        for step, (feature, label, mask) in enumerate(train_loader):
-            feature = feature.to(hyper_params['device'])
-            label = label.to(hyper_params['device'])
-            mask = mask.to(hyper_params['device'])
+        with tqdm(train_loader) as t:
+            for step, (feature, label, mask) in enumerate(t):
+                feature = feature.to(hyper_params['device'])
+                label = label.to(hyper_params['device'])
+                mask = mask.to(hyper_params['device'])
 
-            pred = model(feature)
-            loss = loss_func(pred, label)
-            loss = loss * mask
+                pred = model(feature)
+                loss = loss_func(pred, label)
+                loss = loss * mask
 
-            loss = torch.mean(loss)
+                loss = torch.mean(loss)
 
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
 
-            print(f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+                t.set_description(
+                    f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
 
-        # TODO: Evaluate
+        # Evaluate
+        evaluator.evaluate(model)
 
 
 if __name__ == '__main__':

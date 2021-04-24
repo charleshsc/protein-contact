@@ -21,16 +21,16 @@ def cal_acc(label, mask, large_20, pred):
 
     topL_10 = int(np.ceil(L/10))
     result[0] = precision_score(
-        label[order[:topL_10]], pred[order[:topL_10]], average='weighted')
+        label[order[:topL_10]], pred[order[:topL_10]], average='weighted', zero_division=0)
     topL_5 = int(np.ceil(L/5))
     result[1] = precision_score(
-        label[order[:topL_5]], pred[order[:topL_5]], average='weighted')
+        label[order[:topL_5]], pred[order[:topL_5]], average='weighted', zero_division=0)
     topL_2 = int(np.ceil(L/2))
     result[2] = precision_score(
-        label[order[:topL_2]], pred[order[:topL_2]], average='weighted')
+        label[order[:topL_2]], pred[order[:topL_2]], average='weighted', zero_division=0)
     topL = int(np.ceil(L))
     result[3] = precision_score(
-        label[order[:topL]], pred[order[:topL]], average='weighted')
+        label[order[:topL]], pred[order[:topL]], average='weighted', zero_division=0)
 
     return result
 

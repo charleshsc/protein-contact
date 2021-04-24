@@ -14,7 +14,7 @@ class Protein_data(Dataset):
     train_proteins = None
     valid_proteins = None
 
-    def __init__(self, hyper_params, train=True):
+    def __init__(self, hyper_params, train=True, verbose=0):
         """
         主要目标： 获取所有图片的地址
         """
@@ -22,7 +22,9 @@ class Protein_data(Dataset):
         self.feature_dir = hyper_params['feature_dir']
         self.proteins = os.listdir(self.dist_dir)
         self.validate_ratio = hyper_params['validate_ratio']
-        self.train_cnt = int(self.validate_ratio * len(self.proteins))
+        self.train_cnt = int((1.0-self.validate_ratio) * len(self.proteins))
+        self.is_train = train
+        self.verbose = verbose
 
         if self.train_proteins is None:
             self.train_proteins = np.random.choice(
@@ -39,6 +41,12 @@ class Protein_data(Dataset):
         """
         一次返回一张图片的数据
         """
+        if self.verbose > 0:
+            if self.is_train:
+                print(f'Train Data: {index} fetched.')
+            else:
+                print(f'Validate Data: {index} fetched.')
+
         prot_name = self.proteins[index]
         prot_name = prot_name[:prot_name.find('.')]
         dist = self.get_label(self.dist_dir+'/'+prot_name+'.npy')
