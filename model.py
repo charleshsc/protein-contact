@@ -55,7 +55,7 @@ class FCNModel(nn.Module):
 
         # Middle Layers
         for middle_conv in self.middle_conv_list:
-            middle = middle_conv(middle)
+            middle = torch.relu(middle_conv(middle))
 
         # Output Layer -> b x 10 x m x m
         out = self.output_conv(middle)
