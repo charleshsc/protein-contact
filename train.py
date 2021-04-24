@@ -55,7 +55,7 @@ def train():
     evaluator = Evaluator(hyper_params)
 
     # Define Model
-    model = FCNModel(hyper_params=hyper_params).to('device')
+    model = FCNModel(hyper_params=hyper_params).to(hyper_params['device'])
     optimizer = torch.optim.AdamW(model.parameters())
     loss_func = nn.CrossEntropyLoss(reduction='none')
     print('Finished')
