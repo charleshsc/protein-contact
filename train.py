@@ -19,8 +19,8 @@ os.environ['CUDA_VISIBLE_DEIVCES'] = '-1'
 # Hyper Parameters
 hyper_params = {
     'device': 'cpu',
-    'label_dir': '/Volumes/文件/Datasets/label',
-    'feature_dir': '/Volumes/文件/Datasets/feature',
+    'label_dir': '~/Data/label',
+    'feature_dir': '~/Data/feature',
     'middle_layers': [5, 5, 5, 5, 5],
     'batch_size': 1,
     'epochs': 10,
