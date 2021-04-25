@@ -48,7 +48,8 @@ class Evaluator:
                         label[i].cpu().numpy(), mask[i].cpu().numpy(), pred[i].detach().cpu().numpy())
                     cnt += 1
 
-                logger.info(f'Evaluation: {step} / {total_step}')
+                if step % self.hyper_params['log_freq'] == 0:
+                    logger.info(f'Evaluation: {step} / {total_step}')
 
         # Calculate Average Result
         avg_result = np.mean(result, axis=0)

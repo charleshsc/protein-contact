@@ -30,7 +30,8 @@ hyper_params = {
     'batch_size': 1,
     'epochs': 10,
     'validate_ratio': 0.1,
-    'subset_ratio': 1.0
+    'subset_ratio': 1.0,
+    'log_freq': 50
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -96,8 +97,10 @@ def train(logger: logging.Logger):
 
                 t.set_description(
                     f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
-                logger.info(
-                    f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+
+                if step % hyper_params['log_freq'] == 0:
+                    logger.info(
+                        f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
 
         # Evaluate
         evaluator.evaluate(model, logger)
