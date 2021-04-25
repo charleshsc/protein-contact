@@ -56,7 +56,7 @@ def train(logger: logging.Logger):
         dataset=train_dataset,
         batch_size=hyper_params['batch_size'],
         shuffle=True,
-        num_workers=4
+        num_workers=16
     )
 
     # Define Evaluator
