@@ -35,17 +35,6 @@ hyper_params = {
 info_str = generate_hyper_params_str(hyper_params)
 
 
-# Config logging module.
-logger = logging.getLogger(__name__)
-logger.setLevel(level=logging.INFO)
-handler = logging.FileHandler("logs/" + info_str + ".log")
-handler.setLevel(logging.INFO)
-formatter = logging.Formatter(
-    '%(asctime)s - %(message)s')
-handler.setFormatter(formatter)
-logger.addHandler(handler)
-
-
 # Manual Seed
 def setup_seed(seed):
     torch.manual_seed(seed)
@@ -58,7 +47,7 @@ def setup_seed(seed):
 setup_seed(1111)
 
 
-def train():
+def train(logger: logging.Logger):
     # Define Dataset
     print('Loading...')
     train_dataset = dataset.Protein_data(
@@ -115,4 +104,16 @@ def train():
 
 
 if __name__ == '__main__':
-    train()
+    # Config logging module.
+    logger = logging.getLogger(__name__)
+    logger.setLevel(level=logging.INFO)
+    handler = logging.FileHandler("logs/" + info_str + ".log")
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter(
+        '%(asctime)s - %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
+    logger.info(info_str)
+
+    train(logger)

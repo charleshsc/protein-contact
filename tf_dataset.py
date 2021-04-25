@@ -2,8 +2,8 @@
 import os
 import os.path as osp
 import numpy as np
-import torch
-from torch.utils.data import Dataset
+import tensorflow as tf
+import tensorflow.keras as keras
 import random
 import tarfile
 import shutil
@@ -11,7 +11,7 @@ from io import BytesIO
 import time
 
 
-class Protein_data(Dataset):
+class Protein_data(keras.utils.Sequence):
     # Set the train and validate data
     train_proteins = None
     valid_proteins = None
@@ -61,9 +61,10 @@ class Protein_data(Dataset):
         prot_name = self.proteins[index]
         prot_name = prot_name[:prot_name.find('.')]
         dist = self.get_label(self.dist_dir+'/'+prot_name+'.npy')
-        feature = self.get_feature(self.feature_dir+'/'+prot_name + '.npy.gz')
+        feature = self.get_feature(
+            self.feature_dir+'/'+prot_name + '.npy.gz').astype(np.float32)
         mask = np.where(dist == -1, 0, 1)
-        label = np.zeros(dist.shape)
+        label = np.zeros(dist.shape, dtype=np.int64)
         label += np.where((dist >= 4) & (dist < 6),
                           np.ones_like(label), np.zeros_like(label))
         label += np.where((dist >= 6) & (dist < 8),
@@ -89,12 +90,17 @@ class Protein_data(Dataset):
             else:
                 print(f'Validate Data: {index} fetched.')
 
-        return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
+        feature = feature[np.newaxis, :, :, :]
+        mask = mask[np.newaxis, :, :]
+        label = label[np.newaxis, :, :]
+
+        return [feature, mask], [label]
 
     def __len__(self):
         return len(self.proteins)
 
-    def get_label(self, name):
+    @staticmethod
+    def get_label(name):
         tmp_label = np.load(name)
         return tmp_label
 

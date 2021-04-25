@@ -26,12 +26,14 @@ class Evaluator:
 
     def evaluate(self, net: nn.Module, logger: logging.Logger = None):
         print('Evaluating...')
+        logger.info('Start evaluating...')
         net.eval()
 
         result = np.zeros(
             [self.valid_dataset.__len__(), 2, 4], dtype=np.float32)
 
         cnt = 0
+        total_step = self.valid_dataset.__len__()
 
         with torch.no_grad():
             for step, (feature, label, mask) in enumerate(tqdm(self.valid_loader)):
@@ -45,6 +47,8 @@ class Evaluator:
                     result[cnt] = cal_top(
                         label[i].cpu().numpy(), mask[i].cpu().numpy(), pred[i].detach().cpu().numpy())
                     cnt += 1
+
+                logger.info(f'Evaluation: {step} / {total_step}')
 
         # Calculate Average Result
         avg_result = np.mean(result, axis=0)
