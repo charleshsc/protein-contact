@@ -28,10 +28,11 @@ hyper_params = {
     # 'feature_dir': '/Volumes/文件/Datasets/feature',
     'middle_layers': [5, 5, 5, 5, 5],
     'batch_size': 1,
-    'epochs': 10,
+    'epochs': 20,
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
-    'log_freq': 50
+    'log_freq': 10,
+    'num_workers': 12
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -57,7 +58,7 @@ def train(logger: logging.Logger):
         dataset=train_dataset,
         batch_size=hyper_params['batch_size'],
         shuffle=True,
-        num_workers=20
+        num_workers=hyper_params['num_workers']
     )
 
     # Define Evaluator
@@ -118,5 +119,6 @@ if __name__ == '__main__':
     logger.addHandler(handler)
 
     logger.info(info_str)
+    logger.info(str(hyper_params['middle_layers']))
 
     train(logger)

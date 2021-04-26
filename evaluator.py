@@ -17,7 +17,7 @@ class Evaluator:
         self.valid_loader = Data.DataLoader(
             dataset=self.valid_dataset,
             batch_size=hyper_params['batch_size'],
-            num_workers=20
+            num_workers=hyper_params['num_workers']
         )
         self.result_history = []
 
@@ -60,7 +60,11 @@ class Evaluator:
         print(f'Evaluation Result: {cur_result}')
         if logger is not None:
             logger.info(
-                f'-----------------------EVAL---------------------\nEvaluation Result: {cur_result}\n')
+                f'-----------------------EVAL---------------------\nEvaluation Result: {cur_result}')
+            logger.info(
+                f'T10: {avg_result[0,0]}, T5: {avg_result[0,1]}, T2: {avg_result[0,2]}, T1: {avg_result[0,3]}')
+            logger.info(
+                f'LT10: {avg_result[1,0]}, LT5: {avg_result[1,1]}, LT2: {avg_result[1,2]}, LT1: {avg_result[1,3]}\n')
 
         self.result_history.append(cur_result)
 
