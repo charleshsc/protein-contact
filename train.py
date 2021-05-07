@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.optim
 import torch.cuda
-from model import FCNModel
+from model import FCNModel, ResNetModel
 import dataset
 import torch.utils.data as Data
 from evaluator import Evaluator
@@ -21,18 +21,42 @@ os.environ['CUDA_VISIBLE_DEIVCES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
+    'model': 'resnet', # resnet, fcn
     'device': 'cuda',
     'label_dir': '/home/dingyueprp/Data/label',
     'feature_dir': '/home/dingyueprp/Data/feature',
     # 'label_dir': '/Volumes/文件/Datasets/label',
     # 'feature_dir': '/Volumes/文件/Datasets/feature',
-    'middle_layers': [5, 5, 5, 5, 5],
+    'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+    'residual_layers': [
+        (64, 32, 7, 1, 1, False),
+        (32, 32, 3, 2, 1, True),
+        (32, 32, 3, 2, 1, True),
+        (32, 64, 3, 2, 1, True),
+        (64, 64, 3, 2, 1, True),
+        (64, 64, 3, 2, 1, True),
+        (64, 96, 3, 2, 1, True),
+        (96, 96, 3, 2, 1, True),
+        (96, 96, 3, 2, 1, True),
+        (96, 96, 3, 2, 1, True),
+        (96, 128, 3, 2, 2, True),
+        (128, 128, 3, 2, 2, True),
+        (128, 128, 3, 2, 2, True),
+        (128, 128, 3, 2, 2, True),
+        (128, 128, 3, 2, 2, True),
+        (128, 128, 3, 2, 2, True),
+        (128, 160, 3, 2, 4, True),
+        (160, 160, 3, 2, 4, True),
+        (160, 160, 3, 2, 4, True),
+        (160, 160, 3, 2, 2, False),
+        (160, 160, 3, 2, 1, False)
+    ],
     'batch_size': 1,
     'epochs': 20,
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
-    'num_workers': 12
+    'num_workers': 20
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -65,7 +89,13 @@ def train(logger: logging.Logger):
     evaluator = Evaluator(hyper_params)
 
     # Define Model
-    model = FCNModel(hyper_params=hyper_params).to(hyper_params['device'])
+    if hyper_params['model'] == 'fcn':
+        model = FCNModel(hyper_params=hyper_params).to(hyper_params['device'])
+    elif hyper_params['model'] == 'resnet':
+        model = ResNetModel(hyper_params=hyper_params).to(hyper_params['device'])
+    else:
+        raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
+
     optimizer = torch.optim.AdamW(model.parameters())
     loss_func = nn.CrossEntropyLoss(reduction='none')
     print('Finished')
