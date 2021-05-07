@@ -5,6 +5,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.utils.checkpoint import checkpoint
 
 
 class ResidualBlock(nn.Module):
@@ -12,13 +13,18 @@ class ResidualBlock(nn.Module):
         super(ResidualBlock, self).__init__()
         assert kernel_size % 2 == 1
 
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+
         self.add_res = add_res
-        self.input_conv = nn.Conv2d(
-            in_channels=in_channels,
-            out_channels=out_channels,
-            kernel_size=(1, 1),
-            stride=(1, 1)
-        )
+
+        if in_channels != out_channels:
+            self.input_conv = nn.Conv2d(
+                in_channels=in_channels,
+                out_channels=out_channels,
+                kernel_size=(1, 1),
+                stride=(1, 1)
+            )
 
         self.conv_list = nn.ModuleList()
         for layer in range(layers):
@@ -38,13 +44,14 @@ class ResidualBlock(nn.Module):
         self.batch_norm = nn.BatchNorm2d(num_features=out_channels)
 
     def forward(self, inputs):
-        x = self.input_conv(inputs)
-        out = x
+        if self.in_channels != self.out_channels:
+            inputs = self.input_conv(inputs)
+        out = inputs
         for layer in self.conv_list:
             out = layer(out)
 
         if self.add_res:
-            result = self.batch_norm(out + x)
+            result = self.batch_norm(out + inputs)
         else:
             result = out
         return result
@@ -98,8 +105,13 @@ class ResNetModel(nn.Module):
         middle = torch.max(maxout, dim=2)[0]
 
         # Middle Layers
-        for res_module in self.res_list:
-            middle = res_module(middle)
+        # Use Checkpoint
+        if m >= 430:
+            for res_module in self.res_list:
+                middle = checkpoint(res_module, middle)
+        else:
+            for res_module in self.res_list:
+                middle = res_module(middle)
 
         # Output Layer -> b x 10 x m x m
         out = self.output_conv(middle)

@@ -17,7 +17,7 @@ import logging
 
 # Set CUDA Environment
 os.environ['CUDA_VISIBLE_DEIVCES'] = '0,1'
-
+device_ids = [0, 1]
 
 # Hyper Parameters
 hyper_params = {
@@ -93,7 +93,6 @@ def train(logger: logging.Logger):
         model = FCNModel(hyper_params=hyper_params).to(hyper_params['device'])
     elif hyper_params['model'] == 'resnet':
         model = ResNetModel(hyper_params=hyper_params)
-        model = nn.DataParallel(model)
         model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
@@ -110,8 +109,8 @@ def train(logger: logging.Logger):
         with tqdm(train_loader) as t:
             for step, (feature, label, mask) in enumerate(t):
                 try:
-                    t.set_description(
-                        f'Calculating...')
+                    # t.set_description(
+                    #     f'Calculating...')
                     feature = feature.to(hyper_params['device'])
                     label = label.to(hyper_params['device'])
                     mask = mask.to(hyper_params['device'])
@@ -130,13 +129,15 @@ def train(logger: logging.Logger):
                         torch.cuda.empty_cache()
 
                     t.set_description(
-                        f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+                        f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
 
                     if step % hyper_params['log_freq'] == 0:
                         logger.info(
-                            f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+                            f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
                 except Exception as err:
+                    print(f'L={feature.shape[2]}')
                     print(err)
+                    logger.error(f'L={feature.shape[2]}')
                     logger.error(err)
                     if hyper_params['device'] == 'cuda':
                         torch.cuda.empty_cache()

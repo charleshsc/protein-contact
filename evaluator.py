@@ -38,21 +38,27 @@ class Evaluator:
 
         with torch.no_grad():
             for step, (feature, label, mask) in enumerate(tqdm(self.valid_loader)):
-                feature = feature.to(self.hyper_params['device'])
-                label = label.to(self.hyper_params['device'])
-                mask = mask.to(self.hyper_params['device'])
+                try:
+                    feature = feature.to(self.hyper_params['device'])
+                    label = label.to(self.hyper_params['device'])
+                    mask = mask.to(self.hyper_params['device'])
 
-                pred = net(feature)
+                    pred = net(feature)
 
-                for i in range(feature.shape[0]):
-                    result[cnt] = cal_top(
-                        label[i].cpu().numpy(), mask[i].cpu().numpy(), pred[i].detach().cpu().numpy())
-                    cnt += 1
+                    for i in range(feature.shape[0]):
+                        result[cnt] = cal_top(
+                            label[i].cpu().numpy(), mask[i].cpu().numpy(), pred[i].detach().cpu().numpy())
+                        cnt += 1
 
-                if step % self.hyper_params['log_freq'] == 0:
-                    logger.info(f'Evaluation: {step} / {total_step}')
+                    if step % self.hyper_params['log_freq'] == 0:
+                        logger.info(f'Evaluation: {step} / {total_step}')
 
-                torch.cuda.empty_cache()
+                    torch.cuda.empty_cache()
+                except Exception as err:
+                    print(err)
+                    logger.error(f'L={feature.shape[2]}')
+                    logger.error(err)
+                    torch.cuda.empty_cache()
 
         # Calculate Average Result
         avg_result = np.mean(result, axis=0)
