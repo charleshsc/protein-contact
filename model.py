@@ -32,13 +32,16 @@ class ResidualBlock(nn.Module):
                     dilation=(dilation, dilation)
                 )
             )
+            self.conv_list.append(
+                nn.ReLU(inplace=True)
+            )
         self.batch_norm = nn.BatchNorm2d(num_features=out_channels)
 
     def forward(self, inputs):
         x = self.input_conv(inputs)
         out = x
         for layer in self.conv_list:
-            out = F.relu(layer(out))
+            out = layer(out)
 
         if self.add_res:
             result = self.batch_norm(out + x)

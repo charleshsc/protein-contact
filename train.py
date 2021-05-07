@@ -16,7 +16,7 @@ import logging
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEIVCES'] = '0'
+os.environ['CUDA_VISIBLE_DEIVCES'] = '0,1'
 
 
 # Hyper Parameters
@@ -92,7 +92,9 @@ def train(logger: logging.Logger):
     if hyper_params['model'] == 'fcn':
         model = FCNModel(hyper_params=hyper_params).to(hyper_params['device'])
     elif hyper_params['model'] == 'resnet':
-        model = ResNetModel(hyper_params=hyper_params).to(hyper_params['device'])
+        model = ResNetModel(hyper_params=hyper_params)
+        model = nn.DataParallel(model)
+        model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
@@ -107,31 +109,37 @@ def train(logger: logging.Logger):
     for epoch in range(hyper_params['epochs']):
         with tqdm(train_loader) as t:
             for step, (feature, label, mask) in enumerate(t):
-                t.set_description(
-                    f'Calculating...')
-                feature = feature.to(hyper_params['device'])
-                label = label.to(hyper_params['device'])
-                mask = mask.to(hyper_params['device'])
+                try:
+                    t.set_description(
+                        f'Calculating...')
+                    feature = feature.to(hyper_params['device'])
+                    label = label.to(hyper_params['device'])
+                    mask = mask.to(hyper_params['device'])
 
-                pred = model(feature)
-                loss = loss_func(pred, label)
-                loss = loss * mask
+                    pred = model(feature)
+                    loss = loss_func(pred, label)
+                    loss = loss * mask
 
-                loss = torch.mean(loss)
+                    loss = torch.mean(loss)
 
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
+                    optimizer.zero_grad()
+                    loss.backward()
+                    optimizer.step()
 
-                if hyper_params['device'] == 'cuda':
-                    torch.cuda.empty_cache()
+                    if hyper_params['device'] == 'cuda':
+                        torch.cuda.empty_cache()
 
-                t.set_description(
-                    f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
-
-                if step % hyper_params['log_freq'] == 0:
-                    logger.info(
+                    t.set_description(
                         f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+
+                    if step % hyper_params['log_freq'] == 0:
+                        logger.info(
+                            f'Epoch: {epoch}, Step: {step}, Loss: {loss.item()}')
+                except Exception as err:
+                    print(err)
+                    logger.error(err)
+                    if hyper_params['device'] == 'cuda':
+                        torch.cuda.empty_cache()
 
         # Evaluate
         evaluator.evaluate(model, logger)
@@ -149,6 +157,13 @@ if __name__ == '__main__':
     logger.addHandler(handler)
 
     logger.info(info_str)
-    logger.info(str(hyper_params['middle_layers']))
+    if hyper_params['model'] == 'fcn':
+        logger.info(str(hyper_params['middle_layers']))
+    elif hyper_params['model'] == 'resnet':
+        logger.info(str(hyper_params['residual_layers']))
 
-    train(logger)
+    try:
+        train(logger)
+    except Exception as err:
+        print(err)
+        logger.error(str(err))

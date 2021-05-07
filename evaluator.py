@@ -2,6 +2,7 @@ from numpy.random import hypergeometric
 import torch
 import torch.nn as nn
 import torch.utils.data as Data
+import torch.cuda
 from dataset import Protein_data
 import numpy as np
 from tqdm import tqdm
@@ -50,6 +51,8 @@ class Evaluator:
 
                 if step % self.hyper_params['log_freq'] == 0:
                     logger.info(f'Evaluation: {step} / {total_step}')
+
+                torch.cuda.empty_cache()
 
         # Calculate Average Result
         avg_result = np.mean(result, axis=0)
