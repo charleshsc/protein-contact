@@ -16,8 +16,8 @@ import logging
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEIVCES'] = '0,1'
-device_ids = [0, 1]
+os.environ['CUDA_VISIBLE_DEIVCES'] = '0'
+device_ids = [0]
 
 # Hyper Parameters
 hyper_params = {
@@ -56,7 +56,7 @@ hyper_params = {
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
-    'num_workers': 20
+    'num_workers': 16
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -140,7 +140,10 @@ def train(logger: logging.Logger):
                     logger.error(f'L={feature.shape[2]}')
                     logger.error(err)
                     if hyper_params['device'] == 'cuda':
-                        torch.cuda.empty_cache()
+                        try:
+                            torch.cuda.empty_cache()
+                        except Exception as err:
+                            logger.error(err)
 
         # Evaluate
         evaluator.evaluate(model, logger)

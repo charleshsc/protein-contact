@@ -41,7 +41,7 @@ class ResidualBlock(nn.Module):
             self.conv_list.append(
                 nn.ReLU(inplace=True)
             )
-        self.batch_norm = nn.BatchNorm2d(num_features=out_channels)
+        # self.batch_norm = nn.BatchNorm2d(num_features=out_channels)
 
     def forward(self, inputs):
         if self.in_channels != self.out_channels:
@@ -51,7 +51,7 @@ class ResidualBlock(nn.Module):
             out = layer(out)
 
         if self.add_res:
-            result = self.batch_norm(out + inputs)
+            result = out + inputs
         else:
             result = out
         return result
