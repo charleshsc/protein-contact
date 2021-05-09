@@ -16,8 +16,7 @@ import logging
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEIVCES'] = '0'
-device_ids = [0]
+os.environ['CUDA_VISIBLE_DEIVCES'] = '2'
 
 # Hyper Parameters
 hyper_params = {
@@ -29,10 +28,10 @@ hyper_params = {
     # 'feature_dir': '/Volumes/文件/Datasets/feature',
     'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     'residual_layers': [
-        (64, 32, 7, 1, 1, False),
-        (32, 32, 3, 2, 1, True),
-        (32, 32, 3, 2, 1, True),
-        (32, 64, 3, 2, 1, True),
+        (64, 64, 7, 1, 1, False),
+        # (32, 32, 3, 2, 1, True),
+        # (32, 32, 3, 2, 1, True),
+        (64, 64, 3, 2, 1, True),
         (64, 64, 3, 2, 1, True),
         (64, 64, 3, 2, 1, True),
         (64, 96, 3, 2, 1, True),
