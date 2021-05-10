@@ -16,7 +16,7 @@ import logging
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '2'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
@@ -52,7 +52,7 @@ hyper_params = {
     ],
     'batch_size': 1,
     'epochs': 20,
-    'dropout_rate': 0.5,
+    'dropout_rate': 0.3,
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
