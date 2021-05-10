@@ -9,7 +9,7 @@ from torch.utils.checkpoint import checkpoint
 
 
 class ResidualBlock(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, layers=2, dilation=1, add_res=True):
+    def __init__(self, in_channels, out_channels, kernel_size, layers=2, dilation=1, add_res=True, dropout_rate=0.5):
         super(ResidualBlock, self).__init__()
         assert kernel_size % 2 == 1
 
@@ -40,6 +40,9 @@ class ResidualBlock(nn.Module):
             )
             self.conv_list.append(
                 nn.ReLU(inplace=True)
+            )
+            self.conv_list.append(
+                nn.Dropout(p=dropout_rate)
             )
         # self.batch_norm = nn.BatchNorm2d(num_features=out_channels)
 
@@ -83,7 +86,8 @@ class ResNetModel(nn.Module):
                     kernel_size=layer[2],
                     layers=layer[3],
                     dilation=layer[4],
-                    add_res=layer[5]
+                    add_res=layer[5],
+                    dropout_rate=hyper_params['dropout_rate']
                 )
             )
 
