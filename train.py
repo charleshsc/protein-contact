@@ -1,5 +1,5 @@
 from operator import mod
-from utils import generate_hyper_params_str
+from utils import generate_hyper_params_str, copy_state_dict
 import torch
 import torch.nn as nn
 import torch.optim
@@ -13,10 +13,11 @@ import numpy as np
 import random
 import os
 import logging
+import Saver
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 
 # Hyper Parameters
 hyper_params = {
@@ -33,7 +34,7 @@ hyper_params = {
         # (32, 32, 3, 2, 1, True),
         (64, 64, 3, 2, 1, True),
         (64, 64, 3, 2, 1, True),
-        (64, 64, 3, 2, 1, True),
+        # (64, 64, 3, 2, 1, True),
         (64, 96, 3, 2, 1, True),
         (96, 96, 3, 2, 1, True),
         (96, 96, 3, 2, 1, True),
@@ -42,21 +43,24 @@ hyper_params = {
         (128, 128, 3, 2, 2, True),
         (128, 128, 3, 2, 2, True),
         (128, 128, 3, 2, 2, True),
-        (128, 128, 3, 2, 2, True),
+        # (128, 128, 3, 2, 2, True),
         (128, 128, 3, 2, 2, True),
         (128, 160, 3, 2, 4, True),
         (160, 160, 3, 2, 4, True),
         (160, 160, 3, 2, 4, True),
-        (160, 160, 3, 2, 2, False),
+        # (160, 160, 3, 2, 2, False),
         (160, 160, 3, 2, 1, False)
     ],
     'batch_size': 1,
     'epochs': 20,
-    'dropout_rate': 0.3,
+    'dropout_rate': 0.0,
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
-    'num_workers': 16
+    'num_workers': 16,
+    'start_epoch' : 0,
+    'resume' : None,
+    'ft' : False
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -101,11 +105,29 @@ def train(logger: logging.Logger):
     loss_func = nn.CrossEntropyLoss(reduction='none')
     print('Finished')
 
+
+    best_result = 0
+
+    # Resume
+    if hyper_params['resume'] is not None:
+        if not os.path.isfile(hyper_params['resume']):
+            raise RuntimeError("=> no checkpoint found at '{}'".format(hyper_params['resume']))
+        checkpoint = torch.load(hyper_params['resume'])
+        hyper_params['start_epoch'] = checkpoint['epoch']
+        copy_state_dict(model.state_dict(), checkpoint['state_dict'])
+        if not hyper_params['ft']:
+            copy_state_dict(optimizer.state_dict(),checkpoint['optimizer'])
+        best_result = checkpoint['pred_best ']
+        print("=> loaded checkpoint '{}' (epoch {})"
+              .format(hyper_params['resume'], checkpoint['epoch']))
+    # Define Saver
+    saver = Saver.Saver()
+
     # Start Training
     print('Start training...')
 
     logger.info('Start training...')
-    for epoch in range(hyper_params['epochs']):
+    for epoch in range(hyper_params['start_epoch'], hyper_params['epochs']):
         with tqdm(train_loader) as t:
             for step, (feature, label, mask) in enumerate(t):
                 try:
@@ -146,7 +168,19 @@ def train(logger: logging.Logger):
                             logger.error(err)
 
         # Evaluate
-        evaluator.evaluate(model, logger)
+        result = evaluator.evaluate(model, logger)
+
+        if result > best_result:
+            is_best = True
+            best_result = result
+        else:
+            is_best = False
+        saver.save_checkpoint(state={
+            'epoch' : epoch + 1,
+            'state_dict' : model.state_dict(),
+            'optimizer' : optimizer.state_dict(),
+            'pred_best' : best_result
+        }, is_best=is_best)
 
 
 if __name__ == '__main__':

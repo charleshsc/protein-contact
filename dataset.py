@@ -61,7 +61,13 @@ class Protein_data(Dataset):
         prot_name = self.proteins[index]
         prot_name = prot_name[:prot_name.find('.')]
         dist = self.get_label(self.dist_dir+'/'+prot_name+'.npy')
-        feature = self.get_feature(self.feature_dir+'/'+prot_name + '.npy.gz')
+        feature = None
+        while feature is None:
+            try:
+                feature = self.get_feature(self.feature_dir+'/'+prot_name + '.npy.gz')
+            except Exception as err:
+                print(err)
+        
         mask = np.where(dist == -1, 0, 1)
         label = np.zeros(dist.shape)
         label += np.where((dist >= 4) & (dist < 6),
