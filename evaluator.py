@@ -25,7 +25,7 @@ class Evaluator:
     def init_history(self):
         self.result_history = []
 
-    def evaluate(self, net: nn.Module, logger: logging.Logger = None):
+    def evaluate(self, net: nn.Module, logger: logging.Logger = None) -> float:
         print('Evaluating...')
         logger.info('Start evaluating...')
         net.eval()
@@ -78,3 +78,4 @@ class Evaluator:
         self.result_history.append(cur_result)
 
         net.train()
+        return cur_result

@@ -101,6 +101,7 @@ def copy_state_dict(cur_state_dict, pre_state_dict, prefix=''):
                 print('parameter {} not found'.format(k))
                 continue
             cur_state_dict[k].copy_(v)
-        except:
+        except Exception as err:
+            print(err)
             print('copy param {} failed'.format(k))
             continue

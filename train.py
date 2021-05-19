@@ -5,6 +5,7 @@ import torch.nn as nn
 import torch.optim
 import torch.cuda
 from model import FCNModel, ResNetModel
+from LossFunc import MaskedCrossEntropy
 import dataset
 import torch.utils.data as Data
 from evaluator import Evaluator
@@ -17,7 +18,7 @@ import Saver
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 # Hyper Parameters
 hyper_params = {
@@ -34,7 +35,7 @@ hyper_params = {
         # (32, 32, 3, 2, 1, True),
         (64, 64, 3, 2, 1, True),
         (64, 64, 3, 2, 1, True),
-        # (64, 64, 3, 2, 1, True),
+        (64, 64, 3, 2, 1, True),
         (64, 96, 3, 2, 1, True),
         (96, 96, 3, 2, 1, True),
         (96, 96, 3, 2, 1, True),
@@ -43,12 +44,12 @@ hyper_params = {
         (128, 128, 3, 2, 2, True),
         (128, 128, 3, 2, 2, True),
         (128, 128, 3, 2, 2, True),
-        # (128, 128, 3, 2, 2, True),
+        (128, 128, 3, 2, 2, True),
         (128, 128, 3, 2, 2, True),
         (128, 160, 3, 2, 4, True),
         (160, 160, 3, 2, 4, True),
         (160, 160, 3, 2, 4, True),
-        # (160, 160, 3, 2, 2, False),
+        (160, 160, 3, 2, 2, False),
         (160, 160, 3, 2, 1, False)
     ],
     'batch_size': 1,
@@ -60,7 +61,8 @@ hyper_params = {
     'num_workers': 16,
     'start_epoch' : 0,
     'resume' : None,
-    'ft' : False
+    'ft' : False,
+    'class_weight': [1.0] * 10
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -102,9 +104,9 @@ def train(logger: logging.Logger):
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
     optimizer = torch.optim.AdamW(model.parameters())
-    loss_func = nn.CrossEntropyLoss(reduction='none')
+    # loss_func = nn.CrossEntropyLoss(reduction='none', weight=torch.FloatTensor(hyper_params['class_weight']))
+    loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
     print('Finished')
-
 
     best_result = 0
 
@@ -117,7 +119,7 @@ def train(logger: logging.Logger):
         copy_state_dict(model.state_dict(), checkpoint['state_dict'])
         if not hyper_params['ft']:
             copy_state_dict(optimizer.state_dict(),checkpoint['optimizer'])
-        best_result = checkpoint['pred_best ']
+        best_result = checkpoint['best_pred']
         print("=> loaded checkpoint '{}' (epoch {})"
               .format(hyper_params['resume'], checkpoint['epoch']))
     # Define Saver
@@ -131,17 +133,12 @@ def train(logger: logging.Logger):
         with tqdm(train_loader) as t:
             for step, (feature, label, mask) in enumerate(t):
                 try:
-                    # t.set_description(
-                    #     f'Calculating...')
                     feature = feature.to(hyper_params['device'])
                     label = label.to(hyper_params['device'])
                     mask = mask.to(hyper_params['device'])
 
                     pred = model(feature)
-                    loss = loss_func(pred, label)
-                    loss = loss * mask
-
-                    loss = torch.mean(loss)
+                    loss = loss_func(pred, label, mask)
 
                     optimizer.zero_grad()
                     loss.backward()
@@ -156,6 +153,9 @@ def train(logger: logging.Logger):
                     if step % hyper_params['log_freq'] == 0:
                         logger.info(
                             f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
+
+                    if (step+1) % 3000 == 0:
+                        evaluator.evaluate(model, logger)
                 except Exception as err:
                     print(f'L={feature.shape[2]}')
                     print(err)
@@ -179,7 +179,7 @@ def train(logger: logging.Logger):
             'epoch' : epoch + 1,
             'state_dict' : model.state_dict(),
             'optimizer' : optimizer.state_dict(),
-            'pred_best' : best_result
+            'best_pred' : best_result
         }, is_best=is_best)
 
 
