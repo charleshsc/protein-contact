@@ -32,8 +32,9 @@ def cal_acc(label, mask, large_20, pred):
     topL = int(np.ceil(L))
     result[3] = precision_score(
         label[order[:topL]], pred[order[:topL]], average='weighted', zero_division=0)
+    all_result = precision_score(label[order[:topL]], pred[order[:topL]], average=None, zero_division=0, labels=np.arange(0, 10))
 
-    return result
+    return result, all_result
 
 
 def cal_top(label, mask, pred):
@@ -65,7 +66,7 @@ def cal_top(label, mask, pred):
 
     trunc_mat_tmp = np.ones(trunc_mat.shape) - trunc_mat
     mask = mask * trunc_mat_tmp
-    acc[0, :] = cal_acc(label, mask, large_20, pred_final)
+    acc[0, :], short_all_result = cal_acc(label, mask, large_20, pred_final)
 
     trunc_mat = np.zeros(label.shape)
     nn = label.shape[0]
@@ -78,13 +79,14 @@ def cal_top(label, mask, pred):
 
     trunc_mat_tmp = np.ones(trunc_mat.shape) - trunc_mat
     mask = mask * trunc_mat_tmp
-    acc[1, :] = cal_acc(label, mask, large_20, pred_final)
-    return acc
+    acc[1, :], long_all_result = cal_acc(label, mask, large_20, pred_final)
+    return acc, short_all_result, long_all_result
 
 
 def generate_hyper_params_str(hyper_params):
     time_str = time.strftime("%Y%m%d_%H%M%S")
-    return time_str
+    params_str = time_str + "_" + hyper_params['model']
+    return params_str
 
 
 def copy_state_dict(cur_state_dict, pre_state_dict, prefix=''):

@@ -32,6 +32,7 @@ class Evaluator:
 
         result = np.zeros(
             [self.valid_dataset.__len__(), 2, 4], dtype=np.float32)
+        short_all_result = np.zeros([self.valid_dataset.__len__(), 10], dtype=np.float32)
 
         cnt = 0
         total_step = self.valid_dataset.__len__()
@@ -46,7 +47,7 @@ class Evaluator:
                     pred = net(feature)
 
                     for i in range(feature.shape[0]):
-                        result[cnt] = cal_top(
+                        result[cnt], short_all_result[cnt], _ = cal_top(
                             label[i].cpu().numpy(), mask[i].cpu().numpy(), pred[i].detach().cpu().numpy())
                         cnt += 1
 
@@ -62,6 +63,7 @@ class Evaluator:
 
         # Calculate Average Result
         avg_result = np.mean(result, axis=0)
+        avg_short_result = np.mean(short_all_result, axis=0)
         cur_result = avg_result[:, 0]+5*avg_result[:,
                                                    1]+2*avg_result[:, 2]+3*avg_result[:, 3]
         cur_result = cur_result[0] + 2 * cur_result[1]
@@ -73,7 +75,8 @@ class Evaluator:
             logger.info(
                 f'T10: {avg_result[0,0]}, T5: {avg_result[0,1]}, T2: {avg_result[0,2]}, T1: {avg_result[0,3]}')
             logger.info(
-                f'LT10: {avg_result[1,0]}, LT5: {avg_result[1,1]}, LT2: {avg_result[1,2]}, LT1: {avg_result[1,3]}\n')
+                f'LT10: {avg_result[1,0]}, LT5: {avg_result[1,1]}, LT2: {avg_result[1,2]}, LT1: {avg_result[1,3]}')
+            logger.info(f'Short all result: {avg_short_result}\n')
 
         self.result_history.append(cur_result)
 

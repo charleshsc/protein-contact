@@ -1,4 +1,4 @@
-from operator import mod
+from ResPreModel import ResPreModel
 from utils import generate_hyper_params_str, copy_state_dict
 import torch
 import torch.nn as nn
@@ -22,7 +22,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 # Hyper Parameters
 hyper_params = {
-    'model': 'resnet', # resnet, fcn
+    'model': 'respre', # resnet, fcn, respre
     'device': 'cuda',
     'label_dir': '/home/dingyueprp/Data/label',
     'feature_dir': '/home/dingyueprp/Data/feature',
@@ -62,7 +62,7 @@ hyper_params = {
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
-    'class_weight': [1.0] * 10
+    'class_weight': [1.0] * 9 + [2.0]
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -100,6 +100,9 @@ def train(logger: logging.Logger):
     elif hyper_params['model'] == 'resnet':
         model = ResNetModel(hyper_params=hyper_params)
         model = model.to(hyper_params['device'])
+    elif hyper_params['model'] == 'respre':
+        model = ResPreModel()
+        model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
@@ -131,6 +134,9 @@ def train(logger: logging.Logger):
     logger.info('Start training...')
     for epoch in range(hyper_params['start_epoch'], hyper_params['epochs']):
         with tqdm(train_loader) as t:
+            total_loss = 0.0
+            loss_cnt = 0
+
             for step, (feature, label, mask) in enumerate(t):
                 try:
                     feature = feature.to(hyper_params['device'])
@@ -144,6 +150,9 @@ def train(logger: logging.Logger):
                     loss.backward()
                     optimizer.step()
 
+                    total_loss += loss.item()
+                    loss_cnt += 1
+
                     if hyper_params['device'] == 'cuda':
                         torch.cuda.empty_cache()
 
@@ -151,8 +160,11 @@ def train(logger: logging.Logger):
                         f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
 
                     if step % hyper_params['log_freq'] == 0:
+                        avg_loss = total_loss / loss_cnt
+                        total_loss = 0.0
+                        loss_cnt = 0
                         logger.info(
-                            f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
+                            f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {avg_loss}')
 
                     if (step+1) % 3000 == 0:
                         evaluator.evaluate(model, logger)
