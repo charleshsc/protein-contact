@@ -3,6 +3,7 @@ from utils import generate_hyper_params_str, copy_state_dict
 import torch
 import torch.nn as nn
 import torch.optim
+from torch.optim.lr_scheduler import StepLR
 import torch.cuda
 from model import FCNModel, ResNetModel
 from LossFunc import MaskedCrossEntropy
@@ -53,16 +54,16 @@ hyper_params = {
         (160, 160, 3, 2, 1, False)
     ],
     'batch_size': 1,
-    'epochs': 20,
+    'epochs': 30,
     'dropout_rate': 0.0,
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
-    'num_workers': 16,
+    'num_workers': 20,
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
-    'class_weight': [1.0] * 9 + [2.0]
+    'class_weight': [1.0] * 10
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -107,6 +108,7 @@ def train(logger: logging.Logger):
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
     optimizer = torch.optim.AdamW(model.parameters())
+    train_lr_scheduler = StepLR(optimizer, 10, 0.1)
     # loss_func = nn.CrossEntropyLoss(reduction='none', weight=torch.FloatTensor(hyper_params['class_weight']))
     loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
     print('Finished')
@@ -165,9 +167,6 @@ def train(logger: logging.Logger):
                         loss_cnt = 0
                         logger.info(
                             f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {avg_loss}')
-
-                    if (step+1) % 3000 == 0:
-                        evaluator.evaluate(model, logger)
                 except Exception as err:
                     print(f'L={feature.shape[2]}')
                     print(err)
@@ -181,6 +180,7 @@ def train(logger: logging.Logger):
 
         # Evaluate
         result = evaluator.evaluate(model, logger)
+        train_lr_scheduler.step()
 
         if result > best_result:
             is_best = True

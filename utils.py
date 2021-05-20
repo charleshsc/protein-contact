@@ -1,6 +1,6 @@
 # coding:utf8
 import numpy as np
-from sklearn.metrics import precision_score
+from sklearn.metrics import precision_score, precision_recall_fscore_support
 import time
 
 
@@ -33,8 +33,10 @@ def cal_acc(label, mask, large_20, pred):
     result[3] = precision_score(
         label[order[:topL]], pred[order[:topL]], average='weighted', zero_division=0)
     all_result = precision_score(label[order[:topL]], pred[order[:topL]], average=None, zero_division=0, labels=np.arange(0, 10))
+    _, _, _, label_support = precision_recall_fscore_support(label[order[:topL]], pred[order[:topL]], average=None, zero_division=0, labels=np.arange(0, 10))
+    label_support = label_support.astype(np.float) / np.sum(label_support)
 
-    return result, all_result
+    return result, all_result, label_support
 
 
 def cal_top(label, mask, pred):
@@ -66,7 +68,7 @@ def cal_top(label, mask, pred):
 
     trunc_mat_tmp = np.ones(trunc_mat.shape) - trunc_mat
     mask = mask * trunc_mat_tmp
-    acc[0, :], short_all_result = cal_acc(label, mask, large_20, pred_final)
+    acc[0, :], short_all_result, short_support = cal_acc(label, mask, large_20, pred_final)
 
     trunc_mat = np.zeros(label.shape)
     nn = label.shape[0]
@@ -79,8 +81,8 @@ def cal_top(label, mask, pred):
 
     trunc_mat_tmp = np.ones(trunc_mat.shape) - trunc_mat
     mask = mask * trunc_mat_tmp
-    acc[1, :], long_all_result = cal_acc(label, mask, large_20, pred_final)
-    return acc, short_all_result, long_all_result
+    acc[1, :], long_all_result, long_support = cal_acc(label, mask, large_20, pred_final)
+    return acc, short_all_result, long_all_result, short_support, long_support
 
 
 def generate_hyper_params_str(hyper_params):
