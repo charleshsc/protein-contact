@@ -1,4 +1,5 @@
 from ResPreModel import ResPreModel
+from DilationModel import DilationModel
 from utils import generate_hyper_params_str, copy_state_dict
 import torch
 import torch.nn as nn
@@ -19,11 +20,11 @@ import Saver
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
-    'model': 'respre', # resnet, fcn, respre
+    'model': 'dilation', # resnet, fcn, respre, dilation
     'device': 'cuda',
     'label_dir': '/home/dingyueprp/Data/label',
     'feature_dir': '/home/dingyueprp/Data/feature',
@@ -31,27 +32,24 @@ hyper_params = {
     # 'feature_dir': '/Volumes/文件/Datasets/feature',
     'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     'residual_layers': [
-        (64, 64, 7, 1, 1, False),
-        # (32, 32, 3, 2, 1, True),
-        # (32, 32, 3, 2, 1, True),
-        (64, 64, 3, 2, 1, True),
-        (64, 64, 3, 2, 1, True),
-        (64, 64, 3, 2, 1, True),
-        (64, 96, 3, 2, 1, True),
-        (96, 96, 3, 2, 1, True),
-        (96, 96, 3, 2, 1, True),
-        (96, 96, 3, 2, 1, True),
-        (96, 128, 3, 2, 2, True),
-        (128, 128, 3, 2, 2, True),
-        (128, 128, 3, 2, 2, True),
-        (128, 128, 3, 2, 2, True),
-        (128, 128, 3, 2, 2, True),
-        (128, 128, 3, 2, 2, True),
-        (128, 160, 3, 2, 4, True),
-        (160, 160, 3, 2, 4, True),
-        (160, 160, 3, 2, 4, True),
-        (160, 160, 3, 2, 2, False),
-        (160, 160, 3, 2, 1, False)
+        (64, 64, 1, True),
+        (64, 64, 1, True),
+        (64, 64, 1, True),
+        (64, 96, 1, True),
+        (96, 96, 1, True),
+        (96, 96, 1, True),
+        (96, 96, 1, True),
+        (96, 128, 2, True),
+        (128, 128, 2, True),
+        (128, 128, 2, True),
+        (128, 128, 2, True),
+        (128, 128, 2, True),
+        (128, 128, 2, True),
+        (128, 160, 4, True),
+        (160, 160, 4, True),
+        (160, 160, 4, True),
+        (160, 160, 2, False),
+        (160, 160, 1, False)
     ],
     'batch_size': 1,
     'epochs': 30,
@@ -59,7 +57,7 @@ hyper_params = {
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
-    'num_workers': 20,
+    'num_workers': 16,
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
@@ -104,11 +102,14 @@ def train(logger: logging.Logger):
     elif hyper_params['model'] == 'respre':
         model = ResPreModel()
         model = model.to(hyper_params['device'])
+    elif hyper_params['model'] == 'dilation':
+        model = DilationModel(hyper_params=hyper_params)
+        model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
     optimizer = torch.optim.AdamW(model.parameters())
-    train_lr_scheduler = StepLR(optimizer, 10, 0.1)
+    # train_lr_scheduler = StepLR(optimizer, 10, 0.1)
     # loss_func = nn.CrossEntropyLoss(reduction='none', weight=torch.FloatTensor(hyper_params['class_weight']))
     loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
     print('Finished')
@@ -180,7 +181,7 @@ def train(logger: logging.Logger):
 
         # Evaluate
         result = evaluator.evaluate(model, logger)
-        train_lr_scheduler.step()
+        # train_lr_scheduler.step()
 
         if result > best_result:
             is_best = True
