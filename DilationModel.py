@@ -5,7 +5,7 @@ from torch.utils.checkpoint import checkpoint
 
 
 class BasicBlock(nn.Module):
-    def __init__(self, in_channels=64, out_channels=64, dilation=1, residual=True):
+    def __init__(self, in_channels=64, out_channels=64, dilation=1, residual=True, dropout_rate=0.2):
         super(BasicBlock, self).__init__()
         self.residual = residual
         self.in_channels = in_channels
@@ -24,6 +24,7 @@ class BasicBlock(nn.Module):
             )
 
         self.conv = nn.Sequential(
+            nn.Dropout(p=dropout_rate),
             nn.Conv2d(
                 in_channels=out_channels,
                 out_channels=out_channels,
@@ -78,7 +79,7 @@ class DilationModel(nn.Module):
         self.middle_layers = nn.ModuleList()
         for in_channels, out_channels, dilation, residual in hyper_params['residual_layers']:
             self.middle_layers.append(
-                BasicBlock(in_channels, out_channels, dilation, residual)
+                BasicBlock(in_channels, out_channels, dilation, residual, hyper_params['dropout_rate'])
             )
 
         self.final_conv = nn.Conv2d(
@@ -92,13 +93,14 @@ class DilationModel(nn.Module):
     def forward(self, x):
         middle = self.conv1_1(x)
 
-        if x.shape[-1] > 420:
+        if x.shape[-1] > 380:
             for layer in self.middle_layers:
                 middle = checkpoint(layer, middle)
         else:
             for layer in self.middle_layers:
                 middle = layer(middle)
 
+        middle = (middle + middle.transpose(2, 3)) / 2
         out = self.final_conv(middle)
 
         return out
