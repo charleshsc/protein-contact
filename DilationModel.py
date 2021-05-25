@@ -24,7 +24,7 @@ class BasicBlock(nn.Module):
             )
 
         self.conv = nn.Sequential(
-            nn.Dropout(p=dropout_rate),
+            #nn.Dropout(p=dropout_rate),
             nn.Conv2d(
                 in_channels=out_channels,
                 out_channels=out_channels,
