@@ -24,7 +24,7 @@ class BasicBlock(nn.Module):
             )
 
         self.conv = nn.Sequential(
-            nn.Dropout(p=dropout_rate),
+            # nn.Dropout(p=dropout_rate),
             nn.Conv2d(
                 in_channels=out_channels,
                 out_channels=out_channels,
@@ -100,7 +100,7 @@ class DilationModel(nn.Module):
             for layer in self.middle_layers:
                 middle = layer(middle)
 
-        middle = (middle + middle.transpose(2, 3)) / 2
+        # middle = (middle + middle.transpose(2, 3)) / 2
         out = self.final_conv(middle)
 
         return out

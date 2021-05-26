@@ -7,7 +7,7 @@ import torch.optim
 from torch.optim.lr_scheduler import StepLR
 import torch.cuda
 from model import FCNModel, ResNetModel
-from LossFunc import MaskedCrossEntropy
+from LossFunc import MaskedCrossEntropy, MaskedFocalLoss
 import dataset
 import torch.utils.data as Data
 from evaluator import Evaluator
@@ -20,7 +20,7 @@ import Saver
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
@@ -38,9 +38,9 @@ hyper_params = {
         (64, 96, 1, True),
         (96, 96, 1, True),
         (96, 96, 1, True),
-        (96, 96, 1, True),
-        (96, 96, 1, True),
-        (96, 96, 1, True),
+        # (96, 96, 1, True),
+        # (96, 96, 1, True),
+        # (96, 96, 1, True),
         (96, 96, 1, True),
         (96, 128, 2, True),
         (128, 128, 2, True),
@@ -50,7 +50,7 @@ hyper_params = {
         (128, 128, 2, True),
         (128, 160, 4, True),
         (160, 160, 4, True),
-        (160, 160, 4, True),
+        # (160, 160, 4, True),
         (160, 160, 4, True),
         (160, 160, 2, False),
         (160, 160, 1, False)
@@ -63,9 +63,10 @@ hyper_params = {
     'log_freq': 10,
     'num_workers': 16,
     'start_epoch' : 0,
-    'resume' : 'run/experiment_9/checkpoint.pth.tar',
+    'resume' : None,
     'ft' : False,
-    'class_weight': [1.0] * 10
+    'class_weight': [2.5] * 9 + [1.0],
+    'loss_func': 'focal' # focal, cross
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -115,7 +116,13 @@ def train(logger: logging.Logger):
     optimizer = torch.optim.AdamW(model.parameters())
     # train_lr_scheduler = StepLR(optimizer, 10, 0.1)
     # loss_func = nn.CrossEntropyLoss(reduction='none', weight=torch.FloatTensor(hyper_params['class_weight']))
-    loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
+    if hyper_params['loss_func'] == 'cross':
+        loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
+    elif hyper_params['loss_func'] == 'focal':
+        loss_func = MaskedFocalLoss(alpha=hyper_params['class_weight'], gamma=1.6)
+    else:
+        raise NotImplementedError(f"Loss function {hyper_params['loss_func']} not implenmented")
+
     print('Finished')
 
     best_result = 0
