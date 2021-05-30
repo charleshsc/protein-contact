@@ -1,3 +1,4 @@
+from DeepModel import DeepModel
 from ResPreModel import ResPreModel
 from DilationModel import DilationModel
 from utils import generate_hyper_params_str, copy_state_dict
@@ -20,11 +21,11 @@ import Saver
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 # Hyper Parameters
 hyper_params = {
-    'model': 'dilation', # resnet, fcn, respre, dilation
+    'model': 'dilation', # resnet, fcn, respre, dilation, deep
     'device': 'cuda',
     'label_dir': '/home/dingyueprp/Data/label',
     'feature_dir': '/home/dingyueprp/Data/feature',
@@ -65,8 +66,9 @@ hyper_params = {
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
-    'class_weight': [2.5] * 9 + [1.0],
-    'loss_func': 'focal' # focal, cross
+    'class_weight': [1.5] * 9 + [1.0],
+    'loss_func': 'cross', # focal, cross
+    'long_length': 25 # None or int, min length for "class_weight" mask
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -109,6 +111,9 @@ def train(logger: logging.Logger):
         model = model.to(hyper_params['device'])
     elif hyper_params['model'] == 'dilation':
         model = DilationModel(hyper_params=hyper_params)
+        model = model.to(hyper_params['device'])
+    elif hyper_params['model'] == 'deep':
+        model = DeepModel(hyper_params=hyper_params)
         model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
