@@ -4,10 +4,10 @@ import torch
 from collections import OrderedDict
 import glob
 import torch.distributed as dist
+import json
 
 class Saver(object):
-
-    def __init__(self):
+    def __init__(self, hyper_params):
         self.directory = 'run'
         self.runs = sorted(glob.glob(os.path.join(self.directory, 'experiment_*')))
         run_id = max([int(x.split('_')[-1]) for x in self.runs]) + 1 if self.runs else 0
@@ -15,6 +15,9 @@ class Saver(object):
         self.experiment_dir = os.path.join(self.directory, 'experiment_{}'.format(str(run_id)))
         if not os.path.exists(self.experiment_dir):
             os.makedirs(self.experiment_dir)
+        self.hyper_params = hyper_params
+        # Save Hyper Params
+        json.dump(hyper_params, open(os.path.join(self.experiment_dir, 'hyper_params.txt'), 'wt'))
 
     def save_checkpoint(self, state, is_best, filename='checkpoint.pth.tar'):
         """Saves checkpoint to disk"""

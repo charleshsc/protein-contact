@@ -1,3 +1,4 @@
+from AttentionModel import AttentionModel
 from DeepModel import DeepModel
 from ResPreModel import ResPreModel
 from DilationModel import DilationModel
@@ -18,19 +19,18 @@ import random
 import os
 import logging
 import Saver
+import json
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
-    'model': 'dilation', # resnet, fcn, respre, dilation, deep
+    'model': 'attention', # resnet, fcn, respre, dilation, deep, attention
     'device': 'cuda',
     'label_dir': '/home/dingyueprp/Data/label',
     'feature_dir': '/home/dingyueprp/Data/feature',
-    # 'label_dir': '/Volumes/文件/Datasets/label',
-    # 'feature_dir': '/Volumes/文件/Datasets/feature',
     'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     'residual_layers': [
         (64, 64, 1, True),
@@ -66,9 +66,9 @@ hyper_params = {
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
-    'class_weight': [1.5] * 9 + [1.0],
+    'class_weight': [1.0] * 9 + [1.0],
     'loss_func': 'cross', # focal, cross
-    'long_length': 25 # None or int, min length for "class_weight" mask
+    'long_length': None # None or int, min length for "class_weight" mask
 }
 info_str = generate_hyper_params_str(hyper_params)
 
@@ -115,6 +115,9 @@ def train(logger: logging.Logger):
     elif hyper_params['model'] == 'deep':
         model = DeepModel(hyper_params=hyper_params)
         model = model.to(hyper_params['device'])
+    elif hyper_params['model'] == 'attention':
+        model = AttentionModel(hyper_params=hyper_params)
+        model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
@@ -145,7 +148,7 @@ def train(logger: logging.Logger):
         print("=> loaded checkpoint '{}' (epoch {})"
               .format(hyper_params['resume'], checkpoint['epoch']))
     # Define Saver
-    saver = Saver.Saver()
+    saver = Saver.Saver(hyper_params=hyper_params)
 
     # Start Training
     print('Start training...')
@@ -224,6 +227,7 @@ if __name__ == '__main__':
     logger.addHandler(handler)
 
     logger.info(info_str)
+    logger.info(json.dumps(hyper_params))
     if hyper_params['model'] == 'fcn':
         logger.info(str(hyper_params['middle_layers']))
     elif hyper_params['model'] == 'resnet':
