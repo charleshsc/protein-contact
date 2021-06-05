@@ -114,6 +114,8 @@ class RegionalAttention(nn.Module):
 
         # 4 x L x L x 9
         qk = torch.sum(q * k, dim=-1) / np.sqrt(s)
+        self.attention_score = torch.mean(qk, dim=0).detach()
+
         qk = self.dropout1(F.softmax(qk, dim=-1))
 
         # 4 x L x L x 9 x 16
@@ -129,10 +131,11 @@ class RegionalAttention(nn.Module):
 
 
 class AttentionModel(nn.Module):
-    def __init__(self, hyper_params):
+    def __init__(self, hyper_params, return_score=False):
         super(AttentionModel, self).__init__()
         first_channels = hyper_params['residual_layers'][0][0]
         last_channels = hyper_params['residual_layers'][-1][1]
+        self.return_score = return_score
 
         self.conv1_1 = nn.Sequential(
             nn.Conv2d(
@@ -191,4 +194,7 @@ class AttentionModel(nn.Module):
         middle = self.attention(middle)
         out = self.final_conv2(middle)
 
-        return out
+        if not self.return_score:
+            return out
+        else:
+            return out, self.attention.attention_score

@@ -11,6 +11,14 @@ from io import BytesIO
 import time
 
 
+# Manual Seed
+def setup_seed(seed):
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True
+
 class Protein_data(Dataset):
     # Set the train and validate data
     train_proteins = None
@@ -32,6 +40,7 @@ class Protein_data(Dataset):
         self.file_read_time = []
         self.file_extract_time = []
 
+        setup_seed(1111)
         if self.train_proteins is None:
             if self.subset_ratio < 1.0:
                 all_proteins = np.random.choice(self.proteins, int(
@@ -40,8 +49,10 @@ class Protein_data(Dataset):
                 all_proteins = self.proteins
             self.train_proteins = np.random.choice(
                 all_proteins, self.train_cnt, replace=False)
-            self.valid_proteins = list(set(all_proteins) -
-                                       set(self.train_proteins))
+            self.valid_proteins = list(set(all_proteins)-set(self.train_proteins))
+
+            # # ONLY FOR VISUALIZE!
+            # self.valid_proteins = sorted(all_proteins)
 
         if train:
             self.proteins = self.train_proteins
