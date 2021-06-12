@@ -57,7 +57,6 @@ hyper_params = {
     'num_workers': 16,
     'start_epoch' : 0,
     'resume' : None,
-    'ft' : False,
     'class_weight': [1.0] * 9 + [1.0],
     'loss_func': 'cross', # focal, cross
     'long_length': None # None or int, min length for "class_weight" mask
@@ -66,13 +65,13 @@ hyper_params = {
 # Parse arguments
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', help='选定模型', default='attention', type=str, required=False)
-parser.add_argument('--checkpoint', help='检查点位置', default=None, type=str, required=False)
-parser.add_argument('--train_dir', help='训练集位置', type=str, required=True)
-parser.add_argument('--valid_dir', help='验证集位置', type=str, required=True)
+parser.add_argument('--test_dir', help='测试集位置', type=str, required=True)
+parser.add_argument('--target_dir', help='预测结果位置', type=str, required=True)
+parser.add_argument('--checkpoint', help='检查点位置', type=str, required=True)
 args = parser.parse_args()
 
-hyper_params['train_dir'] = args.train_dir
-hyper_params['valid_dir'] = args.valid_dir
+hyper_params['test_dir'] = args.test_dir
+hyper_params['target_dir'] = args.target_dir
 hyper_params['model'] = args.model
 hyper_params['resume'] = args.checkpoint
 info_str = generate_hyper_params_str(hyper_params)
@@ -89,19 +88,9 @@ def setup_seed(seed):
 setup_seed(1111)
 
 
-def train(logger: logging.Logger):
+def test(logger: logging.Logger):
     # Define Dataset
     print('Loading...')
-    train_dataset = Protein_data(hyper_params['train_dir'])
-    train_loader = Data.DataLoader(
-        dataset=train_dataset,
-        batch_size=hyper_params['batch_size'],
-        shuffle=True,
-        num_workers=hyper_params['num_workers']
-    )
-
-    # Define Evaluator
-    evaluator = Evaluator(hyper_params, dataset_key='valid_dir')
 
     # Define Model
     if hyper_params['model'] == 'respre':
@@ -119,20 +108,6 @@ def train(logger: logging.Logger):
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
-    optimizer = torch.optim.AdamW(model.parameters())
-
-    # Define loss function
-    if hyper_params['loss_func'] == 'cross':
-        loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
-    elif hyper_params['loss_func'] == 'focal':
-        loss_func = MaskedFocalLoss(alpha=hyper_params['class_weight'], gamma=1.6)
-    else:
-        raise NotImplementedError(f"Loss function {hyper_params['loss_func']} not implenmented")
-
-    print('Finished')
-
-    best_result = 0
-
     # Resume
     if hyper_params['resume'] is not None:
         if not os.path.isfile(hyper_params['resume']):
@@ -140,76 +115,25 @@ def train(logger: logging.Logger):
         checkpoint = torch.load(hyper_params['resume'])
         hyper_params['start_epoch'] = checkpoint['epoch']
         copy_state_dict(model.state_dict(), checkpoint['state_dict'])
-        if not hyper_params['ft']:
-            copy_state_dict(optimizer.state_dict(),checkpoint['optimizer'])
-        best_result = checkpoint['best_pred']
         print("=> loaded checkpoint '{}' (epoch {})"
               .format(hyper_params['resume'], checkpoint['epoch']))
-    # Define Saver
-    saver = Saver.Saver(hyper_params=hyper_params)
 
-    # Start Training
-    print('Start training...')
+    # Generat Dataset
+    dataset = Protein_data(hyper_params['test_dir'], source_type='npz', return_label=False)
+    dataloader = Data.DataLoader(dataset, batch_size=hyper_params['batch_size'], num_workers=hyper_params['num_workers'])
 
-    logger.info('Start training...')
-    for epoch in range(hyper_params['start_epoch'], hyper_params['epochs']):
-        with tqdm(train_loader) as t:
-            total_loss = 0.0
-            loss_cnt = 0
+    # Predict
+    model.eval()
+    with torch.no_grad():
+        for feature, index in tqdm(dataloader):
+            feature = feature.to(hyper_params['device'])
+            pred = model(feature)
+            pred = torch.softmax(pred, dim=1)[0].detach().cpu().numpy()
+            index = index[0].item()
+            prot_name = dataset.get_prot_name(index)
+            target_file_path = os.path.join(hyper_params['target_dir'], prot_name+'.npy')
 
-            for step, (feature, label, mask) in enumerate(t):
-                try:
-                    feature = feature.to(hyper_params['device'])
-                    label = label.to(hyper_params['device'])
-                    mask = mask.to(hyper_params['device'])
-
-                    pred = model(feature)
-                    loss = loss_func(pred, label, mask)
-
-                    optimizer.zero_grad()
-                    loss.backward()
-                    optimizer.step()
-
-                    total_loss += loss.item()
-                    loss_cnt += 1
-
-                    if hyper_params['device'] == 'cuda':
-                        torch.cuda.empty_cache()
-
-                    t.set_description(
-                        f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
-
-                    if step % hyper_params['log_freq'] == 0:
-                        avg_loss = total_loss / loss_cnt
-                        total_loss = 0.0
-                        loss_cnt = 0
-                        logger.info(
-                            f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {avg_loss}')
-                except Exception as err:
-                    print(f'L={feature.shape[2]}')
-                    print(err)
-                    logger.error(f'L={feature.shape[2]}')
-                    logger.error(err)
-                    if hyper_params['device'] == 'cuda':
-                        try:
-                            torch.cuda.empty_cache()
-                        except Exception as err:
-                            logger.error(err)
-
-        # Evaluate
-        result = evaluator.evaluate(model, logger)
-
-        if result > best_result:
-            is_best = True
-            best_result = result
-        else:
-            is_best = False
-        saver.save_checkpoint(state={
-            'epoch' : epoch + 1,
-            'state_dict' : model.state_dict(),
-            'optimizer' : optimizer.state_dict(),
-            'best_pred' : best_result
-        }, is_best=is_best)
+            np.save(target_file_path, pred)
 
 
 if __name__ == '__main__':
@@ -227,7 +151,7 @@ if __name__ == '__main__':
     logger.info(json.dumps(hyper_params))
 
     try:
-        train(logger)
+        test(logger)
     except Exception as err:
         print(err)
         logger.error(str(err))

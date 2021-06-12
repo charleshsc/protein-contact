@@ -3,18 +3,18 @@ import torch
 import torch.nn as nn
 import torch.utils.data as Data
 import torch.cuda
-from dataset import Protein_data
+from .dataset import Protein_data
 import numpy as np
 from tqdm import tqdm
-from utils import cal_top
+from .utils import cal_top
 import logging
 
 
 class Evaluator:
-    def __init__(self, hyper_params):
+    def __init__(self, hyper_params, dataset_key='test_dir'):
         self.hyper_params = hyper_params
 
-        self.valid_dataset = Protein_data(hyper_params, train=False, verbose=0)
+        self.valid_dataset = Protein_data(hyper_params[dataset_key])
         self.valid_loader = Data.DataLoader(
             dataset=self.valid_dataset,
             batch_size=hyper_params['batch_size'],

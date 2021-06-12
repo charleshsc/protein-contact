@@ -1,9 +1,6 @@
 import os
-import shutil
 import torch
-from collections import OrderedDict
 import glob
-import torch.distributed as dist
 import json
 
 class Saver(object):

@@ -1,10 +1,8 @@
 # coding:utf8
 import os
 import numpy as np
-from numpy.lib.utils import source
 import torch
 from torch.utils.data import Dataset
-import random
 import tarfile
 from io import BytesIO
 
@@ -13,6 +11,9 @@ class Protein_data(Dataset):
     def __init__(self, dataset_dir, source_type='tar', return_label=True):
         """
         主要目标： 获取所有图片的地址
+        dataset_dir: 数据集的文件夹，分为feature与label两部分
+        source_type: tar（npy.gz），npz（npz）
+        return_label: True（返回特征、标签与mask）、False（返回特征、index）
         """
         self.feature_dir = os.path.join(dataset_dir, 'feature')
         if return_label:
@@ -20,6 +21,12 @@ class Protein_data(Dataset):
         self.proteins = os.listdir(self.feature_dir)
         self.source_type = source_type
         self.return_label = return_label
+
+    def get_prot_name(self, index):
+        """
+        根据index返回蛋白质名称
+        """
+        return self.proteins[index].split('.')[0]
 
     def __getitem__(self, index):
         """
@@ -32,7 +39,7 @@ class Protein_data(Dataset):
         feature = None
         while feature is None:
             try:
-                feature = self.get_feature(self.feature_dir+'/'+prot_name + '.npy.gz')
+                feature = self.get_feature(self.feature_dir+'/'+prot_name + '.npy.gz', self.source_type)
             except Exception as err:
                 print(err)
         
@@ -60,7 +67,7 @@ class Protein_data(Dataset):
 
             return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
         else:
-            return torch.FloatTensor(feature)
+            return torch.FloatTensor(feature), torch.tensor(index).long()
 
     def __len__(self):
         return len(self.proteins)
@@ -71,6 +78,10 @@ class Protein_data(Dataset):
 
     @staticmethod
     def get_feature(name, source_type='tar'):
+        """
+        返回特征
+        source_type: tar或npz。其中，tar使用内存解压方法加速。
+        """
         if source_type == 'tar':
             g_file = tarfile.open(name)
 
@@ -85,7 +96,7 @@ class Protein_data(Dataset):
             tmp_feature = np.transpose(tmp_feature, (2, 0, 1))
             return tmp_feature
         elif source_type == 'npz':
-            tmp_feature = np.load(name)
+            tmp_feature = np.load(name.replace('npy.gz', 'npz'))['a']
             tmp_feature = np.transpose(tmp_feature, (2, 0, 1))
             return tmp_feature
         else:
