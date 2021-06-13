@@ -2,6 +2,7 @@ from model.AttentionModel import AttentionModel
 from model.DeepModel import DeepModel
 from model.ResPreModel import ResPreModel
 from model.DilationModel import DilationModel
+from model.LstmModel import LstmDilationModel
 from utils.utils import generate_hyper_params_str, copy_state_dict
 from model.LossFunc import MaskedCrossEntropy, MaskedFocalLoss
 import torch
@@ -25,7 +26,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 # Hyper Parameters
 hyper_params = {
-    'model': 'attention', # respre, dilation, deep, attention
+    'model': 'attention', # respre, dilation, deep, attention, lstm
     'device': 'cuda',
     'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     'residual_layers': [
@@ -105,6 +106,9 @@ def test(logger: logging.Logger):
         model = model.to(hyper_params['device'])
     elif hyper_params['model'] == 'attention':
         model = AttentionModel(hyper_params=hyper_params)
+        model = model.to(hyper_params['device'])
+    elif hyper_params['model'] == 'lstm':
+        model = LstmDilationModel(hyper_params=hyper_params)
         model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
