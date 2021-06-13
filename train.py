@@ -22,7 +22,7 @@ from utils.dataset import Protein_data
 
 
 # Set CUDA Environment
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 # Hyper Parameters
 hyper_params = {
@@ -59,9 +59,9 @@ hyper_params = {
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
-    'class_weight': [1.0] * 9 + [1.0],
+    'class_weight': [1.5] * 9 + [1.0],
     'loss_func': 'cross', # focal, cross
-    'long_length': None # None or int, min length for "class_weight" mask
+    'long_length': 25 # None or int, min length for "class_weight" mask
 }
 
 # Parse arguments
@@ -70,12 +70,19 @@ parser.add_argument('--model', help='选定模型', default='attention', type=st
 parser.add_argument('--checkpoint', help='检查点位置', default=None, type=str, required=False)
 parser.add_argument('--train_dir', help='训练集位置', type=str, required=True)
 parser.add_argument('--valid_dir', help='验证集位置', type=str, required=True)
+parser.add_argument('--weight', help='非平衡权重', type=str, default='unbalanced', required=False)
 args = parser.parse_args()
 
 hyper_params['train_dir'] = args.train_dir
 hyper_params['valid_dir'] = args.valid_dir
 hyper_params['model'] = args.model
 hyper_params['resume'] = args.checkpoint
+if args.weight == 'unbalanced':
+    hyper_params['class_weight'] = [1.5] * 9 + [1.0]
+    hyper_params['long_length'] = 25
+else:
+    hyper_params['class_weight'] = [1.0] * 10
+    hyper_params['long_length'] = None
 info_str = generate_hyper_params_str(hyper_params)
 
 # Manual Seed
