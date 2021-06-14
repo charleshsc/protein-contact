@@ -93,11 +93,12 @@ def setup_seed(seed):
     random.seed(seed)
     torch.backends.cudnn.deterministic = True
 
-
 setup_seed(1111)
 
-
 def train(logger: logging.Logger):
+    """
+        训练模型
+    """
     # Define Dataset
     print('Loading...')
     train_dataset = Protein_data(hyper_params['train_dir'])
@@ -105,7 +106,7 @@ def train(logger: logging.Logger):
         dataset=train_dataset,
         batch_size=hyper_params['batch_size'],
         shuffle=True,
-        num_workers=hyper_params['num_workers']
+        num_workers=hyper_params['num_workers'] # 使用多个进程加快数据加载速度
     )
 
     # Define Evaluator
@@ -130,22 +131,23 @@ def train(logger: logging.Logger):
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
+    # Define the optimizer (AdamW)
     optimizer = torch.optim.AdamW(model.parameters())
 
     # Define loss function
     if hyper_params['loss_func'] == 'cross':
         loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
     elif hyper_params['loss_func'] == 'focal':
-        loss_func = MaskedFocalLoss(alpha=hyper_params['class_weight'], gamma=1.6)
+        loss_func = MaskedFocalLoss(class_weight=hyper_params['class_weight'], gamma=1.6)
     else:
         raise NotImplementedError(f"Loss function {hyper_params['loss_func']} not implenmented")
 
     print('Finished')
 
+    # Resume from checkpoint
     best_result = 0
-
-    # Resume
     if hyper_params['resume'] is not None:
+        print('Loading from checkpoint...')
         if not os.path.isfile(hyper_params['resume']):
             raise RuntimeError("=> no checkpoint found at '{}'".format(hyper_params['resume']))
         checkpoint = torch.load(hyper_params['resume'])
@@ -170,10 +172,12 @@ def train(logger: logging.Logger):
 
             for step, (feature, label, mask) in enumerate(t):
                 try:
+                    # To cuda
                     feature = feature.to(hyper_params['device'])
                     label = label.to(hyper_params['device'])
                     mask = mask.to(hyper_params['device'])
 
+                    # Forward
                     pred = model(feature)
                     loss = loss_func(pred, label, mask)
 
@@ -190,6 +194,7 @@ def train(logger: logging.Logger):
                     t.set_description(
                         f'Epoch: {epoch}, Step: {step}, L:{feature.shape[2]}, Loss: {loss.item()}')
 
+                    # Wrtie result to Log
                     if step % hyper_params['log_freq'] == 0:
                         avg_loss = total_loss / loss_cnt
                         total_loss = 0.0
@@ -210,6 +215,7 @@ def train(logger: logging.Logger):
         # Evaluate
         result = evaluator.evaluate(model, logger)
 
+        # Save checkpoint
         if result > best_result:
             is_best = True
             best_result = result
@@ -237,6 +243,7 @@ if __name__ == '__main__':
     logger.info(info_str)
     logger.info(json.dumps(hyper_params))
 
+    # Start trainer
     try:
         train(logger)
     except Exception as err:

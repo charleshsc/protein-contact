@@ -89,7 +89,7 @@ def setup_seed(seed):
 setup_seed(1111)
 
 
-def test(logger: logging.Logger):
+def predict(logger: logging.Logger):
     # Define Dataset
     print('Loading...')
 
@@ -154,8 +154,9 @@ if __name__ == '__main__':
     logger.info(info_str)
     logger.info(json.dumps(hyper_params))
 
+    # Start predict
     try:
-        test(logger)
+        predict(logger)
     except Exception as err:
         print(err)
         logger.error(str(err))

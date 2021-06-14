@@ -4,6 +4,11 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class MaskedCrossEntropy(nn.Module):
+    """
+        Masked cross entropy loss function with long-term unbalanced weight.
+        class_weight: List[float]
+        long_length: None or int
+    """
     def __init__(self, hyper_params):
         super(MaskedCrossEntropy, self).__init__()
 
@@ -13,6 +18,12 @@ class MaskedCrossEntropy(nn.Module):
         self.cross_entropy = nn.CrossEntropyLoss(reduction='none')
 
     def forward(self, pred: torch.Tensor, label: torch.LongTensor, mask: torch.BoolTensor):
+        """
+            pred: 1 x 10 x L x L
+            label: 1 x L x L
+            mask: 1 x L x L
+            out: 1
+        """
         loss = self.cross_entropy(pred, label)
         m = mask.shape[1]
         
@@ -38,24 +49,38 @@ class MaskedCrossEntropy(nn.Module):
 
 
 class MaskedFocalLoss(nn.Module):
-    def __init__(self, alpha, gamma = 2.0, eps = 1e-6):
+    """
+        Masked focal loss function with long-term unbalanced weight.
+        class_weight: List[float]
+        gamma: float
+        eps: float
+    """
+    def __init__(self, class_weight, gamma = 2.0, eps = 1e-6):
         super(MaskedFocalLoss, self).__init__()
-        self.alpha = torch.FloatTensor(alpha)
+        self.class_weight = torch.FloatTensor(class_weight)
         self.gamma = gamma
         self.eps = eps
         self.cross_entropy = nn.NLLLoss(reduction = 'none')
         
-    def forward(self, res, gt, mask):
-        # SoftMax
-        res = F.softmax(res, dim=1)
-        res = torch.log(res + self.eps)
-        alpha = self.alpha.to(res.device)
-        loss = self.cross_entropy(res, gt.long())
-        pt = torch.exp(- loss)
+    def forward(self, pred: torch.FloatTensor, label: torch.LongTensor, mask: torch.BoolTensor):
+        """
+            pred: 1 x 10 x L x L
+            label: 1 x L x L
+            mask: 1 x L x L
+            out: 1
+        """
+        pred = torch.softmax(pred, dim=1)
+        pred = torch.log(pred + self.eps)
+
+        class_weight = self.class_weight.to(pred.device)
+        loss = self.cross_entropy(pred, label.long())
+        pt = torch.exp(-loss)
         loss = loss * mask
-        alpha = alpha.gather(0, gt.view(-1)).reshape(gt.shape)
-        loss = loss * alpha
+        class_weight = class_weight.gather(0, label.view(-1)).reshape(label.shape)
+        loss = loss * class_weight
+
         loss = loss * torch.pow(1 - pt, self.gamma)
-        sample_loss = loss.sum(dim = [1, 2]) / mask.sum(dim = [1, 2])
-        mean_batch_loss = torch.mean(sample_loss)
-        return mean_batch_loss
+        loss = loss.sum(dim = [1, 2]) / mask.sum(dim = [1, 2])
+        loss = torch.mean(loss)
+
+        return loss

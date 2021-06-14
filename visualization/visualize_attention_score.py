@@ -1,19 +1,18 @@
 from matplotlib import cm
-from AttentionModel import AttentionModel
-from DeepModel import DeepModel
-from ResPreModel import ResPreModel
-from DilationModel import DilationModel
-from utils import generate_hyper_params_str, copy_state_dict
+from model.AttentionModel import AttentionModel
+from model.DeepModel import DeepModel
+from model.ResPreModel import ResPreModel
+from model.DilationModel import DilationModel
+from utils.utils import generate_hyper_params_str, copy_state_dict
 import torch
 import torch.nn as nn
 import torch.optim
 from torch.optim.lr_scheduler import StepLR
 import torch.cuda
-from model import FCNModel, ResNetModel
-from LossFunc import MaskedCrossEntropy, MaskedFocalLoss
-import dataset
+from model.LossFunc import MaskedCrossEntropy, MaskedFocalLoss
+from utils.dataset import Protein_data
 import torch.utils.data as Data
-from evaluator import Evaluator
+from utils.evaluator import Evaluator
 from tqdm import tqdm
 import numpy as np
 import os
@@ -63,16 +62,11 @@ hyper_params = {
 
 # Define Dataset
 print('Loading...')
-test_dataset = dataset.Protein_data(
+test_dataset = Protein_data(
     hyper_params=hyper_params, train=False, verbose=0)
 
 # Define Model
-if hyper_params['model'] == 'fcn':
-    model = FCNModel(hyper_params=hyper_params).to(hyper_params['device'])
-elif hyper_params['model'] == 'resnet':
-    model = ResNetModel(hyper_params=hyper_params)
-    model = model.to(hyper_params['device'])
-elif hyper_params['model'] == 'respre':
+if hyper_params['model'] == 'respre':
     model = ResPreModel()
     model = model.to(hyper_params['device'])
 elif hyper_params['model'] == 'dilation':
