@@ -5,12 +5,17 @@ from torch.utils.checkpoint import checkpoint
 
 
 class BasicBlock(nn.Module):
+    """
+        Basic dilation module.
+        Shape: 1 x C1 x L x L -> 1 x C2 x L x L
+    """
     def __init__(self, in_channels=64, out_channels=64, dilation=1, residual=True, dropout_rate=0.2):
         super(BasicBlock, self).__init__()
         self.residual = residual
         self.in_channels = in_channels
         self.out_channels = out_channels
 
+        # If in_channels != out_channels, then there is an additional cnn layer
         if self.in_channels != self.out_channels:
             self.input_conv = nn.Sequential(
                 nn.Conv2d(
@@ -23,6 +28,7 @@ class BasicBlock(nn.Module):
                 nn.InstanceNorm2d(num_features=out_channels)
             )
 
+        # CNN Layer
         self.conv = nn.Sequential(
             nn.Conv2d(
                 in_channels=out_channels,
@@ -47,6 +53,10 @@ class BasicBlock(nn.Module):
         )
 
     def forward(self, x):
+        """
+            Input: 1 x C1 x L x L
+            Output: 1 x C2 x L x L
+        """
         if self.in_channels != self.out_channels:
             x = self.input_conv(x)
 
@@ -59,9 +69,14 @@ class BasicBlock(nn.Module):
     
 
 class DeepModel(nn.Module):
+    """
+        Deep Dilation Model.
+        Shape: 1 x 441 x L x L -> 1 x 10 x L x L
+    """
     def __init__(self, hyper_params):
         super(DeepModel, self).__init__()
 
+        # Input CNN Layer
         self.conv1_1 = nn.Sequential(
             nn.Conv2d(
                 in_channels=441,
@@ -74,6 +89,7 @@ class DeepModel(nn.Module):
             nn.ReLU(inplace=True)
         )
 
+        # Middel Dilation Layers (60)
         self.middle_layers = nn.ModuleList()
         dilation = 1
         for i in range(60):
@@ -84,6 +100,7 @@ class DeepModel(nn.Module):
             if dilation == 32:
                 dilation = 1
 
+        # Final CNN Layer -> Output
         self.final_conv = nn.Conv2d(
                 in_channels=64,
                 out_channels=10,
@@ -93,6 +110,10 @@ class DeepModel(nn.Module):
             )
 
     def forward(self, x):
+        """
+            x: 1 x 441 x L x L
+            out: 1 x 10 x L x L
+        """
         middle = self.conv1_1(x)
 
         if x.shape[-1] > 330:
@@ -102,7 +123,6 @@ class DeepModel(nn.Module):
             for layer in self.middle_layers:
                 middle = layer(middle)
 
-        # middle = (middle + middle.transpose(2, 3)) / 2
         out = self.final_conv(middle)
 
         return out

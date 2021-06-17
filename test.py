@@ -141,6 +141,7 @@ if __name__ == '__main__':
     logger.info(info_str)
     logger.info(json.dumps(hyper_params))
 
+    # Start testing
     try:
         test(logger)
     except Exception as err:

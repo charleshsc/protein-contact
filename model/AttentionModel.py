@@ -8,12 +8,17 @@ import numpy as np
 
 
 class BasicBlock(nn.Module):
+    """
+        Basic dilation module.
+        Shape: 1 x C1 x L x L -> 1 x C2 x L x L
+    """
     def __init__(self, in_channels=64, out_channels=64, dilation=1, residual=True, dropout_rate=0.2):
         super(BasicBlock, self).__init__()
         self.residual = residual
         self.in_channels = in_channels
         self.out_channels = out_channels
 
+        # If in_channels != out_channels, then there is an additional cnn layer
         if self.in_channels != self.out_channels:
             self.input_conv = nn.Sequential(
                 nn.Conv2d(
@@ -26,8 +31,8 @@ class BasicBlock(nn.Module):
                 nn.InstanceNorm2d(num_features=out_channels)
             )
 
+        # CNN Layer
         self.conv = nn.Sequential(
-            # nn.Dropout(p=dropout_rate),
             nn.Conv2d(
                 in_channels=out_channels,
                 out_channels=out_channels,
@@ -38,6 +43,7 @@ class BasicBlock(nn.Module):
             ),
             nn.InstanceNorm2d(num_features=out_channels),
             nn.ReLU(inplace=True),
+            nn.Dropout(dropout_rate),
             nn.Conv2d(
                 in_channels=out_channels,
                 out_channels=out_channels,
@@ -50,6 +56,10 @@ class BasicBlock(nn.Module):
         )
 
     def forward(self, x):
+        """
+            Input: 1 x C1 x L x L
+            Output: 1 x C2 x L x L
+        """
         if self.in_channels != self.out_channels:
             x = self.input_conv(x)
 
@@ -62,6 +72,10 @@ class BasicBlock(nn.Module):
     
 
 class RegionalAttention(nn.Module):
+    """
+        Regional Attention Module for Attention+Dilation
+        Shape: 1 x 64 x L x L -> 1 x 64 x L x L
+    """
     def __init__(self, region_size=3, dropout_rate=0.2, device='cuda'):
         super(RegionalAttention, self).__init__()
         self.conv_weight = torch.zeros([region_size, region_size, 1, 1, region_size*region_size])
@@ -98,6 +112,7 @@ class RegionalAttention(nn.Module):
     def forward(self, x: torch.Tensor):
         """
             x: 1 x 64 x L x L
+            out: 1 x 64 x L x L
         """
         # 4 x L x L x 16
         x = x.permute(0, 2, 3, 1)
@@ -131,12 +146,17 @@ class RegionalAttention(nn.Module):
 
 
 class AttentionModel(nn.Module):
+    """
+        Attention+Dilation Module.
+        Shape: 1 x 441 x L x L -> 1 x 10 x L x L
+    """
     def __init__(self, hyper_params, return_score=False):
         super(AttentionModel, self).__init__()
         first_channels = hyper_params['residual_layers'][0][0]
         last_channels = hyper_params['residual_layers'][-1][1]
         self.return_score = return_score
 
+        # Input convolutional layer
         self.conv1_1 = nn.Sequential(
             nn.Conv2d(
                 in_channels=441,
@@ -149,12 +169,14 @@ class AttentionModel(nn.Module):
             nn.ReLU(inplace=True)
         )
 
+        # Middle Dilation and Residual Layers
         self.middle_layers = nn.ModuleList()
         for in_channels, out_channels, dilation, residual in hyper_params['residual_layers']:
             self.middle_layers.append(
                 BasicBlock(in_channels, out_channels, dilation, residual, hyper_params['dropout_rate'])
             )
 
+        # CNN Layer -> Attention
         self.final_conv1 = nn.Sequential(
             nn.Conv2d(
                 in_channels=last_channels,
@@ -167,10 +189,12 @@ class AttentionModel(nn.Module):
             nn.ReLU(inplace=True)
         )
 
+        # Attention Layer
         self.attention = RegionalAttention(
             dropout_rate=hyper_params['dropout_rate'],
             device=hyper_params['device'])
 
+        # Final CNN Layer -> Output
         self.final_conv2 = nn.Conv2d(
             in_channels=64,
             out_channels=10,
@@ -180,6 +204,10 @@ class AttentionModel(nn.Module):
         )
 
     def forward(self, x):
+        """
+            x: 1 x 441 x L x L
+            out: 1 x 10 x L x L
+        """
         middle = self.conv1_1(x)
 
         if x.shape[-1] > 380:

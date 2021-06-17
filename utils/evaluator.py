@@ -11,6 +11,12 @@ import logging
 
 
 class Evaluator:
+    """
+        Evaluator.
+        batch_size: batch size of evaluation.
+        num_workers: num of process.
+        dataset_key: key of the item in hyper_params which stores the path of dataset.
+    """
     def __init__(self, hyper_params, dataset_key='test_dir'):
         self.hyper_params = hyper_params
 
@@ -30,6 +36,7 @@ class Evaluator:
         logger.info('Start evaluating...')
         net.eval()
 
+        # Define the result array
         result = np.zeros(
             [self.valid_dataset.__len__(), 2, 4], dtype=np.float32)
         short_all_result = np.zeros([self.valid_dataset.__len__(), 10], dtype=np.float32)
@@ -38,6 +45,7 @@ class Evaluator:
         cnt = 0
         total_step = self.valid_dataset.__len__()
 
+        # Start evaluation
         with torch.no_grad():
             for step, (feature, label, mask) in enumerate(tqdm(self.valid_loader)):
                 try:
@@ -45,9 +53,11 @@ class Evaluator:
                     label = label.to(self.hyper_params['device'])
                     mask = mask.to(self.hyper_params['device'])
 
+                    # Forward and softmax
                     pred = net(feature)
                     pred = F.softmax(pred, dim=1)
 
+                    # Calculate metrics with cal_top
                     for i in range(feature.shape[0]):
                         result[cnt], short_all_result[cnt], _, short_support[cnt], _ = cal_top(
                             label[i].cpu().numpy(), mask[i].cpu().numpy(), pred[i].detach().cpu().numpy())
@@ -71,6 +81,7 @@ class Evaluator:
                                                    1]+2*avg_result[:, 2]+3*avg_result[:, 3]
         cur_result = cur_result[0] + 2 * cur_result[1]
 
+        # Print the overall evaluation result
         print(f'Evaluation Result: {cur_result}')
         if logger is not None:
             logger.info(
@@ -84,6 +95,7 @@ class Evaluator:
 
         self.result_history.append(cur_result)
 
+        # reset the model to training mode
         net.train()
         return cur_result
 
