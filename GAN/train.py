@@ -83,12 +83,14 @@ def generaotr_train(generator, discriminator, criterion, optimizer, train_loader
 
                 result = generator(feature)
                 with torch.no_grad():
+                    # use for the loss L_adv
                     prediction = discriminator(feature, result).detach()
 
                 optimizer.zero_grad()
                 loss = criterion(prediction, result, label, mask)
                 loss.backward()
 
+                # avoid large gradient
                 nn.utils.clip_grad_norm_(generator.parameters(), 5)
                 optimizer.step()
 
@@ -128,6 +130,7 @@ def discriminator_train(generator, discriminator, criterion, optimizer, train_lo
                 real_result = discriminator(feature, label)
                 fake_result = discriminator(feature, fake_label)
 
+                # make the probability of the output matrix near the true matrix
                 real_loss = criterion(real_result, label, mask)
                 fake_loss = criterion(fake_result, fake_label, mask)
                 loss = (real_loss + fake_loss) / 2
@@ -212,6 +215,7 @@ def train(logger: logging.Logger):
 
     logger.info('Start training...')
     for epoch in range(hyper_params['start_epoch'], hyper_params['epochs']):
+        # adverse learning with generator and discriminator training alternately
         for _ in range(hyper_params['generator_train_steps_per_epoch']):
             generaotr_train(generator,discriminator,generator_criterion,generator_optimizer,train_loader,epoch)
 

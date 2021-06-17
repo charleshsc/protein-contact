@@ -13,6 +13,7 @@ class Residual_Block(nn.Module):
         super(Residual_Block, self).__init__()
 
         if dilation is None:
+            # No dilation, use the padding to keep the size
             padding = calc_pad(kernel_size, 1)
 
             self.ops = nn.Sequential(
@@ -26,6 +27,7 @@ class Residual_Block(nn.Module):
             )
 
         else:
+            # with dilation, use the padding to keep the size
             padding = calc_pad(kernel_size, dilation)
 
             self.ops = nn.Sequential(
@@ -39,6 +41,10 @@ class Residual_Block(nn.Module):
             )
 
     def forward(self, x):
+        '''
+            x : bs x in_channel x width x height
+            return : bs x out_channel x width x height
+        '''
         residual = self.ops(x)
         return x + residual
 
@@ -84,6 +90,9 @@ class Generator(nn.Module):
         self._initialize_weights()
 
     def forward(self, x):
+        '''
+            x: 1 x 441 x L x L -> 1 x 10 x L x L
+        '''
         block1 = self.block1(x)
         res = self.model(block1)
         res = self.blockSL(res)
@@ -122,6 +131,11 @@ class Discriminator(nn.Module):
         self._initialize_weights()
 
     def forward(self, feature, contact_map):
+        '''
+            feature: 1 x 441 x L x L
+            contact_map: gt ( 1 x L x L ) or result (1 x 10 x L x L)
+            return : 1 x
+        '''
         if len(contact_map.shape) == 3:
             contact_map = F.one_hot(contact_map, num_classes=10).permute(0, 3, 1, 2).type(torch.float)
         x = torch.cat((feature,contact_map),dim=1)
