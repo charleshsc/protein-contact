@@ -12,7 +12,7 @@ class BasicBlock(nn.Module):
         Basic dilation module.
         Shape: 1 x C1 x L x L -> 1 x C2 x L x L
     """
-    def __init__(self, in_channels=64, out_channels=64, dilation=1, residual=True, dropout_rate=0.2):
+    def __init__(self, in_channels=64, out_channels=64, dilation=1, residual=True):
         super(BasicBlock, self).__init__()
         self.residual = residual
         self.in_channels = in_channels
@@ -43,7 +43,6 @@ class BasicBlock(nn.Module):
             ),
             nn.InstanceNorm2d(num_features=out_channels),
             nn.ReLU(inplace=True),
-            nn.Dropout(dropout_rate),
             nn.Conv2d(
                 in_channels=out_channels,
                 out_channels=out_channels,
@@ -173,7 +172,7 @@ class AttentionModel(nn.Module):
         self.middle_layers = nn.ModuleList()
         for in_channels, out_channels, dilation, residual in hyper_params['residual_layers']:
             self.middle_layers.append(
-                BasicBlock(in_channels, out_channels, dilation, residual, hyper_params['dropout_rate'])
+                BasicBlock(in_channels, out_channels, dilation, residual)
             )
 
         # CNN Layer -> Attention

@@ -69,12 +69,14 @@ parser.add_argument('--model', help='选定模型', default='attention', type=st
 parser.add_argument('--test_dir', help='测试集位置', type=str, required=True)
 parser.add_argument('--target_dir', help='预测结果位置', type=str, required=True)
 parser.add_argument('--checkpoint', help='检查点位置', type=str, required=True)
+parser.add_argument('--format', help='文件格式', default='npy', type=str, required=False)
 args = parser.parse_args()
 
 hyper_params['test_dir'] = args.test_dir
 hyper_params['target_dir'] = args.target_dir
 hyper_params['model'] = args.model
 hyper_params['resume'] = args.checkpoint
+hyper_params['format'] = args.format
 info_str = generate_hyper_params_str(hyper_params)
 
 # Manual Seed
@@ -122,7 +124,7 @@ def predict(logger: logging.Logger):
         print("=> loaded checkpoint '{}' (epoch {})"
               .format(hyper_params['resume'], checkpoint['epoch']))
 
-    # Generat Dataset
+    # Generate Dataset
     dataset = Protein_data(hyper_params['test_dir'], source_type='npz', return_label=False)
     dataloader = Data.DataLoader(dataset, batch_size=hyper_params['batch_size'], num_workers=hyper_params['num_workers'])
 
@@ -135,9 +137,14 @@ def predict(logger: logging.Logger):
             pred = torch.softmax(pred, dim=1)[0].detach().cpu().numpy()
             index = index[0].item()
             prot_name = dataset.get_prot_name(index)
-            target_file_path = os.path.join(hyper_params['target_dir'], prot_name+'.npy')
+            fmt = '.npy' if hyper_params['format']=='npy' else '.npz'
 
-            np.save(target_file_path, pred)
+            target_file_path = os.path.join(hyper_params['target_dir'], prot_name+fmt)
+
+            if hyper_params['format'] == 'npy':
+                np.save(target_file_path, pred)
+            else:
+                np.savez_compressed(target_file_path, pred)
 
 
 if __name__ == '__main__':
