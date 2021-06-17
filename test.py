@@ -58,6 +58,7 @@ hyper_params = {
     'num_workers': 16,
     'start_epoch' : 0,
     'resume' : None,
+    'realvalue': False,
     'class_weight': [1.0] * 9 + [1.0],
     'loss_func': 'cross', # focal, cross
     'long_length': None # None or int, min length for "class_weight" mask

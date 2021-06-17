@@ -3,7 +3,7 @@ import numpy as np
 from tqdm import tqdm
 
 # The list of prediction output
-source_dir_list = ['/home/dingyueprp/protein/predict1', '/home/dingyueprp/protein/predict1']
+source_dir_list = ['/home/dingyueprp/protein/predict1', '/home/dingyueprp/protein/predict2', '/home/dingyueprp/protein/predict3']
 # Dir of ensemble result
 target_dir = '/home/dingyueprp/protein/predict'
 

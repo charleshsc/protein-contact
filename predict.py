@@ -58,6 +58,7 @@ hyper_params = {
     'num_workers': 16,
     'start_epoch' : 0,
     'resume' : None,
+    'realvalue': False,
     'class_weight': [1.0] * 9 + [1.0],
     'loss_func': 'cross', # focal, cross
     'long_length': None # None or int, min length for "class_weight" mask
@@ -125,7 +126,7 @@ def predict(logger: logging.Logger):
               .format(hyper_params['resume'], checkpoint['epoch']))
 
     # Generate Dataset
-    dataset = Protein_data(hyper_params['test_dir'], source_type='npz', return_label=False)
+    dataset = Protein_data(hyper_params['test_dir'], source_type='npz', return_label=False, realvalue=hyper_params['realvalue'])
     dataloader = Data.DataLoader(dataset, batch_size=hyper_params['batch_size'], num_workers=hyper_params['num_workers'])
 
     # Predict
