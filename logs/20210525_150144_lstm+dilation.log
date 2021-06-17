@@ -1,0 +1,388 @@
+2021-05-25 15:01:44,617 - 20210525_150144_lstm+dilation
+2021-05-25 15:01:48,547 - Start training...
+2021-05-25 15:01:51,811 - Epoch: 0, Step: 0, L:126, Loss: 1.6384882926940918
+2021-05-25 15:02:08,851 - L=290
+2021-05-25 15:02:08,851 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:02:10,247 - L=324
+2021-05-25 15:02:10,247 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:02:15,118 - Epoch: 0, Step: 10, L:274, Loss: 1.379987046122551
+2021-05-25 15:02:22,999 - L=334
+2021-05-25 15:02:22,999 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:02:32,384 - L=348
+2021-05-25 15:02:32,385 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:02:32,657 - L=379
+2021-05-25 15:02:32,657 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:02:45,642 - L=290
+2021-05-25 15:02:45,643 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 388.88 MiB free; 13.53 GiB reserved in total by PyTorch)
+2021-05-25 15:02:54,910 - Epoch: 0, Step: 30, L:140, Loss: 1.0906894728541374
+2021-05-25 15:02:55,063 - L=452
+2021-05-25 15:02:55,063 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:03,404 - L=421
+2021-05-25 15:03:03,404 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:09,416 - L=394
+2021-05-25 15:03:09,416 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:11,316 - Epoch: 0, Step: 40, L:158, Loss: 0.9981877633503505
+2021-05-25 15:03:26,295 - L=431
+2021-05-25 15:03:26,295 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:28,247 - L=438
+2021-05-25 15:03:28,247 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:30,594 - Epoch: 0, Step: 50, L:175, Loss: 1.0837694704532623
+2021-05-25 15:03:30,719 - L=321
+2021-05-25 15:03:30,719 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:30,953 - L=313
+2021-05-25 15:03:30,953 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:03:33,100 - Start evaluating...
+2021-05-25 15:03:34,784 - Evaluation: 0 / 7
+2021-05-25 15:03:40,619 - -----------------------EVAL---------------------
+Evaluation Result: 12.117599487304688
+2021-05-25 15:03:40,619 - T10: 0.3784184753894806, T5: 0.3522196114063263, T2: 0.38169994950294495, T1: 0.3787611424922943
+2021-05-25 15:03:40,619 - LT10: 0.3784184753894806, LT5: 0.3522196114063263, LT2: 0.38169994950294495, LT1: 0.3787611424922943
+2021-05-25 15:03:40,619 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.5827393]
+2021-05-25 15:03:40,619 - Short support: [0.         0.0075158  0.00594561 0.02689654 0.05313989 0.07285213
+ 0.06863934 0.08864341 0.09362806 0.5827393 ]
+
+2021-05-25 15:03:51,231 - Epoch: 1, Step: 0, L:254, Loss: 1.0116838216781616
+2021-05-25 15:03:56,588 - L=431
+2021-05-25 15:03:56,588 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:04:12,920 - L=321
+2021-05-25 15:04:12,920 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:04:19,318 - L=452
+2021-05-25 15:04:19,318 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:04:28,375 - L=379
+2021-05-25 15:04:28,375 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:04:30,302 - L=290
+2021-05-25 15:04:30,303 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 394.88 MiB free; 13.52 GiB reserved in total by PyTorch)
+2021-05-25 15:04:35,136 - L=334
+2021-05-25 15:04:35,136 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:04:36,357 - L=421
+2021-05-25 15:04:36,357 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:04:39,254 - L=290
+2021-05-25 15:04:39,255 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 406.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:04:45,760 - Epoch: 1, Step: 30, L:142, Loss: 1.0779543275182897
+2021-05-25 15:05:11,072 - Epoch: 1, Step: 40, L:214, Loss: 1.1445791482925416
+2021-05-25 15:05:19,055 - L=324
+2021-05-25 15:05:19,055 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:05:20,201 - L=438
+2021-05-25 15:05:20,201 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:05:20,491 - L=348
+2021-05-25 15:05:20,491 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:05:20,765 - L=394
+2021-05-25 15:05:20,765 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:05:24,019 - Epoch: 1, Step: 50, L:218, Loss: 1.1183634102344513
+2021-05-25 15:05:27,173 - L=313
+2021-05-25 15:05:27,173 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:05:27,455 - Start evaluating...
+2021-05-25 15:05:29,024 - Evaluation: 0 / 7
+2021-05-25 15:05:34,672 - -----------------------EVAL---------------------
+Evaluation Result: 9.124839544296265
+2021-05-25 15:05:34,672 - T10: 0.19651825726032257, T5: 0.17815211415290833, T2: 0.11382444947957993, T1: 0.14347095787525177
+2021-05-25 15:05:34,672 - LT10: 0.4000466763973236, LT5: 0.36421510577201843, LT2: 0.2979588508605957, LT1: 0.2909031808376312
+2021-05-25 15:05:34,672 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.32128185]
+2021-05-25 15:05:34,672 - Short support: [0.         0.01660883 0.03791272 0.06501261 0.16871229 0.12051553
+ 0.08858019 0.09936965 0.08200635 0.32128185]
+
+2021-05-25 15:05:47,457 - Epoch: 2, Step: 0, L:273, Loss: 1.04274320602417
+2021-05-25 15:06:01,626 - L=438
+2021-05-25 15:06:01,626 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:03,436 - L=324
+2021-05-25 15:06:03,436 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:05,083 - Epoch: 2, Step: 10, L:148, Loss: 1.1097978204488754
+2021-05-25 15:06:05,218 - L=394
+2021-05-25 15:06:05,218 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:11,926 - L=290
+2021-05-25 15:06:11,927 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 384.88 MiB free; 13.53 GiB reserved in total by PyTorch)
+2021-05-25 15:06:13,450 - L=452
+2021-05-25 15:06:13,451 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:19,490 - Epoch: 2, Step: 20, L:179, Loss: 1.011313191481999
+2021-05-25 15:06:31,742 - L=431
+2021-05-25 15:06:31,742 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:38,974 - L=379
+2021-05-25 15:06:38,974 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:40,443 - Epoch: 2, Step: 30, L:135, Loss: 1.036099299788475
+2021-05-25 15:06:40,555 - L=348
+2021-05-25 15:06:40,555 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:44,650 - L=290
+2021-05-25 15:06:44,651 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 408.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:06:46,067 - L=321
+2021-05-25 15:06:46,067 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:47,432 - L=334
+2021-05-25 15:06:47,432 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:47,674 - L=313
+2021-05-25 15:06:47,674 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:06:53,923 - Epoch: 2, Step: 40, L:146, Loss: 1.2581573009490967
+2021-05-25 15:06:57,584 - L=421
+2021-05-25 15:06:57,584 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:07:13,040 - Epoch: 2, Step: 50, L:171, Loss: 1.1881744861602783
+2021-05-25 15:07:23,086 - Start evaluating...
+2021-05-25 15:07:24,735 - Evaluation: 0 / 7
+2021-05-25 15:07:30,242 - -----------------------EVAL---------------------
+Evaluation Result: 12.534551620483398
+2021-05-25 15:07:30,242 - T10: 0.3727025091648102, T5: 0.31926363706588745, T2: 0.36532679200172424, T1: 0.45185157656669617
+2021-05-25 15:07:30,242 - LT10: 0.35032153129577637, LT5: 0.33860841393470764, LT2: 0.38914576172828674, LT1: 0.4726686477661133
+2021-05-25 15:07:30,242 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.66396517]
+2021-05-25 15:07:30,242 - Short support: [0.         0.01207974 0.0217648  0.01976009 0.04380637 0.05050713
+ 0.05168702 0.0599     0.07652969 0.66396517]
+
+2021-05-25 15:07:42,604 - Epoch: 3, Step: 0, L:218, Loss: 1.1566303968429565
+2021-05-25 15:07:48,684 - L=313
+2021-05-25 15:07:48,684 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:07:48,965 - L=452
+2021-05-25 15:07:48,965 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:07:54,189 - L=431
+2021-05-25 15:07:54,189 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:07:56,154 - L=290
+2021-05-25 15:07:56,155 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 400.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:07:59,072 - Epoch: 3, Step: 10, L:140, Loss: 1.1834173202514648
+2021-05-25 15:08:08,354 - L=324
+2021-05-25 15:08:08,354 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:08:17,867 - Epoch: 3, Step: 20, L:114, Loss: 1.1020445691214666
+2021-05-25 15:08:17,955 - L=321
+2021-05-25 15:08:17,955 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:08:20,333 - L=334
+2021-05-25 15:08:20,333 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:08:42,075 - L=290
+2021-05-25 15:08:42,075 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:08:54,788 - L=348
+2021-05-25 15:08:54,788 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:08:58,726 - L=421
+2021-05-25 15:08:58,726 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:08:59,036 - L=394
+2021-05-25 15:08:59,036 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:09:13,798 - L=379
+2021-05-25 15:09:13,798 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:09:17,516 - Epoch: 3, Step: 50, L:231, Loss: 1.104591631371042
+2021-05-25 15:09:19,011 - L=438
+2021-05-25 15:09:19,011 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:09:20,801 - Start evaluating...
+2021-05-25 15:09:22,496 - Evaluation: 0 / 7
+2021-05-25 15:09:28,086 - -----------------------EVAL---------------------
+Evaluation Result: 5.911744475364685
+2021-05-25 15:09:28,086 - T10: 0.08716737478971481, T5: 0.07223300635814667, T2: 0.09298606216907501, T1: 0.14794965088367462
+2021-05-25 15:09:28,087 - LT10: 0.32847386598587036, LT5: 0.22691288590431213, LT2: 0.17004667222499847, LT1: 0.20455463230609894
+2021-05-25 15:09:28,087 - Short all result: [0.       0.       0.       0.       0.       0.       0.       0.
+ 0.       0.339893]
+2021-05-25 15:09:28,087 - Short support: [0.         0.01681888 0.03693613 0.06376745 0.13184832 0.11689103
+ 0.11529329 0.10249563 0.07605631 0.339893  ]
+
+2021-05-25 15:09:33,613 - Epoch: 4, Step: 0, L:145, Loss: 1.4424337148666382
+2021-05-25 15:09:39,999 - L=438
+2021-05-25 15:09:39,999 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:03,041 - Epoch: 4, Step: 10, L:226, Loss: 1.0689772963523865
+2021-05-25 15:10:03,167 - L=313
+2021-05-25 15:10:03,167 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:04,834 - L=394
+2021-05-25 15:10:04,834 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:09,763 - L=290
+2021-05-25 15:10:09,763 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 406.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:10:12,021 - L=321
+2021-05-25 15:10:12,021 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:21,132 - Epoch: 4, Step: 20, L:140, Loss: 1.0925737023353577
+2021-05-25 15:10:23,345 - L=421
+2021-05-25 15:10:23,345 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:23,669 - L=452
+2021-05-25 15:10:23,669 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:30,103 - L=290
+2021-05-25 15:10:30,103 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:10:38,923 - Epoch: 4, Step: 30, L:215, Loss: 1.158006387097495
+2021-05-25 15:10:39,060 - L=324
+2021-05-25 15:10:39,060 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:50,765 - L=431
+2021-05-25 15:10:50,765 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:10:52,792 - Epoch: 4, Step: 40, L:161, Loss: 1.1106779351830482
+2021-05-25 15:10:57,669 - L=348
+2021-05-25 15:10:57,669 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:11:10,871 - L=379
+2021-05-25 15:11:10,871 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:11:14,594 - Epoch: 4, Step: 50, L:234, Loss: 1.026060976088047
+2021-05-25 15:11:14,741 - L=334
+2021-05-25 15:11:14,741 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:11:18,574 - Start evaluating...
+2021-05-25 15:11:20,264 - Evaluation: 0 / 7
+2021-05-25 15:11:25,852 - -----------------------EVAL---------------------
+Evaluation Result: 7.459425687789917
+2021-05-25 15:11:25,852 - T10: 0.15882869064807892, T5: 0.11324144154787064, T2: 0.08298207819461823, T1: 0.09313342720270157
+2021-05-25 15:11:25,852 - LT10: 0.34351226687431335, LT5: 0.34203872084617615, LT2: 0.24559490382671356, LT1: 0.19987230002880096
+2021-05-25 15:11:25,853 - Short all result: [0.         0.         0.         0.         0.0511583  0.
+ 0.         0.         0.         0.23240031]
+2021-05-25 15:11:25,853 - Short support: [0.         0.01664372 0.03899558 0.08810802 0.18191211 0.13246785
+ 0.11578435 0.10582893 0.07965451 0.24060495]
+
+2021-05-25 15:11:30,681 - Epoch: 5, Step: 0, L:114, Loss: 0.6843392252922058
+2021-05-25 15:11:36,388 - L=348
+2021-05-25 15:11:36,388 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:11:51,613 - L=324
+2021-05-25 15:11:51,613 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:11:53,434 - Epoch: 5, Step: 10, L:158, Loss: 1.165684886276722
+2021-05-25 15:11:56,479 - L=421
+2021-05-25 15:11:56,479 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:12:13,965 - L=452
+2021-05-25 15:12:13,966 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:12:18,988 - L=334
+2021-05-25 15:12:18,988 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:12:25,111 - L=290
+2021-05-25 15:12:25,111 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 406.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:12:26,891 - L=379
+2021-05-25 15:12:26,891 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:12:29,028 - Epoch: 5, Step: 30, L:170, Loss: 1.0278733332951864
+2021-05-25 15:12:30,402 - L=431
+2021-05-25 15:12:30,403 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:12:36,353 - L=394
+2021-05-25 15:12:36,353 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:12:52,689 - Epoch: 5, Step: 40, L:145, Loss: 1.1313140168786049
+2021-05-25 15:12:57,968 - L=313
+2021-05-25 15:12:57,968 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:13:05,221 - L=321
+2021-05-25 15:13:05,221 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:13:07,689 - L=438
+2021-05-25 15:13:07,689 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:13:09,734 - Epoch: 5, Step: 50, L:161, Loss: 1.174521199294499
+2021-05-25 15:13:12,986 - L=290
+2021-05-25 15:13:12,987 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:13:16,300 - Start evaluating...
+2021-05-25 15:13:17,940 - Evaluation: 0 / 7
+2021-05-25 15:13:23,609 - -----------------------EVAL---------------------
+Evaluation Result: 9.531241416931152
+2021-05-25 15:13:23,609 - T10: 0.2625754475593567, T5: 0.27345922589302063, T2: 0.2709692120552063, T1: 0.2745688557624817
+2021-05-25 15:13:23,609 - LT10: 0.3700568675994873, LT5: 0.27428242564201355, LT2: 0.2963014543056488, LT1: 0.3112635016441345
+2021-05-25 15:13:23,609 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.47541073]
+2021-05-25 15:13:23,610 - Short support: [0.         0.01346676 0.02205627 0.04022041 0.07992294 0.08219173
+ 0.11244523 0.09420413 0.08008186 0.47541073]
+
+2021-05-25 15:13:27,498 - Epoch: 6, Step: 0, L:113, Loss: 0.6871302723884583
+2021-05-25 15:13:35,640 - L=421
+2021-05-25 15:13:35,640 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:13:39,494 - L=334
+2021-05-25 15:13:39,494 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:13:39,764 - L=379
+2021-05-25 15:13:39,765 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:13:50,447 - Epoch: 6, Step: 10, L:158, Loss: 1.1295644385474068
+2021-05-25 15:13:53,414 - L=452
+2021-05-25 15:13:53,414 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:00,154 - L=290
+2021-05-25 15:14:00,155 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:14:00,520 - L=321
+2021-05-25 15:14:00,520 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:04,239 - Epoch: 6, Step: 20, L:175, Loss: 1.2304796150752477
+2021-05-25 15:14:08,392 - L=348
+2021-05-25 15:14:08,392 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:16,807 - L=290
+2021-05-25 15:14:16,807 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 410.88 MiB free; 13.50 GiB reserved in total by PyTorch)
+2021-05-25 15:14:27,792 - Epoch: 6, Step: 30, L:161, Loss: 1.0496055483818054
+2021-05-25 15:14:35,131 - L=438
+2021-05-25 15:14:35,131 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:37,824 - L=394
+2021-05-25 15:14:37,824 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:43,807 - L=313
+2021-05-25 15:14:43,807 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:57,976 - L=431
+2021-05-25 15:14:57,976 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:14:58,263 - L=324
+2021-05-25 15:14:58,263 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:15:08,095 - Epoch: 6, Step: 50, L:274, Loss: 1.099463454882304
+2021-05-25 15:15:14,151 - Start evaluating...
+2021-05-25 15:15:15,793 - Evaluation: 0 / 7
+2021-05-25 15:15:21,444 - -----------------------EVAL---------------------
+Evaluation Result: 10.317324161529541
+2021-05-25 15:15:21,444 - T10: 0.1259380429983139, T5: 0.15500538051128387, T2: 0.11412598192691803, T1: 0.10034996271133423
+2021-05-25 15:15:21,444 - LT10: 0.5644222497940063, LT5: 0.4299186170101166, LT2: 0.3370368778705597, LT1: 0.3518131673336029
+2021-05-25 15:15:21,444 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.27217132]
+2021-05-25 15:15:21,445 - Short support: [0.         0.01612573 0.03756488 0.06721716 0.17549434 0.12577619
+ 0.11024728 0.1085351  0.08686799 0.27217132]
+
+2021-05-25 15:15:29,024 - Epoch: 7, Step: 0, L:163, Loss: 1.2244629859924316
+2021-05-25 15:15:41,587 - L=431
+2021-05-25 15:15:41,587 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:15:50,828 - Epoch: 7, Step: 10, L:147, Loss: 1.0100155340300665
+2021-05-25 15:15:54,045 - L=394
+2021-05-25 15:15:54,045 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:15:58,399 - L=452
+2021-05-25 15:15:58,399 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:15:58,698 - L=324
+2021-05-25 15:15:58,698 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:16:07,322 - Epoch: 7, Step: 20, L:234, Loss: 1.1166796854564123
+2021-05-25 15:16:10,653 - L=421
+2021-05-25 15:16:10,653 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:16:31,953 - Epoch: 7, Step: 30, L:226, Loss: 1.0005707409646776
+2021-05-25 15:16:32,130 - L=379
+2021-05-25 15:16:32,130 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:16:39,219 - L=290
+2021-05-25 15:16:39,219 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 406.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:16:41,840 - L=438
+2021-05-25 15:16:41,840 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:16:44,408 - Epoch: 7, Step: 40, L:108, Loss: 1.2573039020810808
+2021-05-25 15:16:49,442 - L=313
+2021-05-25 15:16:49,442 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:17:01,977 - L=334
+2021-05-25 15:17:01,977 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:17:03,966 - L=290
+2021-05-25 15:17:03,966 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 380.88 MiB free; 13.53 GiB reserved in total by PyTorch)
+2021-05-25 15:17:04,340 - L=321
+2021-05-25 15:17:04,340 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:17:09,453 - L=348
+2021-05-25 15:17:09,454 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:17:09,794 - Start evaluating...
+2021-05-25 15:17:11,480 - Evaluation: 0 / 7
+2021-05-25 15:17:17,100 - -----------------------EVAL---------------------
+Evaluation Result: 8.052128076553345
+2021-05-25 15:17:17,101 - T10: 0.1870880275964737, T5: 0.17277321219444275, T2: 0.181640625, T1: 0.15595848858356476
+2021-05-25 15:17:17,101 - LT10: 0.3214609920978546, LT5: 0.3131476938724518, LT2: 0.24840116500854492, LT1: 0.23366892337799072
+2021-05-25 15:17:17,101 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.35071543]
+2021-05-25 15:17:17,101 - Short support: [0.         0.01560796 0.03703205 0.0604307  0.13781314 0.10411752
+ 0.09631038 0.11230461 0.08566822 0.35071543]
+
+2021-05-25 15:17:24,746 - Epoch: 8, Step: 0, L:199, Loss: 1.0167663097381592
+2021-05-25 15:17:31,683 - L=334
+2021-05-25 15:17:31,683 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:17:45,803 - Epoch: 8, Step: 10, L:226, Loss: 1.1816037827067905
+2021-05-25 15:18:04,098 - L=290
+2021-05-25 15:18:04,098 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:18:04,493 - L=394
+2021-05-25 15:18:04,493 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:06,978 - L=438
+2021-05-25 15:18:06,978 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:11,404 - L=348
+2021-05-25 15:18:11,404 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:14,284 - L=431
+2021-05-25 15:18:14,284 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:16,694 - L=324
+2021-05-25 15:18:16,694 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:23,061 - Epoch: 8, Step: 30, L:270, Loss: 1.0890887124197823
+2021-05-25 15:18:31,136 - L=452
+2021-05-25 15:18:31,136 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:35,866 - L=313
+2021-05-25 15:18:35,866 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:36,129 - L=421
+2021-05-25 15:18:36,129 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:18:40,355 - Epoch: 8, Step: 40, L:148, Loss: 1.0110946297645569
+2021-05-25 15:18:53,534 - L=290
+2021-05-25 15:18:53,535 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.96 GiB already allocated; 404.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 15:18:59,278 - L=379
+2021-05-25 15:18:59,278 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:19:03,758 - L=321
+2021-05-25 15:19:03,758 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:19:05,027 - Start evaluating...
+2021-05-25 15:19:06,700 - Evaluation: 0 / 7
+2021-05-25 15:19:12,422 - -----------------------EVAL---------------------
+Evaluation Result: 5.318599700927734
+2021-05-25 15:19:12,422 - T10: 0.07131195813417435, T5: 0.07450757175683975, T2: 0.10054474323987961, T1: 0.1126076728105545
+2021-05-25 15:19:12,422 - LT10: 0.22151271998882294, LT5: 0.19449271261692047, LT2: 0.1843237727880478, LT1: 0.20176492631435394
+2021-05-25 15:19:12,422 - Short all result: [0.         0.         0.         0.         0.12176801 0.
+ 0.         0.         0.         0.23415114]
+2021-05-25 15:19:12,422 - Short support: [0.         0.01708457 0.03677701 0.0812635  0.17533304 0.13510576
+ 0.11863989 0.10854571 0.08563455 0.24161594]
+
+2021-05-25 15:19:17,199 - Epoch: 9, Step: 0, L:148, Loss: 1.2744091749191284
+2021-05-25 15:19:32,757 - L=379
+2021-05-25 15:19:32,757 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:19:35,290 - L=452
+2021-05-25 15:19:35,290 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:19:36,877 - L=324
+2021-05-25 15:19:36,877 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1
+2021-05-25 15:19:40,814 - L=348
+2021-05-25 15:19:40,814 - CheckpointFunctionBackward.forward: expected Tensor or tuple of Tensor (got tuple) for return value 1

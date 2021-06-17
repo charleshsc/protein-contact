@@ -8,7 +8,7 @@ from io import BytesIO
 
 
 class Protein_data(Dataset):
-    def __init__(self, dataset_dir, source_type='tar', return_label=True):
+    def __init__(self, dataset_dir, realvalue, source_type='tar', return_label=True):
         """
         主要目标： 获取所有图片的地址
         dataset_dir: 数据集的文件夹，分为feature与label两部分
@@ -21,6 +21,7 @@ class Protein_data(Dataset):
         self.proteins = os.listdir(self.feature_dir)
         self.source_type = source_type
         self.return_label = return_label
+        self.realvalue = realvalue
 
     def get_prot_name(self, index):
         """
@@ -44,28 +45,36 @@ class Protein_data(Dataset):
                 print(err)
         
         if self.return_label:
-            mask = np.where(dist == -1, 0, 1)
-            label = np.zeros(dist.shape)
-            label += np.where((dist >= 4) & (dist < 6),
-                            np.ones_like(label), np.zeros_like(label))
-            label += np.where((dist >= 6) & (dist < 8),
-                            np.ones_like(label)*2, np.zeros_like(label))
-            label += np.where((dist >= 8) & (dist < 10),
-                            np.ones_like(label)*3, np.zeros_like(label))
-            label += np.where((dist >= 10) & (dist < 12),
-                            np.ones_like(label)*4, np.zeros_like(label))
-            label += np.where((dist >= 12) & (dist < 14),
-                            np.ones_like(label)*5, np.zeros_like(label))
-            label += np.where((dist >= 14) & (dist < 16),
-                            np.ones_like(label)*6, np.zeros_like(label))
-            label += np.where((dist >= 16) & (dist < 18),
-                            np.ones_like(label)*7, np.zeros_like(label))
-            label += np.where((dist >= 18) & (dist < 20),
-                            np.ones_like(label)*8, np.zeros_like(label))
-            label += np.where((dist >= 20), np.ones_like(label)
-                            * 9, np.zeros_like(label))
+            if self.realvalue:
+                mask = np.where(dist == -1, 0, 1)
+                label = dist
+                label[label < 0] = 0
+                label[label > 20] = 20
 
-            return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
+                return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
+            else:
+                mask = np.where(dist == -1, 0, 1)
+                label = np.zeros(dist.shape)
+                label += np.where((dist >= 4) & (dist < 6),
+                                np.ones_like(label), np.zeros_like(label))
+                label += np.where((dist >= 6) & (dist < 8),
+                                np.ones_like(label)*2, np.zeros_like(label))
+                label += np.where((dist >= 8) & (dist < 10),
+                                np.ones_like(label)*3, np.zeros_like(label))
+                label += np.where((dist >= 10) & (dist < 12),
+                                np.ones_like(label)*4, np.zeros_like(label))
+                label += np.where((dist >= 12) & (dist < 14),
+                                np.ones_like(label)*5, np.zeros_like(label))
+                label += np.where((dist >= 14) & (dist < 16),
+                                np.ones_like(label)*6, np.zeros_like(label))
+                label += np.where((dist >= 16) & (dist < 18),
+                                np.ones_like(label)*7, np.zeros_like(label))
+                label += np.where((dist >= 18) & (dist < 20),
+                                np.ones_like(label)*8, np.zeros_like(label))
+                label += np.where((dist >= 20), np.ones_like(label)
+                                * 9, np.zeros_like(label))
+
+                return torch.FloatTensor(feature), torch.LongTensor(label), torch.BoolTensor(mask)
         else:
             return torch.FloatTensor(feature), torch.tensor(index).long()
 

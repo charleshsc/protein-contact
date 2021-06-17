@@ -1,0 +1,939 @@
+2021-05-24 23:51:21,568 - 20210524_235121_lstm+dilation
+2021-05-24 23:51:25,510 - Start training...
+2021-05-24 23:51:31,280 - Epoch: 0, Step: 0, L:179, Loss: 1.7353515625
+2021-05-24 23:51:36,190 - L=324
+2021-05-24 23:51:36,191 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 371.88 MiB free; 13.54 GiB reserved in total by PyTorch)
+2021-05-24 23:51:44,577 - L=394
+2021-05-24 23:51:44,577 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-24 23:51:49,428 - Epoch: 0, Step: 10, L:218, Loss: 1.232518769800663
+2021-05-24 23:51:53,532 - L=431
+2021-05-24 23:51:53,533 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.52 GiB free; 4.39 GiB reserved in total by PyTorch)
+2021-05-24 23:52:01,460 - L=290
+2021-05-24 23:52:01,460 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-24 23:52:18,639 - Epoch: 0, Step: 20, L:254, Loss: 1.0510918200016022
+2021-05-24 23:52:20,580 - L=313
+2021-05-24 23:52:20,580 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 409.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-24 23:52:20,748 - L=334
+2021-05-24 23:52:20,748 - CUDA out of memory. Tried to allocate 10.63 GiB (GPU 0; 14.73 GiB total capacity; 2.77 GiB already allocated; 1.90 GiB free; 12.01 GiB reserved in total by PyTorch)
+2021-05-24 23:52:26,782 - L=348
+2021-05-24 23:52:26,782 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-24 23:52:31,212 - L=290
+2021-05-24 23:52:31,212 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-24 23:52:32,653 - Epoch: 0, Step: 30, L:135, Loss: 1.205230454603831
+2021-05-24 23:53:02,085 - L=452
+2021-05-24 23:53:02,085 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-24 23:53:02,303 - L=438
+2021-05-24 23:53:02,303 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.46 GiB free; 4.44 GiB reserved in total by PyTorch)
+2021-05-24 23:53:08,536 - L=321
+2021-05-24 23:53:08,536 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.30 GiB already allocated; 195.88 MiB free; 13.72 GiB reserved in total by PyTorch)
+2021-05-24 23:53:14,088 - L=379
+2021-05-24 23:53:14,088 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.31 GiB free; 3.60 GiB reserved in total by PyTorch)
+2021-05-24 23:53:22,124 - Epoch: 0, Step: 50, L:171, Loss: 1.1566206440329552
+2021-05-24 23:53:24,569 - L=421
+2021-05-24 23:53:24,569 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.14 GiB reserved in total by PyTorch)
+2021-05-24 23:53:24,737 - Start evaluating...
+2021-05-24 23:53:26,377 - Evaluation: 0 / 7
+2021-05-24 23:53:33,635 - -----------------------EVAL---------------------
+Evaluation Result: 3.3435035943984985
+2021-05-24 23:53:33,635 - T10: 0.03536044806241989, T5: 0.040793899446725845, T2: 0.07704721391201019, T1: 0.17750445008277893
+2021-05-24 23:53:33,635 - LT10: 0.05383472889661789, LT5: 0.04458923265337944, LT2: 0.16373004019260406, LT1: 0.20151396095752716
+2021-05-24 23:53:33,636 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.10984393 0.07341582 0.2930481 ]
+2021-05-24 23:53:33,636 - Short support: [4.8262550e-04 1.7741144e-02 3.1168122e-02 5.0780151e-02 6.4566851e-02
+ 7.2595678e-02 8.8764742e-02 1.0338105e-01 7.9359889e-02 4.9115974e-01]
+
+2021-05-24 23:53:47,062 - Epoch: 1, Step: 0, L:270, Loss: 1.0665521621704102
+2021-05-24 23:53:49,469 - L=394
+2021-05-24 23:53:49,469 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-24 23:53:49,641 - L=379
+2021-05-24 23:53:49,641 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.42 GiB free; 3.48 GiB reserved in total by PyTorch)
+2021-05-24 23:53:54,369 - L=348
+2021-05-24 23:53:54,369 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-24 23:54:06,600 - Epoch: 1, Step: 10, L:214, Loss: 1.1598736899239677
+2021-05-24 23:54:07,672 - L=452
+2021-05-24 23:54:07,672 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-24 23:54:10,685 - L=324
+2021-05-24 23:54:10,685 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 365.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-24 23:54:17,465 - L=334
+2021-05-24 23:54:17,465 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-24 23:54:17,688 - L=438
+2021-05-24 23:54:17,688 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 785.88 MiB free; 13.14 GiB reserved in total by PyTorch)
+2021-05-24 23:54:22,856 - L=321
+2021-05-24 23:54:22,856 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 173.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-24 23:54:39,208 - L=290
+2021-05-24 23:54:39,208 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 279.88 MiB free; 13.63 GiB reserved in total by PyTorch)
+2021-05-24 23:54:46,836 - L=290
+2021-05-24 23:54:46,836 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 263.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-24 23:54:51,565 - Epoch: 1, Step: 30, L:114, Loss: 1.069169466312115
+2021-05-24 23:54:51,777 - L=421
+2021-05-24 23:54:51,777 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.14 GiB reserved in total by PyTorch)
+2021-05-24 23:54:53,632 - L=313
+2021-05-24 23:54:53,632 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 421.88 MiB free; 13.50 GiB reserved in total by PyTorch)
+2021-05-24 23:55:11,425 - L=431
+2021-05-24 23:55:11,425 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-24 23:55:13,086 - Epoch: 1, Step: 40, L:147, Loss: 1.078516321522849
+2021-05-24 23:55:34,200 - Epoch: 1, Step: 50, L:150, Loss: 1.1388798356056213
+2021-05-24 23:55:40,129 - Start evaluating...
+2021-05-24 23:55:41,688 - Evaluation: 0 / 7
+2021-05-24 23:55:48,922 - -----------------------EVAL---------------------
+Evaluation Result: 13.672652244567871
+2021-05-24 23:55:48,922 - T10: 0.32767781615257263, T5: 0.387432724237442, T2: 0.39400357007980347, T1: 0.43431422114372253
+2021-05-24 23:55:48,922 - LT10: 0.3894504904747009, LT5: 0.4337790608406067, LT2: 0.41931965947151184, LT1: 0.4204818308353424
+2021-05-24 23:55:48,922 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.6463801]
+2021-05-24 23:55:48,923 - Short support: [0.00075188 0.00797614 0.01431029 0.02117012 0.04699689 0.05039053
+ 0.0744638  0.06470887 0.07285135 0.6463801 ]
+
+2021-05-24 23:55:59,286 - Epoch: 2, Step: 0, L:180, Loss: 0.9080693125724792
+2021-05-24 23:56:06,645 - L=313
+2021-05-24 23:56:06,645 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 425.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-24 23:56:17,020 - L=321
+2021-05-24 23:56:17,020 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-24 23:56:25,488 - L=438
+2021-05-24 23:56:25,488 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.49 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-24 23:56:42,524 - Epoch: 2, Step: 20, L:113, Loss: 1.1081687282113468
+2021-05-24 23:56:44,537 - L=324
+2021-05-24 23:56:44,537 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 365.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-24 23:56:48,640 - L=394
+2021-05-24 23:56:48,640 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.16 GiB free; 3.75 GiB reserved in total by PyTorch)
+2021-05-24 23:56:53,196 - L=290
+2021-05-24 23:56:53,196 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 271.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-24 23:57:03,908 - Epoch: 2, Step: 30, L:158, Loss: 1.1626579080309187
+2021-05-24 23:57:31,738 - L=334
+2021-05-24 23:57:31,738 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 27.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-24 23:57:33,117 - L=452
+2021-05-24 23:57:33,117 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.20 GiB free; 4.71 GiB reserved in total by PyTorch)
+2021-05-24 23:57:37,048 - L=290
+2021-05-24 23:57:37,048 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-24 23:57:52,780 - L=421
+2021-05-24 23:57:52,780 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-24 23:57:54,313 - Epoch: 2, Step: 50, L:140, Loss: 1.1157102920114994
+2021-05-24 23:57:54,545 - L=431
+2021-05-24 23:57:54,545 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-24 23:57:54,714 - L=348
+2021-05-24 23:57:54,715 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.79 GiB free; 3.12 GiB reserved in total by PyTorch)
+2021-05-24 23:57:54,889 - L=379
+2021-05-24 23:57:54,889 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.37 GiB free; 3.54 GiB reserved in total by PyTorch)
+2021-05-24 23:57:55,086 - Start evaluating...
+2021-05-24 23:57:56,615 - Evaluation: 0 / 7
+2021-05-24 23:58:03,867 - -----------------------EVAL---------------------
+Evaluation Result: 11.440757274627686
+2021-05-24 23:58:03,867 - T10: 0.37638574838638306, T5: 0.3343121111392975, T2: 0.3151543438434601, T1: 0.31126171350479126
+2021-05-24 23:58:03,867 - LT10: 0.4411280155181885, LT5: 0.3521299660205841, LT2: 0.347928524017334, LT1: 0.338907927274704
+2021-05-24 23:58:03,868 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.54316705]
+2021-05-24 23:58:03,868 - Short support: [0.         0.01685377 0.0308901  0.04615105 0.05988586 0.0756237
+ 0.07365328 0.07137474 0.08240043 0.54316705]
+
+2021-05-24 23:58:10,101 - Epoch: 3, Step: 0, L:146, Loss: 1.12200927734375
+2021-05-24 23:58:24,953 - L=394
+2021-05-24 23:58:24,953 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-24 23:58:29,865 - Epoch: 3, Step: 10, L:130, Loss: 1.1616057488653395
+2021-05-24 23:59:01,229 - L=334
+2021-05-24 23:59:01,229 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 5.88 MiB free; 13.90 GiB reserved in total by PyTorch)
+2021-05-24 23:59:01,275 - L=113
+2021-05-24 23:59:01,275 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-24 23:59:01,461 - L=148
+2021-05-24 23:59:01,461 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-24 23:59:01,704 - L=379
+2021-05-24 23:59:01,704 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.40 GiB free; 3.50 GiB reserved in total by PyTorch)
+2021-05-24 23:59:16,005 - Epoch: 3, Step: 30, L:176, Loss: 1.1190846301615238
+2021-05-24 23:59:16,261 - L=431
+2021-05-24 23:59:16,261 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.61 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-24 23:59:18,168 - L=290
+2021-05-24 23:59:18,168 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 261.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-24 23:59:21,696 - L=324
+2021-05-24 23:59:21,696 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 375.88 MiB free; 13.54 GiB reserved in total by PyTorch)
+2021-05-24 23:59:21,872 - L=348
+2021-05-24 23:59:21,872 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 1.54 GiB free; 12.37 GiB reserved in total by PyTorch)
+2021-05-24 23:59:29,296 - L=290
+2021-05-24 23:59:29,296 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 273.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-24 23:59:38,206 - Epoch: 3, Step: 40, L:190, Loss: 1.184025490283966
+2021-05-24 23:59:38,472 - L=421
+2021-05-24 23:59:38,472 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-24 23:59:42,816 - L=321
+2021-05-24 23:59:42,816 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.46 GiB already allocated; 93.88 MiB free; 13.82 GiB reserved in total by PyTorch)
+2021-05-24 23:59:48,532 - L=313
+2021-05-24 23:59:48,533 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-24 23:59:52,816 - L=452
+2021-05-24 23:59:52,816 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.20 GiB free; 4.70 GiB reserved in total by PyTorch)
+2021-05-24 23:59:56,181 - Epoch: 3, Step: 50, L:215, Loss: 1.0245511134465535
+2021-05-24 23:59:56,480 - L=438
+2021-05-24 23:59:56,480 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.47 GiB free; 4.44 GiB reserved in total by PyTorch)
+2021-05-25 00:00:04,359 - Start evaluating...
+2021-05-25 00:00:05,920 - Evaluation: 0 / 7
+2021-05-25 00:00:13,212 - -----------------------EVAL---------------------
+Evaluation Result: 14.950445652008057
+2021-05-25 00:00:13,213 - T10: 0.48941394686698914, T5: 0.5089800953865051, T2: 0.5376874208450317, T1: 0.5038468241691589
+2021-05-25 00:00:13,213 - LT10: 0.4544808268547058, LT5: 0.4385533928871155, LT2: 0.4087952673435211, LT1: 0.3999232351779938
+2021-05-25 00:00:13,213 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.11428571 0.6501063 ]
+2021-05-25 00:00:13,213 - Short support: [0.         0.00760353 0.01187078 0.02501751 0.04248279 0.0463038
+ 0.06109605 0.08627293 0.07345283 0.6458997 ]
+
+2021-05-25 00:00:26,917 - L=394
+2021-05-25 00:00:26,917 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:00:36,488 - L=313
+2021-05-25 00:00:36,488 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:00:36,652 - L=334
+2021-05-25 00:00:36,652 - CUDA out of memory. Tried to allocate 10.63 GiB (GPU 0; 14.73 GiB total capacity; 2.77 GiB already allocated; 1.90 GiB free; 12.01 GiB reserved in total by PyTorch)
+2021-05-25 00:00:45,228 - L=348
+2021-05-25 00:00:45,228 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 9.42 GiB free; 4.48 GiB reserved in total by PyTorch)
+2021-05-25 00:00:47,673 - L=379
+2021-05-25 00:00:47,673 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.45 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:01:00,568 - L=290
+2021-05-25 00:01:00,569 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 279.88 MiB free; 13.63 GiB reserved in total by PyTorch)
+2021-05-25 00:01:03,081 - L=452
+2021-05-25 00:01:03,081 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.21 GiB free; 4.70 GiB reserved in total by PyTorch)
+2021-05-25 00:01:08,252 - Epoch: 4, Step: 20, L:178, Loss: 1.0534330819334303
+2021-05-25 00:01:40,555 - Epoch: 4, Step: 30, L:234, Loss: 1.0269333660602569
+2021-05-25 00:01:57,901 - L=421
+2021-05-25 00:01:57,901 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-25 00:02:01,484 - L=290
+2021-05-25 00:02:01,484 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:02:10,648 - L=321
+2021-05-25 00:02:10,648 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:02:17,557 - L=438
+2021-05-25 00:02:17,557 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.49 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:02:18,922 - Epoch: 4, Step: 50, L:130, Loss: 1.2023244239389896
+2021-05-25 00:02:20,313 - L=431
+2021-05-25 00:02:20,313 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:02:22,344 - L=324
+2021-05-25 00:02:22,344 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 411.88 MiB free; 13.51 GiB reserved in total by PyTorch)
+2021-05-25 00:02:22,496 - Start evaluating...
+2021-05-25 00:02:24,029 - Evaluation: 0 / 7
+2021-05-25 00:02:31,142 - -----------------------EVAL---------------------
+Evaluation Result: 15.721611976623535
+2021-05-25 00:02:31,142 - T10: 0.5129781365394592, T5: 0.4943349063396454, T2: 0.4907672107219696, T1: 0.43561309576034546
+2021-05-25 00:02:31,142 - LT10: 0.5445117950439453, LT5: 0.4907538890838623, LT2: 0.4953490197658539, LT1: 0.41177114844322205
+2021-05-25 00:02:31,143 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.6338269]
+2021-05-25 00:02:31,143 - Short support: [0.         0.00584789 0.01364195 0.02652025 0.04979936 0.05646374
+ 0.07215004 0.07197306 0.06977673 0.6338269 ]
+
+2021-05-25 00:02:38,903 - Epoch: 5, Step: 0, L:108, Loss: 1.2856353521347046
+2021-05-25 00:02:50,325 - L=334
+2021-05-25 00:02:50,325 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.79 GiB already allocated; 41.88 MiB free; 13.87 GiB reserved in total by PyTorch)
+2021-05-25 00:02:53,845 - L=348
+2021-05-25 00:02:53,845 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.85 GiB free; 3.06 GiB reserved in total by PyTorch)
+2021-05-25 00:02:58,716 - L=290
+2021-05-25 00:02:58,717 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 261.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:03:03,757 - Epoch: 5, Step: 10, L:142, Loss: 1.1658123561314173
+2021-05-25 00:03:05,700 - L=324
+2021-05-25 00:03:05,700 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 367.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:03:14,537 - L=431
+2021-05-25 00:03:14,537 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:03:14,728 - L=394
+2021-05-25 00:03:14,728 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.16 GiB free; 3.75 GiB reserved in total by PyTorch)
+2021-05-25 00:03:22,068 - Epoch: 5, Step: 20, L:180, Loss: 1.0985060845102583
+2021-05-25 00:03:27,129 - L=438
+2021-05-25 00:03:27,129 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.48 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:03:34,148 - L=313
+2021-05-25 00:03:34,148 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 433.88 MiB free; 13.48 GiB reserved in total by PyTorch)
+2021-05-25 00:03:43,164 - L=421
+2021-05-25 00:03:43,164 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.75 GiB free; 4.15 GiB reserved in total by PyTorch)
+2021-05-25 00:04:04,976 - L=452
+2021-05-25 00:04:04,976 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:04:06,321 - Epoch: 5, Step: 40, L:130, Loss: 1.0600472502410412
+2021-05-25 00:04:24,424 - L=290
+2021-05-25 00:04:24,424 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:04:24,645 - L=321
+2021-05-25 00:04:24,646 - CUDA out of memory. Tried to allocate 9.82 GiB (GPU 0; 14.73 GiB total capacity; 2.59 GiB already allocated; 4.37 GiB free; 9.54 GiB reserved in total by PyTorch)
+2021-05-25 00:04:29,313 - Epoch: 5, Step: 50, L:254, Loss: 1.1291023716330528
+2021-05-25 00:04:32,021 - L=379
+2021-05-25 00:04:32,021 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.45 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:04:34,412 - Start evaluating...
+2021-05-25 00:04:35,978 - Evaluation: 0 / 7
+2021-05-25 00:04:43,148 - -----------------------EVAL---------------------
+Evaluation Result: 10.377188444137573
+2021-05-25 00:04:43,148 - T10: 0.33503955602645874, T5: 0.30107274651527405, T2: 0.31383174657821655, T1: 0.302395761013031
+2021-05-25 00:04:43,148 - LT10: 0.37969207763671875, LT5: 0.30965015292167664, LT2: 0.30815616250038147, LT1: 0.31890398263931274
+2021-05-25 00:04:43,149 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.52439827]
+2021-05-25 00:04:43,149 - Short support: [0.         0.01853914 0.03226727 0.04832888 0.05571681 0.07873528
+ 0.07280914 0.08510495 0.08410028 0.52439827]
+
+2021-05-25 00:04:53,785 - Epoch: 6, Step: 0, L:231, Loss: 1.112611174583435
+2021-05-25 00:04:55,905 - L=321
+2021-05-25 00:04:55,905 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 183.88 MiB free; 13.73 GiB reserved in total by PyTorch)
+2021-05-25 00:05:00,789 - L=394
+2021-05-25 00:05:00,789 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:05:02,607 - L=348
+2021-05-25 00:05:02,607 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:05:06,101 - L=379
+2021-05-25 00:05:06,101 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.44 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:05:08,954 - Epoch: 6, Step: 10, L:196, Loss: 1.1089366277058919
+2021-05-25 00:05:22,129 - L=438
+2021-05-25 00:05:22,129 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.48 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:05:23,734 - Epoch: 6, Step: 20, L:145, Loss: 1.263116478919983
+2021-05-25 00:05:36,256 - L=334
+2021-05-25 00:05:36,256 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:05:44,172 - L=313
+2021-05-25 00:05:44,172 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 425.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:05:49,537 - Epoch: 6, Step: 30, L:226, Loss: 1.0157665833830833
+2021-05-25 00:05:51,508 - L=290
+2021-05-25 00:05:51,508 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 269.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-25 00:05:51,773 - L=431
+2021-05-25 00:05:51,773 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 3.40 GiB free; 10.51 GiB reserved in total by PyTorch)
+2021-05-25 00:05:53,788 - L=290
+2021-05-25 00:05:53,788 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 281.88 MiB free; 13.63 GiB reserved in total by PyTorch)
+2021-05-25 00:05:54,041 - L=421
+2021-05-25 00:05:54,041 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 3.41 GiB free; 10.50 GiB reserved in total by PyTorch)
+2021-05-25 00:05:54,361 - L=452
+2021-05-25 00:05:54,361 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.20 GiB free; 4.71 GiB reserved in total by PyTorch)
+2021-05-25 00:06:06,126 - Epoch: 6, Step: 40, L:214, Loss: 1.061638867855072
+2021-05-25 00:06:08,193 - L=324
+2021-05-25 00:06:08,193 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 369.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:06:38,273 - Epoch: 6, Step: 50, L:163, Loss: 1.134549121061961
+2021-05-25 00:06:47,578 - Start evaluating...
+2021-05-25 00:06:49,101 - Evaluation: 0 / 7
+2021-05-25 00:06:56,419 - -----------------------EVAL---------------------
+Evaluation Result: 7.669583797454834
+2021-05-25 00:06:56,419 - T10: 0.08495761454105377, T5: 0.09456076472997665, T2: 0.1340809166431427, T1: 0.17458701133728027
+2021-05-25 00:06:56,419 - LT10: 0.18555951118469238, LT5: 0.2637721300125122, LT2: 0.30761846899986267, LT1: 0.34676429629325867
+2021-05-25 00:06:56,419 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.3708432]
+2021-05-25 00:06:56,419 - Short support: [0.         0.01900118 0.02800495 0.05803484 0.10025563 0.12284189
+ 0.11908518 0.09927136 0.08266179 0.3708432 ]
+
+2021-05-25 00:07:01,439 - Epoch: 7, Step: 0, L:135, Loss: 0.5497654676437378
+2021-05-25 00:07:12,075 - L=379
+2021-05-25 00:07:12,076 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.43 GiB free; 3.48 GiB reserved in total by PyTorch)
+2021-05-25 00:07:13,984 - L=290
+2021-05-25 00:07:13,984 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 255.88 MiB free; 13.66 GiB reserved in total by PyTorch)
+2021-05-25 00:07:22,216 - L=290
+2021-05-25 00:07:22,216 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:07:22,481 - L=348
+2021-05-25 00:07:22,482 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 4.29 GiB free; 9.62 GiB reserved in total by PyTorch)
+2021-05-25 00:07:26,811 - L=313
+2021-05-25 00:07:26,811 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.56 GiB already allocated; 3.88 MiB free; 13.90 GiB reserved in total by PyTorch)
+2021-05-25 00:07:26,869 - L=178
+2021-05-25 00:07:26,869 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-25 00:07:27,044 - L=146
+2021-05-25 00:07:27,044 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-25 00:07:40,249 - Epoch: 7, Step: 20, L:113, Loss: 1.0704260926980238
+2021-05-25 00:07:40,485 - L=452
+2021-05-25 00:07:40,485 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:07:52,761 - L=431
+2021-05-25 00:07:52,761 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:08:02,473 - Epoch: 7, Step: 30, L:268, Loss: 1.1207544207572937
+2021-05-25 00:08:08,660 - L=421
+2021-05-25 00:08:08,660 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-25 00:08:14,159 - L=334
+2021-05-25 00:08:14,159 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:08:18,000 - L=321
+2021-05-25 00:08:18,000 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 191.88 MiB free; 13.72 GiB reserved in total by PyTorch)
+2021-05-25 00:08:18,232 - L=438
+2021-05-25 00:08:18,232 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 1.33 GiB free; 12.58 GiB reserved in total by PyTorch)
+2021-05-25 00:08:19,910 - Epoch: 7, Step: 40, L:142, Loss: 1.2759027282396953
+2021-05-25 00:08:21,940 - L=324
+2021-05-25 00:08:21,940 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 367.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:08:47,673 - Epoch: 7, Step: 50, L:274, Loss: 1.0818698207537334
+2021-05-25 00:08:55,504 - L=394
+2021-05-25 00:08:55,504 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:08:55,666 - Start evaluating...
+2021-05-25 00:08:57,228 - Evaluation: 0 / 7
+2021-05-25 00:09:04,397 - -----------------------EVAL---------------------
+Evaluation Result: 13.88920783996582
+2021-05-25 00:09:04,397 - T10: 0.5044588446617126, T5: 0.4711639881134033, T2: 0.45074912905693054, T1: 0.4020954966545105
+2021-05-25 00:09:04,397 - LT10: 0.5423944592475891, LT5: 0.4209781289100647, LT2: 0.3863780200481415, LT1: 0.3468436300754547
+2021-05-25 00:09:04,398 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.6103364]
+2021-05-25 00:09:04,398 - Short support: [0.         0.00651127 0.01634965 0.02548619 0.04978015 0.04341782
+ 0.08338858 0.07705674 0.08767319 0.6103364 ]
+
+2021-05-25 00:09:13,608 - Epoch: 8, Step: 0, L:218, Loss: 1.166042447090149
+2021-05-25 00:09:19,445 - L=379
+2021-05-25 00:09:19,446 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.43 GiB free; 3.48 GiB reserved in total by PyTorch)
+2021-05-25 00:09:19,688 - L=431
+2021-05-25 00:09:19,688 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.61 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:09:40,404 - Epoch: 8, Step: 10, L:215, Loss: 1.147833675146103
+2021-05-25 00:09:44,756 - L=321
+2021-05-25 00:09:44,757 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 193.88 MiB free; 13.72 GiB reserved in total by PyTorch)
+2021-05-25 00:09:44,924 - L=334
+2021-05-25 00:09:44,924 - CUDA out of memory. Tried to allocate 10.63 GiB (GPU 0; 14.73 GiB total capacity; 2.77 GiB already allocated; 1.31 GiB free; 12.60 GiB reserved in total by PyTorch)
+2021-05-25 00:09:46,960 - L=313
+2021-05-25 00:09:46,960 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 431.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:09:54,925 - L=394
+2021-05-25 00:09:54,925 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:09:56,836 - L=290
+2021-05-25 00:09:56,836 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 287.88 MiB free; 13.63 GiB reserved in total by PyTorch)
+2021-05-25 00:10:03,146 - Epoch: 8, Step: 20, L:268, Loss: 1.1437482833862305
+2021-05-25 00:10:11,757 - L=438
+2021-05-25 00:10:11,757 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.06 GiB free; 4.85 GiB reserved in total by PyTorch)
+2021-05-25 00:10:21,997 - L=452
+2021-05-25 00:10:21,997 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:10:23,047 - Epoch: 8, Step: 30, L:114, Loss: 1.082388885319233
+2021-05-25 00:10:42,390 - Epoch: 8, Step: 40, L:146, Loss: 1.2161144256591796
+2021-05-25 00:10:45,652 - L=421
+2021-05-25 00:10:45,652 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.75 GiB free; 4.15 GiB reserved in total by PyTorch)
+2021-05-25 00:10:49,456 - L=290
+2021-05-25 00:10:49,456 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:10:52,156 - L=348
+2021-05-25 00:10:52,156 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.86 GiB free; 3.05 GiB reserved in total by PyTorch)
+2021-05-25 00:10:55,245 - L=324
+2021-05-25 00:10:55,245 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 373.88 MiB free; 13.54 GiB reserved in total by PyTorch)
+2021-05-25 00:10:59,663 - Epoch: 8, Step: 50, L:126, Loss: 0.9401865204175314
+2021-05-25 00:11:06,864 - Start evaluating...
+2021-05-25 00:11:08,456 - Evaluation: 0 / 7
+2021-05-25 00:11:15,745 - -----------------------EVAL---------------------
+Evaluation Result: 14.333593368530273
+2021-05-25 00:11:15,745 - T10: 0.4542318284511566, T5: 0.4735356271266937, T2: 0.39221152663230896, T1: 0.3415818512439728
+2021-05-25 00:11:15,745 - LT10: 0.5554565191268921, LT5: 0.49155211448669434, LT2: 0.393973171710968, LT1: 0.35003146529197693
+2021-05-25 00:11:15,745 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.5677639]
+2021-05-25 00:11:15,745 - Short support: [0.         0.01647453 0.01578916 0.03449089 0.05479608 0.06577215
+ 0.0733862  0.08620723 0.08531982 0.5677639 ]
+
+2021-05-25 00:11:27,207 - L=334
+2021-05-25 00:11:27,207 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 19.88 MiB free; 13.89 GiB reserved in total by PyTorch)
+2021-05-25 00:11:30,429 - L=324
+2021-05-25 00:11:30,429 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 365.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:11:32,360 - L=321
+2021-05-25 00:11:32,360 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.20 GiB already allocated; 417.88 MiB free; 13.50 GiB reserved in total by PyTorch)
+2021-05-25 00:11:42,404 - L=313
+2021-05-25 00:11:42,404 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:11:48,069 - Epoch: 9, Step: 10, L:163, Loss: 1.1279395307813371
+2021-05-25 00:12:16,259 - Epoch: 9, Step: 20, L:226, Loss: 1.063921684026718
+2021-05-25 00:12:16,524 - L=394
+2021-05-25 00:12:16,524 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 9.94 GiB free; 3.97 GiB reserved in total by PyTorch)
+2021-05-25 00:12:22,832 - L=290
+2021-05-25 00:12:22,832 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:12:34,728 - L=379
+2021-05-25 00:12:34,728 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.44 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:12:51,844 - L=438
+2021-05-25 00:12:51,844 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 7.09 GiB free; 6.82 GiB reserved in total by PyTorch)
+2021-05-25 00:12:55,468 - L=290
+2021-05-25 00:12:55,468 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:13:00,926 - Epoch: 9, Step: 40, L:231, Loss: 1.1560781915982565
+2021-05-25 00:13:02,537 - L=431
+2021-05-25 00:13:02,537 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:13:09,789 - L=421
+2021-05-25 00:13:09,789 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.76 GiB free; 4.15 GiB reserved in total by PyTorch)
+2021-05-25 00:13:15,721 - L=452
+2021-05-25 00:13:15,721 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:13:21,533 - Epoch: 9, Step: 50, L:140, Loss: 1.0964060510907854
+2021-05-25 00:13:24,865 - L=348
+2021-05-25 00:13:24,865 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:13:25,015 - Start evaluating...
+2021-05-25 00:13:26,627 - Evaluation: 0 / 7
+2021-05-25 00:13:33,913 - -----------------------EVAL---------------------
+Evaluation Result: 11.146267890930176
+2021-05-25 00:13:33,914 - T10: 0.3995235562324524, T5: 0.3895958364009857, T2: 0.32485952973365784, T1: 0.2786732614040375
+2021-05-25 00:13:33,914 - LT10: 0.4031836688518524, LT5: 0.35017111897468567, LT2: 0.31812605261802673, LT1: 0.2887406051158905
+2021-05-25 00:13:33,914 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.5116704]
+2021-05-25 00:13:33,914 - Short support: [0.         0.01137205 0.01267744 0.05499048 0.06687398 0.0841378
+ 0.09126379 0.08110716 0.08590688 0.5116704 ]
+
+2021-05-25 00:13:48,020 - Epoch: 10, Step: 0, L:273, Loss: 1.019376277923584
+2021-05-25 00:13:58,549 - L=452
+2021-05-25 00:13:58,549 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:14:06,080 - L=324
+2021-05-25 00:14:06,080 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 387.88 MiB free; 13.53 GiB reserved in total by PyTorch)
+2021-05-25 00:14:08,335 - Epoch: 10, Step: 10, L:171, Loss: 0.9869275987148285
+2021-05-25 00:14:08,645 - L=438
+2021-05-25 00:14:08,645 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.44 GiB free; 4.47 GiB reserved in total by PyTorch)
+2021-05-25 00:14:17,793 - L=431
+2021-05-25 00:14:17,793 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:14:19,684 - L=290
+2021-05-25 00:14:19,684 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 261.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:14:19,918 - L=348
+2021-05-25 00:14:19,918 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 4.34 GiB free; 9.57 GiB reserved in total by PyTorch)
+2021-05-25 00:14:23,706 - Epoch: 10, Step: 20, L:175, Loss: 1.1232162316640217
+2021-05-25 00:14:29,308 - L=394
+2021-05-25 00:14:29,308 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:14:39,544 - L=313
+2021-05-25 00:14:39,544 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 425.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:14:45,422 - L=379
+2021-05-25 00:14:45,423 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.45 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:14:49,141 - Epoch: 10, Step: 30, L:226, Loss: 1.1288376450538635
+2021-05-25 00:14:53,664 - L=334
+2021-05-25 00:14:53,664 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:15:12,163 - Epoch: 10, Step: 40, L:161, Loss: 1.1392714579900105
+2021-05-25 00:15:17,036 - L=290
+2021-05-25 00:15:17,036 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 267.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:15:34,048 - L=321
+2021-05-25 00:15:34,048 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:15:35,361 - Epoch: 10, Step: 50, L:126, Loss: 1.147350288927555
+2021-05-25 00:15:35,653 - L=421
+2021-05-25 00:15:35,653 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.73 GiB free; 4.17 GiB reserved in total by PyTorch)
+2021-05-25 00:15:40,014 - Start evaluating...
+2021-05-25 00:15:41,624 - Evaluation: 0 / 7
+2021-05-25 00:15:48,760 - -----------------------EVAL---------------------
+Evaluation Result: 11.506462574005127
+2021-05-25 00:15:48,760 - T10: 0.2965536415576935, T5: 0.3144851326942444, T2: 0.3069317936897278, T1: 0.26940664649009705
+2021-05-25 00:15:48,760 - LT10: 0.4389025568962097, LT5: 0.4424174427986145, LT2: 0.32770395278930664, LT1: 0.2671007513999939
+2021-05-25 00:15:48,761 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.48499277]
+2021-05-25 00:15:48,761 - Short support: [4.8262550e-04 1.8423485e-02 2.9609574e-02 4.3826841e-02 7.1896419e-02
+ 6.8139091e-02 9.1642603e-02 9.9115498e-02 9.1871090e-02 4.8499277e-01]
+
+2021-05-25 00:15:53,308 - Epoch: 11, Step: 0, L:130, Loss: 1.4923352003097534
+2021-05-25 00:16:06,225 - L=313
+2021-05-25 00:16:06,225 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 419.88 MiB free; 13.50 GiB reserved in total by PyTorch)
+2021-05-25 00:16:11,908 - L=438
+2021-05-25 00:16:11,909 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.45 GiB free; 4.46 GiB reserved in total by PyTorch)
+2021-05-25 00:16:23,121 - Epoch: 11, Step: 10, L:205, Loss: 1.0281022414565086
+2021-05-25 00:16:25,483 - L=348
+2021-05-25 00:16:25,483 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.63 GiB free; 3.28 GiB reserved in total by PyTorch)
+2021-05-25 00:16:39,673 - L=394
+2021-05-25 00:16:39,673 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:16:41,273 - Epoch: 11, Step: 20, L:146, Loss: 1.1926729306578636
+2021-05-25 00:16:41,475 - L=379
+2021-05-25 00:16:41,475 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.44 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:16:46,276 - L=290
+2021-05-25 00:16:46,276 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 275.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-25 00:16:52,096 - L=452
+2021-05-25 00:16:52,096 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:16:58,676 - Epoch: 11, Step: 30, L:226, Loss: 1.0595423494066512
+2021-05-25 00:17:00,608 - L=290
+2021-05-25 00:17:00,608 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 269.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-25 00:17:09,297 - L=431
+2021-05-25 00:17:09,297 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:17:19,738 - L=334
+2021-05-25 00:17:19,739 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:17:21,700 - L=324
+2021-05-25 00:17:21,700 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.44 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:17:21,912 - L=421
+2021-05-25 00:17:21,912 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 783.88 MiB free; 13.14 GiB reserved in total by PyTorch)
+2021-05-25 00:17:42,036 - L=321
+2021-05-25 00:17:42,036 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:17:49,296 - Start evaluating...
+2021-05-25 00:17:50,877 - Evaluation: 0 / 7
+2021-05-25 00:17:58,013 - -----------------------EVAL---------------------
+Evaluation Result: 10.999886751174927
+2021-05-25 00:17:58,013 - T10: 0.1954047530889511, T5: 0.2596571147441864, T2: 0.26803088188171387, T1: 0.25446850061416626
+2021-05-25 00:17:58,013 - LT10: 0.4333929121494293, LT5: 0.4255366027355194, LT2: 0.3192165493965149, LT1: 0.301285058259964
+2021-05-25 00:17:58,013 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.4788942]
+2021-05-25 00:17:58,014 - Short support: [0.         0.00743412 0.02750728 0.06180822 0.06978153 0.09171136
+ 0.07584536 0.11024783 0.07677008 0.4788942 ]
+
+2021-05-25 00:18:05,269 - Epoch: 12, Step: 0, L:150, Loss: 1.2733262777328491
+2021-05-25 00:18:17,247 - L=334
+2021-05-25 00:18:17,247 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:18:28,299 - Epoch: 12, Step: 10, L:231, Loss: 1.1385952565405104
+2021-05-25 00:18:28,588 - L=431
+2021-05-25 00:18:28,588 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 7.17 GiB free; 6.74 GiB reserved in total by PyTorch)
+2021-05-25 00:18:35,837 - L=290
+2021-05-25 00:18:35,837 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.40 GiB already allocated; 17.88 MiB free; 13.89 GiB reserved in total by PyTorch)
+2021-05-25 00:18:36,260 - L=452
+2021-05-25 00:18:36,261 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 8.94 GiB free; 4.97 GiB reserved in total by PyTorch)
+2021-05-25 00:18:54,286 - L=313
+2021-05-25 00:18:54,286 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 429.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:18:56,682 - Epoch: 12, Step: 20, L:178, Loss: 0.9982003569602966
+2021-05-25 00:19:03,993 - L=324
+2021-05-25 00:19:03,993 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 379.88 MiB free; 13.54 GiB reserved in total by PyTorch)
+2021-05-25 00:19:14,884 - L=348
+2021-05-25 00:19:14,885 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:19:18,476 - L=321
+2021-05-25 00:19:18,476 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:19:18,700 - L=421
+2021-05-25 00:19:18,700 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 1.27 GiB free; 12.64 GiB reserved in total by PyTorch)
+2021-05-25 00:19:28,004 - L=438
+2021-05-25 00:19:28,004 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.34 GiB free; 4.57 GiB reserved in total by PyTorch)
+2021-05-25 00:19:36,144 - L=394
+2021-05-25 00:19:36,145 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.14 GiB free; 3.77 GiB reserved in total by PyTorch)
+2021-05-25 00:19:53,516 - L=290
+2021-05-25 00:19:53,516 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:19:53,749 - L=379
+2021-05-25 00:19:53,749 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 3.51 GiB free; 10.40 GiB reserved in total by PyTorch)
+2021-05-25 00:20:00,785 - Start evaluating...
+2021-05-25 00:20:02,257 - Evaluation: 0 / 7
+2021-05-25 00:20:09,606 - -----------------------EVAL---------------------
+Evaluation Result: 3.4560019969940186
+2021-05-25 00:20:09,606 - T10: 0.06440884619951248, T5: 0.05986480042338371, T2: 0.04483850672841072, T1: 0.22730980813503265
+2021-05-25 00:20:09,606 - LT10: 0.0424308218061924, LT5: 0.04948866367340088, LT2: 0.049133460968732834, LT1: 0.25739675760269165
+2021-05-25 00:20:09,606 - Short all result: [0.         0.         0.         0.         0.         0.07142857
+ 0.1368434  0.         0.         0.35515958]
+2021-05-25 00:20:09,607 - Short support: [0.00113379 0.01596262 0.03027043 0.0619261  0.08622109 0.12202022
+ 0.13606699 0.10203844 0.10925131 0.33510906]
+
+2021-05-25 00:20:15,301 - Epoch: 13, Step: 0, L:147, Loss: 1.2142173051834106
+2021-05-25 00:20:20,172 - L=313
+2021-05-25 00:20:20,172 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:20:31,564 - L=290
+2021-05-25 00:20:31,564 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:20:44,151 - Epoch: 13, Step: 10, L:146, Loss: 1.103483259677887
+2021-05-25 00:20:48,428 - L=431
+2021-05-25 00:20:48,428 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.51 GiB free; 4.39 GiB reserved in total by PyTorch)
+2021-05-25 00:20:58,564 - L=379
+2021-05-25 00:20:58,564 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.45 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:21:02,227 - Epoch: 13, Step: 20, L:114, Loss: 1.0721923112869263
+2021-05-25 00:21:04,232 - L=324
+2021-05-25 00:21:04,232 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 367.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:21:16,216 - L=421
+2021-05-25 00:21:16,216 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-25 00:21:19,236 - L=321
+2021-05-25 00:21:19,236 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.30 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:21:26,825 - Epoch: 13, Step: 30, L:273, Loss: 1.0421569687979562
+2021-05-25 00:21:27,180 - L=452
+2021-05-25 00:21:27,180 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.12 GiB free; 4.79 GiB reserved in total by PyTorch)
+2021-05-25 00:21:40,912 - L=334
+2021-05-25 00:21:40,912 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 11.88 MiB free; 13.90 GiB reserved in total by PyTorch)
+2021-05-25 00:21:41,136 - L=438
+2021-05-25 00:21:41,136 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 797.88 MiB free; 13.13 GiB reserved in total by PyTorch)
+2021-05-25 00:21:45,119 - Epoch: 13, Step: 40, L:226, Loss: 1.1789235472679138
+2021-05-25 00:21:46,904 - L=348
+2021-05-25 00:21:46,904 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:22:06,012 - L=394
+2021-05-25 00:22:06,013 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:22:14,112 - L=290
+2021-05-25 00:22:14,112 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 323.88 MiB free; 13.59 GiB reserved in total by PyTorch)
+2021-05-25 00:22:14,256 - Start evaluating...
+2021-05-25 00:22:15,834 - Evaluation: 0 / 7
+2021-05-25 00:22:23,018 - -----------------------EVAL---------------------
+Evaluation Result: 12.517650127410889
+2021-05-25 00:22:23,018 - T10: 0.19040928781032562, T5: 0.2654816210269928, T2: 0.33239951729774475, T1: 0.33208441734313965
+2021-05-25 00:22:23,018 - LT10: 0.5003487467765808, LT5: 0.4350721538066864, LT2: 0.41155290603637695, LT1: 0.39019161462783813
+2021-05-25 00:22:23,019 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.53574175]
+2021-05-25 00:22:23,019 - Short support: [0.         0.0162978  0.0264612  0.0525579  0.05406498 0.0623117
+ 0.08329662 0.0868718  0.08239625 0.53574175]
+
+2021-05-25 00:22:30,948 - Epoch: 14, Step: 0, L:180, Loss: 0.9248143434524536
+2021-05-25 00:22:38,768 - L=452
+2021-05-25 00:22:38,768 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.22 GiB free; 4.69 GiB reserved in total by PyTorch)
+2021-05-25 00:22:38,999 - L=421
+2021-05-25 00:22:38,999 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.71 GiB free; 4.20 GiB reserved in total by PyTorch)
+2021-05-25 00:22:46,890 - Epoch: 14, Step: 10, L:114, Loss: 1.0232674553990364
+2021-05-25 00:23:00,374 - L=334
+2021-05-25 00:23:00,374 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:23:07,176 - L=324
+2021-05-25 00:23:07,176 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 367.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:23:14,642 - Epoch: 14, Step: 20, L:147, Loss: 1.1077198162674904
+2021-05-25 00:23:27,048 - L=290
+2021-05-25 00:23:27,048 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 265.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:23:35,812 - L=290
+2021-05-25 00:23:35,812 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:23:44,599 - Epoch: 14, Step: 30, L:270, Loss: 1.1037397384643555
+2021-05-25 00:23:49,960 - L=348
+2021-05-25 00:23:49,961 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.80 GiB free; 3.10 GiB reserved in total by PyTorch)
+2021-05-25 00:23:59,364 - L=313
+2021-05-25 00:23:59,364 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 425.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:23:59,621 - L=438
+2021-05-25 00:23:59,621 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 2.56 GiB free; 11.35 GiB reserved in total by PyTorch)
+2021-05-25 00:24:03,385 - L=431
+2021-05-25 00:24:03,385 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:24:16,652 - L=321
+2021-05-25 00:24:16,652 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.30 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:24:19,343 - L=379
+2021-05-25 00:24:19,343 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.41 GiB free; 3.50 GiB reserved in total by PyTorch)
+2021-05-25 00:24:22,679 - Epoch: 14, Step: 50, L:146, Loss: 1.16224690420287
+2021-05-25 00:24:27,801 - L=394
+2021-05-25 00:24:27,801 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 9.75 GiB free; 4.16 GiB reserved in total by PyTorch)
+2021-05-25 00:24:27,964 - Start evaluating...
+2021-05-25 00:24:29,542 - Evaluation: 0 / 7
+2021-05-25 00:24:36,746 - -----------------------EVAL---------------------
+Evaluation Result: 4.848043203353882
+2021-05-25 00:24:36,746 - T10: 0.011287926696240902, T5: 0.007854490540921688, T2: 0.2801831066608429, T1: 0.3393581211566925
+2021-05-25 00:24:36,746 - LT10: 0.008748244494199753, LT5: 0.005627303384244442, LT2: 0.2676103413105011, LT1: 0.34580522775650024
+2021-05-25 00:24:36,746 - Short all result: [0.         0.         0.         0.         0.         0.05775224
+ 0.         0.         0.         0.5351649 ]
+2021-05-25 00:24:36,747 - Short support: [0.         0.0236209  0.02824454 0.04970276 0.06611378 0.05850827
+ 0.06543213 0.07589798 0.0788623  0.55361736]
+
+2021-05-25 00:24:47,033 - L=313
+2021-05-25 00:24:47,033 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 419.88 MiB free; 13.50 GiB reserved in total by PyTorch)
+2021-05-25 00:24:49,965 - L=452
+2021-05-25 00:24:49,965 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:24:50,182 - L=438
+2021-05-25 00:24:50,182 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.46 GiB free; 4.44 GiB reserved in total by PyTorch)
+2021-05-25 00:24:50,401 - L=379
+2021-05-25 00:24:50,401 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.34 GiB free; 3.56 GiB reserved in total by PyTorch)
+2021-05-25 00:24:54,281 - L=421
+2021-05-25 00:24:54,281 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.75 GiB free; 4.15 GiB reserved in total by PyTorch)
+2021-05-25 00:24:54,466 - L=394
+2021-05-25 00:24:54,466 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.16 GiB free; 3.75 GiB reserved in total by PyTorch)
+2021-05-25 00:25:00,358 - Epoch: 15, Step: 10, L:254, Loss: 1.0222813487052917
+2021-05-25 00:25:16,464 - L=290
+2021-05-25 00:25:16,464 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 261.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:25:24,418 - Epoch: 15, Step: 20, L:196, Loss: 1.0667313933372498
+2021-05-25 00:25:39,100 - L=431
+2021-05-25 00:25:39,100 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.61 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:25:51,046 - Epoch: 15, Step: 30, L:215, Loss: 1.1193315254317389
+2021-05-25 00:26:14,340 - L=290
+2021-05-25 00:26:14,340 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:26:19,534 - Epoch: 15, Step: 40, L:270, Loss: 1.1724288198682997
+2021-05-25 00:26:25,341 - L=348
+2021-05-25 00:26:25,342 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:26:31,490 - L=334
+2021-05-25 00:26:31,491 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:26:35,729 - L=324
+2021-05-25 00:26:35,729 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 367.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:26:37,683 - L=321
+2021-05-25 00:26:37,683 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.20 GiB already allocated; 419.88 MiB free; 13.50 GiB reserved in total by PyTorch)
+2021-05-25 00:26:43,049 - Start evaluating...
+2021-05-25 00:26:44,617 - Evaluation: 0 / 7
+2021-05-25 00:26:51,927 - -----------------------EVAL---------------------
+Evaluation Result: 17.32306432723999
+2021-05-25 00:26:51,927 - T10: 0.6029014587402344, T5: 0.608737051486969, T2: 0.5229888558387756, T1: 0.444376677274704
+2021-05-25 00:26:51,927 - LT10: 0.6085867285728455, LT5: 0.5948532223701477, LT2: 0.44965940713882446, LT1: 0.3888378143310547
+2021-05-25 00:26:51,927 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.6603193]
+2021-05-25 00:26:51,927 - Short support: [0.00075188 0.00759375 0.01939255 0.03054961 0.03541366 0.04499481
+ 0.05998608 0.08147387 0.05952451 0.6603193 ]
+
+2021-05-25 00:27:00,691 - Epoch: 16, Step: 0, L:148, Loss: 1.3011956214904785
+2021-05-25 00:27:24,688 - L=438
+2021-05-25 00:27:24,689 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.49 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:27:24,893 - L=421
+2021-05-25 00:27:24,893 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.75 GiB free; 4.16 GiB reserved in total by PyTorch)
+2021-05-25 00:27:39,616 - L=313
+2021-05-25 00:27:39,616 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.16 GiB already allocated; 311.88 MiB free; 13.60 GiB reserved in total by PyTorch)
+2021-05-25 00:27:45,752 - L=290
+2021-05-25 00:27:45,752 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:27:51,979 - L=324
+2021-05-25 00:27:51,979 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 365.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:28:00,664 - L=290
+2021-05-25 00:28:00,664 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 271.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-25 00:28:11,932 - Epoch: 16, Step: 30, L:268, Loss: 1.0930014898379643
+2021-05-25 00:28:22,068 - L=379
+2021-05-25 00:28:22,068 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.45 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:28:24,980 - L=348
+2021-05-25 00:28:24,980 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:28:27,239 - Epoch: 16, Step: 40, L:176, Loss: 1.1333098411560059
+2021-05-25 00:28:27,509 - L=452
+2021-05-25 00:28:27,509 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.04 GiB free; 4.87 GiB reserved in total by PyTorch)
+2021-05-25 00:28:34,354 - L=334
+2021-05-25 00:28:34,355 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:28:41,936 - L=394
+2021-05-25 00:28:41,937 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.19 GiB free; 3.71 GiB reserved in total by PyTorch)
+2021-05-25 00:28:48,786 - Epoch: 16, Step: 50, L:218, Loss: 1.1505363498415266
+2021-05-25 00:28:55,470 - L=321
+2021-05-25 00:28:55,470 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 179.88 MiB free; 13.73 GiB reserved in total by PyTorch)
+2021-05-25 00:28:55,704 - L=431
+2021-05-25 00:28:55,704 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 1.31 GiB free; 12.60 GiB reserved in total by PyTorch)
+2021-05-25 00:28:55,963 - Start evaluating...
+2021-05-25 00:28:57,566 - Evaluation: 0 / 7
+2021-05-25 00:29:04,641 - -----------------------EVAL---------------------
+Evaluation Result: 15.672699451446533
+2021-05-25 00:29:04,641 - T10: 0.5371056795120239, T5: 0.4707818329334259, T2: 0.3963344991207123, T1: 0.3752119541168213
+2021-05-25 00:29:04,641 - LT10: 0.5853812098503113, LT5: 0.5309755206108093, LT2: 0.45646095275878906, LT1: 0.4261695444583893
+2021-05-25 00:29:04,642 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.5933472]
+2021-05-25 00:29:04,642 - Short support: [0.0010582  0.00913376 0.01959229 0.034129   0.05785729 0.0569025
+ 0.06913235 0.07383174 0.08501562 0.5933472 ]
+
+2021-05-25 00:29:13,467 - Epoch: 17, Step: 0, L:199, Loss: 1.0186398029327393
+2021-05-25 00:29:22,187 - L=334
+2021-05-25 00:29:22,187 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:29:27,752 - L=290
+2021-05-25 00:29:27,752 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:29:34,842 - Epoch: 17, Step: 10, L:205, Loss: 1.1253416985273361
+2021-05-25 00:29:40,578 - L=324
+2021-05-25 00:29:40,578 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 367.88 MiB free; 13.55 GiB reserved in total by PyTorch)
+2021-05-25 00:29:46,728 - L=452
+2021-05-25 00:29:46,728 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:29:52,332 - L=431
+2021-05-25 00:29:52,332 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.58 GiB free; 4.33 GiB reserved in total by PyTorch)
+2021-05-25 00:29:52,522 - L=394
+2021-05-25 00:29:52,522 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.13 GiB free; 3.78 GiB reserved in total by PyTorch)
+2021-05-25 00:29:57,707 - Epoch: 17, Step: 20, L:270, Loss: 1.1654535134633381
+2021-05-25 00:30:07,100 - L=321
+2021-05-25 00:30:07,100 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:30:14,267 - L=438
+2021-05-25 00:30:14,267 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.49 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:30:14,452 - L=379
+2021-05-25 00:30:14,452 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.37 GiB free; 3.54 GiB reserved in total by PyTorch)
+2021-05-25 00:30:16,288 - Epoch: 17, Step: 30, L:158, Loss: 1.1169903108051844
+2021-05-25 00:30:18,184 - L=290
+2021-05-25 00:30:18,184 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:30:21,254 - L=313
+2021-05-25 00:30:21,254 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.56 GiB already allocated; 3.88 MiB free; 13.90 GiB reserved in total by PyTorch)
+2021-05-25 00:30:21,314 - L=179
+2021-05-25 00:30:21,314 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-25 00:30:21,520 - L=190
+2021-05-25 00:30:21,521 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-25 00:30:36,577 - Epoch: 17, Step: 40, L:274, Loss: 1.1845789551734924
+2021-05-25 00:30:36,892 - L=421
+2021-05-25 00:30:36,892 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-25 00:30:53,270 - L=348
+2021-05-25 00:30:53,270 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:31:03,015 - Start evaluating...
+2021-05-25 00:31:04,555 - Evaluation: 0 / 7
+2021-05-25 00:31:11,812 - -----------------------EVAL---------------------
+Evaluation Result: 12.340606689453125
+2021-05-25 00:31:11,812 - T10: 0.27465495467185974, T5: 0.32563266158103943, T2: 0.3409581482410431, T1: 0.35504862666130066
+2021-05-25 00:31:11,812 - LT10: 0.4201975464820862, LT5: 0.40578213334083557, LT2: 0.37364187836647034, LT1: 0.38299041986465454
+2021-05-25 00:31:11,812 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.08145364 0.         0.         0.52079314]
+2021-05-25 00:31:11,813 - Short support: [0.         0.01509764 0.02451459 0.04533299 0.05917063 0.07929578
+ 0.08743458 0.08783166 0.08777829 0.5135439 ]
+
+2021-05-25 00:31:16,223 - Epoch: 18, Step: 0, L:145, Loss: 1.4340457916259766
+2021-05-25 00:31:23,033 - L=324
+2021-05-25 00:31:23,033 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 375.88 MiB free; 13.54 GiB reserved in total by PyTorch)
+2021-05-25 00:31:24,819 - L=290
+2021-05-25 00:31:24,819 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 12.77 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:31:27,365 - L=394
+2021-05-25 00:31:27,365 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.16 GiB free; 3.75 GiB reserved in total by PyTorch)
+2021-05-25 00:31:29,336 - L=321
+2021-05-25 00:31:29,336 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.30 GiB already allocated; 187.88 MiB free; 13.72 GiB reserved in total by PyTorch)
+2021-05-25 00:31:43,332 - Epoch: 18, Step: 10, L:114, Loss: 0.9752307335535685
+2021-05-25 00:31:52,996 - L=334
+2021-05-25 00:31:52,996 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 17.88 MiB free; 13.89 GiB reserved in total by PyTorch)
+2021-05-25 00:31:54,872 - L=290
+2021-05-25 00:31:54,872 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.40 GiB already allocated; 17.88 MiB free; 13.89 GiB reserved in total by PyTorch)
+2021-05-25 00:32:00,261 - L=438
+2021-05-25 00:32:00,261 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.48 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:32:02,518 - Epoch: 18, Step: 20, L:176, Loss: 1.068191988127572
+2021-05-25 00:32:09,013 - L=452
+2021-05-25 00:32:09,013 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:32:27,603 - Epoch: 18, Step: 30, L:214, Loss: 1.1965578529569838
+2021-05-25 00:32:33,613 - L=431
+2021-05-25 00:32:33,613 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:32:38,249 - L=379
+2021-05-25 00:32:38,249 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.45 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:32:43,743 - Epoch: 18, Step: 40, L:234, Loss: 1.0656979754567146
+2021-05-25 00:33:00,928 - L=348
+2021-05-25 00:33:00,928 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:33:02,741 - L=313
+2021-05-25 00:33:02,741 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:33:02,965 - L=421
+2021-05-25 00:33:02,965 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 1.92 GiB free; 11.99 GiB reserved in total by PyTorch)
+2021-05-25 00:33:12,173 - Start evaluating...
+2021-05-25 00:33:13,667 - Evaluation: 0 / 7
+2021-05-25 00:33:20,834 - -----------------------EVAL---------------------
+Evaluation Result: 15.6729154586792
+2021-05-25 00:33:20,834 - T10: 0.4517800509929657, T5: 0.46534475684165955, T2: 0.4772271513938904, T1: 0.43688178062438965
+2021-05-25 00:33:20,834 - LT10: 0.557335615158081, LT5: 0.4937618672847748, LT2: 0.48572370409965515, LT1: 0.4390210807323456
+2021-05-25 00:33:20,835 - Short all result: [0.        0.        0.        0.        0.        0.        0.
+ 0.        0.        0.6018939]
+2021-05-25 00:33:20,835 - Short support: [0.00075188 0.01583721 0.02773396 0.0316415  0.05066687 0.04426062
+ 0.07138322 0.0709918  0.08483905 0.6018939 ]
+
+2021-05-25 00:33:26,154 - Epoch: 19, Step: 0, L:140, Loss: 1.1100870370864868
+2021-05-25 00:33:33,162 - L=324
+2021-05-25 00:33:33,163 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.45 GiB already allocated; 373.88 MiB free; 13.54 GiB reserved in total by PyTorch)
+2021-05-25 00:33:36,929 - L=421
+2021-05-25 00:33:36,929 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.14 GiB reserved in total by PyTorch)
+2021-05-25 00:33:48,246 - Epoch: 19, Step: 10, L:126, Loss: 1.1413472518324852
+2021-05-25 00:33:48,433 - L=379
+2021-05-25 00:33:48,433 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.44 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:33:55,229 - L=438
+2021-05-25 00:33:55,229 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.48 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:34:06,216 - L=394
+2021-05-25 00:34:06,216 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:34:21,716 - L=313
+2021-05-25 00:34:21,716 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 425.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:34:32,892 - L=321
+2021-05-25 00:34:32,892 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 183.88 MiB free; 13.73 GiB reserved in total by PyTorch)
+2021-05-25 00:34:37,276 - L=290
+2021-05-25 00:34:37,276 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 283.88 MiB free; 13.63 GiB reserved in total by PyTorch)
+2021-05-25 00:34:54,454 - L=334
+2021-05-25 00:34:54,454 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 33.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:34:55,909 - Epoch: 19, Step: 40, L:130, Loss: 1.0600881498792898
+2021-05-25 00:35:10,060 - L=290
+2021-05-25 00:35:10,060 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.13 GiB already allocated; 281.88 MiB free; 13.63 GiB reserved in total by PyTorch)
+2021-05-25 00:35:12,829 - L=452
+2021-05-25 00:35:12,829 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:35:17,301 - L=348
+2021-05-25 00:35:17,301 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:35:20,368 - L=431
+2021-05-25 00:35:20,368 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 7.17 GiB free; 6.74 GiB reserved in total by PyTorch)
+2021-05-25 00:35:22,172 - Start evaluating...
+2021-05-25 00:35:23,645 - Evaluation: 0 / 7
+2021-05-25 00:35:30,956 - -----------------------EVAL---------------------
+Evaluation Result: 10.442569255828857
+2021-05-25 00:35:30,956 - T10: 0.3322165608406067, T5: 0.37590599060058594, T2: 0.3713289797306061, T1: 0.32091841101646423
+2021-05-25 00:35:30,956 - LT10: 0.26018795371055603, LT5: 0.3251672685146332, LT2: 0.2947613298892975, LT1: 0.26238590478897095
+2021-05-25 00:35:30,956 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.04838436 0.         0.         0.49481878]
+2021-05-25 00:35:30,956 - Short support: [4.8262550e-04 1.2645615e-02 2.1610038e-02 4.8996884e-02 6.4308725e-02
+ 9.4441369e-02 9.1827951e-02 9.3226366e-02 8.3748221e-02 4.8871225e-01]
+
+2021-05-25 00:35:41,177 - Epoch: 20, Step: 0, L:205, Loss: 0.5646860599517822
+2021-05-25 00:35:47,964 - L=290
+2021-05-25 00:35:47,964 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 253.88 MiB free; 13.66 GiB reserved in total by PyTorch)
+2021-05-25 00:35:57,560 - L=321
+2021-05-25 00:35:57,560 - CUDA out of memory. Tried to allocate 454.00 MiB (GPU 0; 14.73 GiB total capacity; 13.31 GiB already allocated; 175.88 MiB free; 13.74 GiB reserved in total by PyTorch)
+2021-05-25 00:36:04,463 - L=379
+2021-05-25 00:36:04,464 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.44 GiB free; 3.46 GiB reserved in total by PyTorch)
+2021-05-25 00:36:13,249 - L=348
+2021-05-25 00:36:13,250 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.89 GiB free; 3.02 GiB reserved in total by PyTorch)
+2021-05-25 00:36:13,484 - L=431
+2021-05-25 00:36:13,484 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:36:24,972 - Epoch: 20, Step: 20, L:175, Loss: 1.1540403485298156
+2021-05-25 00:36:26,868 - L=290
+2021-05-25 00:36:26,869 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 271.88 MiB free; 13.64 GiB reserved in total by PyTorch)
+2021-05-25 00:36:43,796 - L=452
+2021-05-25 00:36:43,797 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.22 GiB free; 4.69 GiB reserved in total by PyTorch)
+2021-05-25 00:36:49,659 - Epoch: 20, Step: 30, L:190, Loss: 1.0361942574381828
+2021-05-25 00:36:56,788 - L=313
+2021-05-25 00:36:56,788 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 431.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:37:07,752 - L=394
+2021-05-25 00:37:07,752 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 10.21 GiB free; 3.70 GiB reserved in total by PyTorch)
+2021-05-25 00:37:07,993 - L=421
+2021-05-25 00:37:07,993 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.77 GiB free; 4.13 GiB reserved in total by PyTorch)
+2021-05-25 00:37:15,235 - L=334
+2021-05-25 00:37:15,235 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 5.88 MiB free; 13.90 GiB reserved in total by PyTorch)
+2021-05-25 00:37:15,351 - L=324
+2021-05-25 00:37:15,351 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-25 00:37:15,568 - L=161
+2021-05-25 00:37:15,568 - cuDNN error: CUDNN_STATUS_EXECUTION_FAILED
+2021-05-25 00:37:21,068 - L=438
+2021-05-25 00:37:21,068 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.06 GiB free; 4.85 GiB reserved in total by PyTorch)
+2021-05-25 00:37:26,405 - Epoch: 20, Step: 50, L:113, Loss: 1.111001574076139
+2021-05-25 00:37:31,887 - Start evaluating...
+2021-05-25 00:37:33,353 - Evaluation: 0 / 7
+2021-05-25 00:37:40,694 - -----------------------EVAL---------------------
+Evaluation Result: 11.757641792297363
+2021-05-25 00:37:40,694 - T10: 0.3150589168071747, T5: 0.34727218747138977, T2: 0.3404451906681061, T1: 0.32371875643730164
+2021-05-25 00:37:40,694 - LT10: 0.41707971692085266, LT5: 0.3765712082386017, LT2: 0.345668226480484, LT1: 0.3452717959880829
+2021-05-25 00:37:40,694 - Short all result: [0.       0.       0.       0.       0.       0.       0.       0.
+ 0.       0.553115]
+2021-05-25 00:37:40,695 - Short support: [0.00192744 0.01719993 0.02797045 0.0407296  0.0627387  0.06265128
+ 0.07667369 0.07203148 0.08496241 0.553115  ]
+
+2021-05-25 00:37:45,766 - Epoch: 21, Step: 0, L:150, Loss: 1.2951854467391968
+2021-05-25 00:37:52,647 - L=431
+2021-05-25 00:37:52,648 - CUDA out of memory. Tried to allocate 17.70 GiB (GPU 0; 14.73 GiB total capacity; 4.25 GiB already allocated; 9.60 GiB free; 4.30 GiB reserved in total by PyTorch)
+2021-05-25 00:38:03,100 - L=290
+2021-05-25 00:38:03,100 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 261.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:38:13,606 - L=334
+2021-05-25 00:38:13,607 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 29.88 MiB free; 13.88 GiB reserved in total by PyTorch)
+2021-05-25 00:38:16,949 - Epoch: 21, Step: 10, L:215, Loss: 0.9711924110140119
+2021-05-25 00:38:35,496 - L=290
+2021-05-25 00:38:35,496 - CUDA out of memory. Tried to allocate 462.00 MiB (GPU 0; 14.73 GiB total capacity; 13.14 GiB already allocated; 259.88 MiB free; 13.65 GiB reserved in total by PyTorch)
+2021-05-25 00:38:35,737 - L=394
+2021-05-25 00:38:35,737 - CUDA out of memory. Tried to allocate 14.79 GiB (GPU 0; 14.73 GiB total capacity; 3.64 GiB already allocated; 3.51 GiB free; 10.40 GiB reserved in total by PyTorch)
+2021-05-25 00:38:36,069 - L=421
+2021-05-25 00:38:36,069 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.75 GiB free; 4.16 GiB reserved in total by PyTorch)
+2021-05-25 00:38:58,533 - L=438
+2021-05-25 00:38:58,533 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.49 GiB free; 4.42 GiB reserved in total by PyTorch)
+2021-05-25 00:39:14,160 - L=313
+2021-05-25 00:39:14,160 - CUDA out of memory. Tried to allocate 432.00 MiB (GPU 0; 14.73 GiB total capacity; 13.07 GiB already allocated; 427.88 MiB free; 13.49 GiB reserved in total by PyTorch)
+2021-05-25 00:39:14,316 - L=321
+2021-05-25 00:39:14,316 - CUDA out of memory. Tried to allocate 9.82 GiB (GPU 0; 14.73 GiB total capacity; 2.60 GiB already allocated; 1.90 GiB free; 12.01 GiB reserved in total by PyTorch)
+2021-05-25 00:39:14,659 - L=379
+2021-05-25 00:39:14,659 - CUDA out of memory. Tried to allocate 13.69 GiB (GPU 0; 14.73 GiB total capacity; 3.41 GiB already allocated; 10.36 GiB free; 3.55 GiB reserved in total by PyTorch)
+2021-05-25 00:39:16,630 - Epoch: 21, Step: 40, L:161, Loss: 1.1628908229910808
+2021-05-25 00:39:25,112 - L=324
+2021-05-25 00:39:25,112 - CUDA out of memory. Tried to allocate 10.00 GiB (GPU 0; 14.73 GiB total capacity; 2.63 GiB already allocated; 9.75 GiB free; 4.16 GiB reserved in total by PyTorch)
+2021-05-25 00:39:29,149 - L=452
+2021-05-25 00:39:29,149 - CUDA out of memory. Tried to allocate 19.47 GiB (GPU 0; 14.73 GiB total capacity; 4.62 GiB already allocated; 9.24 GiB free; 4.67 GiB reserved in total by PyTorch)
+2021-05-25 00:39:36,394 - L=348
+2021-05-25 00:39:36,395 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.76 GiB free; 3.15 GiB reserved in total by PyTorch)
+2021-05-25 00:39:43,036 - Start evaluating...
+2021-05-25 00:39:44,636 - Evaluation: 0 / 7
+2021-05-25 00:39:51,819 - -----------------------EVAL---------------------
+Evaluation Result: 0.994507759809494
+2021-05-25 00:39:51,819 - T10: 0.014754563570022583, T5: 0.013563491404056549, T2: 0.012648981995880604, T1: 0.0532979853451252
+2021-05-25 00:39:51,819 - LT10: 0.014754563570022583, LT5: 0.013563491404056549, LT2: 0.012648981995880604, LT1: 0.0851673111319542
+2021-05-25 00:39:51,820 - Short all result: [0.         0.         0.         0.         0.         0.
+ 0.         0.09809861 0.         0.20833334]
+2021-05-25 00:39:51,820 - Short support: [0.         0.01561462 0.02370447 0.03895304 0.06676261 0.06780747
+ 0.05608518 0.097524   0.0829495  0.55059916]
+
+2021-05-25 00:40:02,125 - Epoch: 22, Step: 0, L:231, Loss: 1.125430703163147
+2021-05-25 00:40:04,792 - L=438
+2021-05-25 00:40:04,793 - CUDA out of memory. Tried to allocate 18.28 GiB (GPU 0; 14.73 GiB total capacity; 4.37 GiB already allocated; 9.40 GiB free; 4.51 GiB reserved in total by PyTorch)
+2021-05-25 00:40:05,042 - L=421
+2021-05-25 00:40:05,042 - CUDA out of memory. Tried to allocate 16.89 GiB (GPU 0; 14.73 GiB total capacity; 4.08 GiB already allocated; 9.66 GiB free; 4.25 GiB reserved in total by PyTorch)
+2021-05-25 00:40:09,462 - L=334
+2021-05-25 00:40:09,462 - CUDA out of memory. Tried to allocate 42.00 MiB (GPU 0; 14.73 GiB total capacity; 13.82 GiB already allocated; 19.88 MiB free; 13.89 GiB reserved in total by PyTorch)
+2021-05-25 00:40:14,589 - L=348
+2021-05-25 00:40:14,589 - CUDA out of memory. Tried to allocate 11.54 GiB (GPU 0; 14.73 GiB total capacity; 2.96 GiB already allocated; 10.79 GiB free; 3.12 GiB reserved in total by PyTorch)
+2021-05-25 00:40:19,091 - Epoch: 22, Step: 10, L:171, Loss: 1.1847322384516399

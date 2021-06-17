@@ -3,13 +3,14 @@ from model.DeepModel import DeepModel
 from model.ResPreModel import ResPreModel
 from model.DilationModel import DilationModel
 from model.LstmModel import LstmDilationModel
+from model.RealvalueModel import RealvalueModel
 from utils.utils import generate_hyper_params_str, copy_state_dict
-from model.LossFunc import MaskedCrossEntropy, MaskedFocalLoss
+from model.LossFunc import MaskedCrossEntropy, MaskedFocalLoss, MaskedMSELoss
 import torch
 import torch.optim
 import torch.cuda
 import torch.utils.data as Data
-from utils.evaluator import Evaluator
+from utils.evaluator import Evaluator, Evaluator_realvalue
 from tqdm import tqdm
 import numpy as np
 import random
@@ -26,7 +27,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 # Hyper Parameters
 hyper_params = {
-    'model': 'attention', # respre, dilation, deep, attention, lstm
+    'model': 'attention', # respre, dilation, deep, attention, lstm, realvalue
     'device': 'cuda',
     'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     'residual_layers': [
@@ -59,7 +60,8 @@ hyper_params = {
     'start_epoch' : 0,
     'resume' : None,
     'ft' : False,
-    'class_weight': [1.5] * 9 + [1.0],
+    'class_weight': [1.0] * 9 + [1.0],
+    'realvalue': False,
     'loss_func': 'cross', # focal, cross
     'long_length': 25 # None or int, min length for "class_weight" mask
 }
@@ -110,7 +112,10 @@ def train(logger: logging.Logger):
     )
 
     # Define Evaluator
-    evaluator = Evaluator(hyper_params, dataset_key='valid_dir')
+    if hyper_params['realvalue']:
+        evaluator = Evaluator_realvalue(hyper_params, dataset_key='valid_dir')
+    else:
+        evaluator = Evaluator(hyper_params, dataset_key='valid_dir')
 
     # Define Model
     if hyper_params['model'] == 'respre':
@@ -128,6 +133,9 @@ def train(logger: logging.Logger):
     elif hyper_params['model'] == 'lstm':
         model = LstmDilationModel(hyper_params=hyper_params)
         model = model.to(hyper_params['device'])
+    elif hyper_params['model'] == 'realvalue':
+        model = RealvalueModel(hyper_params=hyper_params)
+        model = model.to(hyper_params['device'])
     else:
         raise NotImplementedError(f'Model {hyper_params["model"]} not implemented.')
 
@@ -135,7 +143,9 @@ def train(logger: logging.Logger):
     optimizer = torch.optim.AdamW(model.parameters())
 
     # Define loss function
-    if hyper_params['loss_func'] == 'cross':
+    if hyper_params['realvalue']:
+        loss_func = MaskedMSELoss(hyper_params=hyper_params)
+    elif hyper_params['loss_func'] == 'cross':
         loss_func = MaskedCrossEntropy(hyper_params=hyper_params)
     elif hyper_params['loss_func'] == 'focal':
         loss_func = MaskedFocalLoss(class_weight=hyper_params['class_weight'], gamma=1.6)

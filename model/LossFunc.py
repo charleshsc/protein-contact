@@ -80,7 +80,20 @@ class MaskedFocalLoss(nn.Module):
         loss = loss * class_weight
 
         loss = loss * torch.pow(1 - pt, self.gamma)
-        loss = loss.sum(dim = [1, 2]) / mask.sum(dim = [1, 2])
-        loss = torch.mean(loss)
+        sample_loss = loss.sum(dim = [1, 2]) / mask.sum(dim = [1, 2])
+        mean_batch_loss = torch.mean(sample_loss)
+        return mean_batch_loss
 
-        return loss
+class MaskedMSELoss(nn.Module):
+    def __init__(self, hyper_params):
+        super(MaskedMSELoss, self).__init__()
+        self.mse_loss = nn.MSELoss(reduction='none')
+    
+    def forward(self, pred: torch.Tensor, label: torch.LongTensor, mask: torch.BoolTensor):
+        pred = pred.squeeze(0)
+        loss = self.mse_loss(pred.float(), label.float())
+        m = mask.shape[1]
+        loss = loss * mask
+        loss = torch.sum(loss) / (m ** 2)
+        
+        return loss 
