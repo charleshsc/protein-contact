@@ -11,6 +11,7 @@ class BasicBlock(nn.Module):
         self.in_channels = in_channels
         self.out_channels = out_channels
 
+        # If in_channels != out_channels, then there is an additional cnn layer
         if self.in_channels != self.out_channels:
             self.input_conv = nn.Sequential(
                 nn.Conv2d(
@@ -23,6 +24,7 @@ class BasicBlock(nn.Module):
                 nn.InstanceNorm2d(num_features=out_channels)
             )
 
+        # CNN Layer
         self.conv = nn.Sequential(
             nn.Dropout(p=dropout_rate),
             nn.Conv2d(
@@ -64,6 +66,7 @@ class LstmDilationModel(nn.Module):
         first_channels = hyper_params['residual_layers'][0][0]
         last_channels = hyper_params['residual_layers'][-1][1]
 
+        # LSTM Layer
         self.lstm = nn.LSTM(
             input_size=441,
             hidden_size=441,
@@ -71,6 +74,7 @@ class LstmDilationModel(nn.Module):
             bidirectional=True
         )
 
+        # input CNN (Maxout Layer)
         self.conv1_1 = nn.Sequential(
             nn.Conv2d(
                 in_channels=882,
@@ -83,12 +87,14 @@ class LstmDilationModel(nn.Module):
             nn.ReLU(inplace=True)
         )
 
+        # Middle dilation layers
         self.middle_layers = nn.ModuleList()
         for in_channels, out_channels, dilation, residual in hyper_params['residual_layers']:
             self.middle_layers.append(
                 BasicBlock(in_channels, out_channels, dilation, residual, hyper_params['dropout_rate'])
             )
 
+        # Final CNN (Output Layer)
         self.final_conv = nn.Conv2d(
                 in_channels=last_channels,
                 out_channels=10,
@@ -98,17 +104,16 @@ class LstmDilationModel(nn.Module):
             )
 
     def forward(self, x):
+        """
+            x: 1 x 441 x L x L
+            out: 1 x 10 x L x L
+        """
 
+        # y: L x L x 441
         l = x.shape[2]
         y = x.squeeze(0)
         y = y.permute(2,1,0)
 
-        # h0 = torch.ones([10, l, 441]).cuda()
-        # c0 = torch.ones([10, l, 441]).cuda()
-        # y, (hn, cn) = self.lstm(y, (h0, c0))
-
-        # h0 = torch.ones([10, 1, 441]).cuda()
-        # c0 = torch.ones([10, 1, 441]).cuda()
         output = []
 
         tot = y.shape[0] // 32
@@ -131,11 +136,12 @@ class LstmDilationModel(nn.Module):
                 output_r, (hn, cn) = self.lstm(inputs)
                 output.append(output_r) 
         
+        # y: L x L x 882
         y = torch.cat(output)
-        # print(y.shape)
         y = y.permute(2,1,0)
         x = y.unsqueeze(0)
 
+        # x: 1 x 882 x L x L
         middle = self.conv1_1(x)
 
         if x.shape[-1] > 380:
