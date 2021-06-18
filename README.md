@@ -44,22 +44,26 @@ CUDA version 10.1
 
 ### Train
 ``` sh
-python3 train.py --model attention --train_dir ~/Data/train --valid_dir ~/Data/valid
+python3 train.py --model attention --train_dir path_to_train --valid_dir path_to_valid
 ```
 
 ### Test
 ``` sh
-python3 test.py --model attention --checkpoint run/experiment_24/best_model.pth.tar --test_dir ~/Data/test
+python3 test.py --model attention --checkpoint attention.pth.tar --test_dir path_to_test
 ```
 
 ### predict
 ``` sh
-python3 predict.py --model attention --checkpoint run/experiment_24/best_model.pth.tar --test_dir ~/test_data --target_dir predict
+python3 predict.py --model attention --checkpoint attention.pth.tar --test_dir path_to_test --target_dir path_to_predict
 ```
 
 预测时，输入的文件为npz类型，保存在`[test_dir]/feature`文件夹内。输出的蛋白质预测文件位于`predict`文件夹内。
 
+### Ensemble
+如果需要集成多个模型输出的结果，请先运行predict。之后使用`utils/ensemble.py`，按照提示配置其中的输入参数至指定文件夹，运行后即可得到集成结果。
 
+### 附件
+附件中包含了Unbalanced模型与Attention模型对应的参数。在测试Unbalanced模型参数时，请将`model`参数修改为`dilation`。在数据集目录下，应分别包含`feature`和`label`两个子目录。
 
 ## Citations
 

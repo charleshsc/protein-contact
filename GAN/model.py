@@ -1,5 +1,5 @@
 """
-    PyTorch model. (FCN)
+    PyTorch model. (GAN)
 """
 
 import torch
@@ -9,6 +9,9 @@ from torch.utils.checkpoint import checkpoint
 from utils import calc_pad
 
 class Residual_Block(nn.Module):
+    """
+        Residual Block for GAN.
+    """
     def __init__(self, channels, in_channels=None, dilation=None, kernel_size=3):
         super(Residual_Block, self).__init__()
 

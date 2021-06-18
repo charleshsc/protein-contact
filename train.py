@@ -29,7 +29,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 hyper_params = {
     'model': 'attention', # respre, dilation, deep, attention, lstm, realvalue
     'device': 'cuda',
+    # Layers to control respre model
     'middle_layers': [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+    # Layers to control dilation/attention/lstm/realvalue model
     'residual_layers': [
         (64, 64, 1, True),
         (64, 64, 1, True),
@@ -56,8 +58,10 @@ hyper_params = {
     'validate_ratio': 0.1,
     'subset_ratio': 1.0,
     'log_freq': 10,
+    # of process when loading dataset
     'num_workers': 16,
     'start_epoch' : 0,
+    # Set resume to checkpoint dir
     'resume' : None,
     'ft' : False,
     'class_weight': [1.0] * 9 + [1.0],
